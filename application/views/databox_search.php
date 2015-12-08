@@ -27,9 +27,9 @@
                             <tbody> 
                             <?php    foreach ($last_update as $row) {  
 						echo "<tr>";
-						echo "<td  width='20%'><a href='/j3databox/index.php/mainFunction/data_detail'>".$row['date_upload']."</a></td>";	
-						echo "<td  width='20%'><a href='/j3databox/index.php/mainFunction/data_detail'>".$row['groupname']."</a></td>";	
-						echo "<td  width='100%'><a href='/j3databoxx/index.php/mainFunction/data_detail'>".$row['subject']."</a></td>";
+						echo "<td  width='20%'><a href='/j3databoxNEW/index.php/mainFunction/data_detail'>".$row['date_upload']."</a></td>";	
+						echo "<td  width='20%'><a href='/j3databoxNEW/index.php/mainFunction/data_detail'>".$row['groupname']."</a></td>";	
+						echo "<td  width='100%'><a href='/j3databoxNEW/index.php/mainFunction/data_detail'>".$row['subject']."</a></td>";
 						echo "</tr>";
 						} ?>
                             </tbody>

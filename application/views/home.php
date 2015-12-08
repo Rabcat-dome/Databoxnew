@@ -18,7 +18,7 @@ function postData(x){
 
 	document.getElementById('form2').target = '#uploader';
 	document.getElementById('data2').value = x;
-	$.post("http://localhost/databoxx/index.php/mainFunction/databox_popup", { data: $("#data2").val()}, 
+	$.post("http://localhost/j3databoxNEW/index.php/mainFunction/databox_popup", { data: $("#data2").val()}, 
 		function(data){
 			$("#divPostData").html(data);
 		}

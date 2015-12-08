@@ -22,7 +22,7 @@
                                                     <div style="position:relative;">
 <a class='' href='javascript:;'>
 <?php $attributes = array('id' => 'menu_save'); 
-echo form_open('localhost/j3databox/index.php/mainFunction/menu_save', $attributes); ?>
+echo form_open('localhost/j3databoxNEW/index.php/mainFunction/menu_save', $attributes); ?>
 <?php $this->load->view('java/javascript_upload'); ?>
                                                             </select>
                                                             <br>
@@ -218,7 +218,7 @@ echo "<option value='' >แสดงทั้งหมด</option>";
                                     <?php    ?>
                                     <?php echo form_close(); ?>
                                     <?php $attributes = array('id' => 'myform'); 
-                                    echo form_open('http://localhost/databoxx/index.php/mainFunction/save', $attributes); ?>
+                                    echo form_open('http://localhost/j3databoxNEW/index.php/mainFunction/save', $attributes); ?>
                                     <div class="span21">
                                     <input type="hidden" name="check" id="check" ></input>
     <br>

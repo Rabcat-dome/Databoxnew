@@ -3,7 +3,7 @@
 									    <?php $this->load->view('menu/meunright'); ?>
 										<?php $this->load->view('java/javascript_head.php'); ?>
 										<?php $attributes = array('id' => 'menu_select'); 
-										echo form_open('http://localhost/j3databox/index.php/mainFunction/executive', $attributes); ?>
+										echo form_open('http://localhost/j3databoxNEW/index.php/mainFunction/executive', $attributes); ?>
 										<?php /// $this->load->view('java/javascript_upload'); ?>
 
       
@@ -85,7 +85,7 @@
                        		<script type="text/javascript">
 $(document).ready(function(){
      $("#tableId tr").click(function(){
- $.post("http://localhost/j3databox/index.php/mainFunction/box_detail", { 
+ $.post("http://localhost/j3databoxNEW/index.php/mainFunction/box_detail", { 
       data1: $("#code").val()}, 
       function(data){
   $("#showajax").html(data);
