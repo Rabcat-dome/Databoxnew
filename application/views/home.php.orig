@@ -1,0 +1,164 @@
+    <script src="../../asset/js/jquery/jquery-1.8.2.min.js" type="text/javascript" ></script>
+    <link href="../../asset/css/customize-template.css" type="text/css" media="screen, projection" rel="stylesheet" />
+<?php $this->load->view('menu/menu'); ?>
+    <section class="page container">
+        <div class="row">
+         
+                <div class="box-content">
+                             <div class="box pattern pattern-sandstone">
+                    <div class="box-header">
+                        <i class="icon-list"></i>
+                        <h5>Last Update</h5>
+                        <button class="btn btn-box-right" data-toggle="collapse" data-target=".box-list">
+                            <i class="icon-reorder"></i>
+                        </button>
+                    </div>
+                    <div class="box-content box-list collapse in">
+					
+
+
+                        <ul>
+                           
+                       <li>
+                       <div>
+                       <p class='news-item-preview'><table width="100%" border="0">
+  <tr>
+    <td width="20%" align="left">วันที่</td>
+    <td width="20%" align="left">หมวดงาน</td>
+    <td width="80%" align="left" >ชื่องาน</td>
+	<td >กอง</td>
+  </tr>
+						</table>               
+						</p>
+                       <td align='left'>
+                       </div> 
+                       </li>   
+                        
+
+                        <?php
+						
+                               foreach ($databox_upload as $r) {
+                               echo  "<li>";
+                               echo  "<div>";
+							   echo "<p class='news-item-preview'><table width='100%' border='0'>
+								<tr>
+								<td width='20%' align='left'>".$r['date_upload']."</td>
+								<td width='20%' align='left'>".$r['type_name']."</td>
+								<td width='80%' align='left'>".$r['subject']."</td>
+							    <td>".$r['short_division']."</td>
+								</tr>
+								</table> 
+								</p>";
+                             
+                    
+                               echo  "<td align='left'> ";
+                               echo  "</div>";    
+                               echo  "</li>";   
+                            
+	
+                                       }
+                            
+                            ?>
+                            </ul>
+                        <div class="box-collapse">
+                            <button class="btn btn-box" data-toggle="collapse" data-target=".more-list">
+                          <a href="index1">ภารกิจ</a>  
+						
+                            </button>
+                        </div>
+                        <ul class="more-list collapse out">
+                            <li>
+                                <div>
+                                    <a href="#" class="news-item-title">หัวข้อเรื่อง</a>
+                                    <p class="news-item-preview">เนื้อเรื่อง</p>
+                                </div>
+                            </li>
+                          
+                            
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+			        <div class="box" style="
+    width: 92%; margin-left: 4%;" >
+                    <div class="box-header">
+                        <i class="icon-bookmark"></i>
+                        <h5>UNIT</h5>
+                    </div>
+                    <div class="box-content">
+                        <div class="btn-group-box">
+                        <table width="100%" border="0">
+              <tr>
+                        <td><?php    foreach ($unit as $ru) {  
+						if($ru['group_id']=="1") { if($ru['short_division']!="สน.ผบช."){echo  "<button class='btn'>".$ru['divisId']."<br/>".$ru['short_division']."</button>";} } 
+						} ?></td>
+                        <td>&nbsp;</td>
+                        <td><?php    foreach ($unit as $ru) {  
+						if($ru['short_division']=="สน.ผบช.") {echo  "<button class='btn'>".$ru['divisId']."<br/>".$ru['short_division']."</button>"; } 
+						} ?></td>
+                        </tr>
+                        <tr>
+                        <td><?php    foreach ($unit as $ru) {  
+						if($ru['group_id']=="2") {echo  "<button class='btn'>".$ru['divisId']."<br/>".$ru['short_division']."</button>"; } 
+						} ?></td>
+                        <td>&nbsp;</td>
+                        <td></td>
+                        </tr>
+                        <tr>
+                        <td><?php    foreach ($unit as $ru) {  
+						if($ru['group_id']=="3") {echo  "<button class='btn'>".$ru['divisId']."<br/>".$ru['short_division']."</button>"; } 
+						} ?></td>
+                        <td>&nbsp;</td>
+                        <td></td>
+                        </tr>
+                        <tr>
+                        <td> <?php    foreach ($unit as $ru) {  
+						if($ru['group_id']=="4") {echo  "<button class='btn'>".$ru['divisId']."<br/>".$ru['short_division']."</button>"; } 
+						} ?></td>
+                        <td>&nbsp;</td>
+                        <td> </td>
+                        </tr>
+                        <tr>
+                        <td>	 <?php    foreach ($unit as $ru) {  
+						if($ru['group_id']=="5") {echo  "<button class='btn'>".$ru['divisId']."<br/>".$ru['short_division']."</button>"; } 
+						} ?></td>
+                        <td>&nbsp;</td>
+                        <td> </td>
+                       </tr>
+                      </table>
+
+                        
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+            </div>
+
+            <div class="span8">
+                
+                   
+            
+        </div>
+        <div class="row">
+            <div class="span8">
+                       
+            </div>
+            <div class="span8">
+          
+            </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+         
+            
+            
+                    
+                        <code style="background: none; border: none;">
+                           
+                        </code>
+                    </div>
+                    
+                    <?php $this->load->view('footer/footer'); ?>
+                    

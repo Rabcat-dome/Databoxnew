@@ -1,0 +1,210 @@
+<?php $this->load->view('header/header_title'); ?>
+<?php $this->load->view('menu\menu'); ?>
+        <section class="page container">
+            <div class="row">
+                <div class="span4">
+                    <div class="blockoff-right">
+                        <ul id="person-list" class="nav nav-list">
+                            <li class="nav-header">Data Box</li>
+                            <li class="active">
+                                <a id="view-all" href="#">
+                                    <i class="icon-chevron-right pull-right"></i>
+                                    <b>บทสรุปผู้บริหาร</b>
+                                </a>
+                            </li>
+                            
+                                <li>
+                                    <a href="">
+                                        <i class="icon-chevron-right pull-right"></i>
+                                   
+                                           <a href="javascript:;" data-toggle="collapse" data-target="#down_data_1"><i class="fa fa-fw fa-arrows-v"></i> 
+										   นโยบายและแผน <i class="fa fa-fw fa-caret-down"></i></a>
+                                            <ul id="down_data_1" class="collapse">
+                                                 <li>
+                                                 <a href="#Person-1">นโยบายและแผน > นโยบายและยุทธศาสตร์</a>
+                                                 </li>
+                                                 <li>
+                                                 <a href="#Person-2">นโยบายและแผน > แผนร่วม</a>
+                                                 </li>
+												 <li>
+                                                 <a href="#Person-3">นโยบายและแผน > แผนและโครงการ</a>
+                                                 </li>
+												 <li>
+                                                 <a href="#Person-4">นโยบายและแผน > การจัด</a>
+                                                 </li>
+                                                 </ul>
+                                           </a>
+                                </li>
+
+                            
+                                <li>
+                                    <a href="#Person-5">
+                                        <i class="icon-chevron-right pull-right"></i>
+                                         <a href="javascript:;" data-toggle="collapse" data-target="#down_data_2"><i class="fa fa-fw fa-arrows-v"></i> 
+										   ปฎิบัติการ <i class="fa fa-fw fa-caret-down"></i></a>
+                                            <ul id="down_data_2" class="collapse">
+                                                  <li>
+                                                 <a href="#">ปฎิบัติการ > ยุทธการ</a>
+                                                  </li>
+                                                  <li>
+                                                 <a href="#">ปฎิบัติการ > ปฎิบัติการทหารที่มิใช่สงคราม</a>
+
+                                                  </li>
+												  <li>
+                                              
+
+												 <a href="javascript:;" data-toggle="collapse" data-target="#down_data_6">ปฎิบัติการ  >ปฎิบัติการพิเศษ <i class="fa fa-fw fa-caret-down"></i></a>
+                                                 <ul id="down_data_6" class="collapse">
+                                                  <li>
+                                                 <a href="#">ปฎิบัติการพิเศษ > การพัฒนาระบบงานปฏิบัติการพิเศษร่วม</a>
+                                                  </li>
+												  <li>
+                                                 <a href="#">ปฎิบัติการพิเศษ > การรักษาความสงบเรียบร้อยภายในประเทศ</a>
+                                                  </li>
+												    <li>
+                                                 <a href="#">ปฎิบัติการพิเศษ > การแก้ปัญหาจังหวัดชายแดนภาคใต้ </a>
+                                                  </li>
+												    <li>
+                                                 <a href="#">ปฎิบัติการพิเศษ > การต่อต้านการก่อการร้ายสากล </a>
+                                                  </li>
+												     <li>
+                                                 <a href="#">ปฎิบัติการพิเศษ > การปฏิบัติการข่าวสาร </a>
+                                                  </li>
+												  
+												  </ul>
+                                               
+                                                 
+										      
+											    </li>
+                                                 </ul>
+                                    </a>
+                                </li>
+                            
+                                <li>
+                             <a href="javascript:;" data-toggle="collapse" data-target="#down_data_3"><i class="fa fa-fw fa-arrows-v"></i> วางแผนการฝึกร่วมและผสม <i class="fa fa-fw fa-caret-down"></i></a>
+                                                 <ul id="down_data_3" class="collapse">
+                                                  <li>
+                                                 <a href="#">วางแผนการฝึกร่วมและผสม > นโยบายและแผน</a>
+                                                  </li>
+                                                  <li>
+                                                 <a href="#">วางแผนการฝึกร่วมและผสม > ฝึกร่วมและผสม</a>
+                                                  </li>
+												  <li>
+                                                 <a href="#">วางแผนการฝึกร่วมและผสม > ควบคุมการฝึก</a>
+                                                  </li>
+												   <li>
+                                                 <a href="#">วางแผนการฝึกร่วมและผสม > พัฒนาและประเมินผล</a>
+                                                  </li>
+												    <li>
+                                                 <a href="#">วางแผนการฝึกร่วมและผสม > สนับสนุน</a>
+                                                  </li>
+                                               </ul>
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="">
+                                        <i class="icon-chevron-right pull-right"></i>
+                                     <a href="javascript:;" data-toggle="collapse" data-target="#down_data_9"><i class="fa fa-fw fa-arrows-v"></i> ปฎิบัติการเพื่อสันติภาพ <i class="fa fa-fw fa-caret-down"></i></a>
+                                                 <ul id="down_data_9" class="collapse">
+                                                  <li>
+                                                 <a href="#">ปฎิบัติการเพื่อสันติภาพ > แผนและโครงการ</a>
+                                                  </li>
+                                                  <li>
+                                                 <a href="#">ปฎิบัติการเพื่อสันติภาพ > ฝึกศึกษา</a>
+                                                  </li>
+                                               </ul>
+                                    </a>
+                                </li>
+                            
+                                <li>
+                               
+                            
+                                <li>
+                                    <a href="">
+                                        <i class="icon-chevron-right pull-right"></i>
+                                       แผนงประมาณ
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="">
+                                        <i class="icon-chevron-right pull-right"></i>
+                                        กรรมวิธีข้อมูล
+                                    </a>
+                                </li>
+								<li>
+                                    <a href="">
+                                        <i class="icon-chevron-right pull-right"></i>
+                                        กองกลาง
+                                    </a>
+                                </li>
+								<li>
+                                    <a href="">
+                                        <i class="icon-chevron-right pull-right"></i>
+                                        การเงิน
+                                    </a>
+                                </li>
+								<li>
+                                    <a href="">
+                                        <i class="icon-chevron-right pull-right"></i>
+                                        อื่นๆ
+                                    </a>
+                                </li>
+								<li>
+                                    <a href="">
+                                        <i class="icon-chevron-right pull-right"></i>
+                                        ศบท.บก.ทท
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="span12">
+                
+                    <div id="Person-1" class="box">
+                        <div class="box-header">
+                            <i class="icon-user iconิ-large"></i>
+                            <h5>บทสรุปผู้บริหาร</h5>
+                            
+                        </div>
+                        <div class="box-content box-table">
+                        <table class="table table-hover tablesorter">
+                            <thead>
+                                <tr>
+                                    <th>เวลา</th>
+                                    <th>ชื่อ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            
+                                
+                            <?php    foreach ($fileupload as $fu) {  
+                          
+						
+						echo "<tr>";
+						echo "<td>".$fu['filedatetime']."</td>";	
+						echo "<td>".$fu['subject']."</td>";
+				
+						echo "</tr>";
+						
+						} ?>
+                                
+                            
+                            </tbody>
+                        </table>
+                        </div>
+
+                    </div>
+                
+                  
+                        </div>
+
+                    </div>
+                
+                </div>
+            </div>
+                    
+                    <?php $this->load->view('footer/footer'); ?>
+                    
