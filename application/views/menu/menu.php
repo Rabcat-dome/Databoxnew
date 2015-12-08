@@ -73,7 +73,7 @@
 				<?php	
 
 				 foreach ($search as $r) {
-			echo "<tr style='display: table-row;'><td class='even'><a href='/j3databox/index.php/mainFunction/data_detail' >".$r['subject']."</a></td></tr>";
+			echo "<tr style='display: table-row;'><td class='even'><a href='/j3databoxNEW/index.php/mainFunction/data_detail' >".$r['subject']."</a></td></tr>";
 				}
 				?>
 				</tbody>
@@ -93,7 +93,7 @@ $('.container').on({
 });
     function handle(e){
         if(e.keyCode === 13){
-			location.href = "/j3databox/index.php/mainFunction/databox_search";
+			location.href = "/j3databoxNEW/index.php/mainFunction/databox_search";
         }
 
         return false;

@@ -4,7 +4,7 @@
 $data1 =$_POST['data1'];
 ?>
 <?php    $tes  ="../../uploads/".$data1.".pdf"?>
-<embed src="<?php echo  $tes;?>"  width="500" height="450"></embed>
+<embed src="<?php echo  $tes;?>"  ></embed>
 <input type="hidden" id="data1" name="data1" value="<?php echo $data1 ?>"></input>
 <?php  foreach ($box_detail as $row) { 
                                         $databox_id	    = $row['databox_id'];

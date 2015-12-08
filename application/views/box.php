@@ -16,29 +16,14 @@
 				
 				
 
-                        
-                    
+                       
 						  <div id="span8" class="span12">
 
                 <div class="row">
 				<?php  
 				//top.location.href=this.options[this.selectedIndex].value;
 				//foreach ($box as $row) { $divis_id = $row['divisId']; }?>
-                  ค้นหาหัวข้อเรื่องย่อย <select style="width:100%;" 
-				  onChange="document.getElementById('data_group').value=this.options[this.selectedIndex].value; 
-				   document.getElementById('menu_select').submit();" >
-				
-                       <?php   
-
-
-					   	echo "<option value=''>เรื่องทั่วไป</option>"; 
-						foreach ($data_group_select as $row) { 
-						
-						echo "<option value='".$row['group_Id']."'>".$row['groupname']."</option>"; } 
-						   
-						 ?>
-
-							</select>		
+            
             
 				 <div id="Person-1" class="box">
                  <div class="box-header">
@@ -97,7 +82,7 @@ $(document).ready(function(){
 </script>
 
 <div id="showajax" ></div>
-                    </p>
+                
                 </div>
             </div>
 
