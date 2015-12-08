@@ -29,8 +29,6 @@
 						         } 
 						} ?>
 							</select>		
-										
-					 
 				     <div id="Person-1" class="box">
                         <div class="box-header">
                             <i class="icon-user iconิ-large"></i>

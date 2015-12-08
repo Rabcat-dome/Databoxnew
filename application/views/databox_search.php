@@ -1,6 +1,5 @@
 									    <?php $this->load->view('header/header_title'); ?>
 										<?php $this->load->view('menu/menu'); ?>
-									
 										<?php $this->load->view('java/javascript_head.php'); ?>
 
                 <div class="span15" style="margin-left: 10%">
