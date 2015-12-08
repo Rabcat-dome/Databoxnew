@@ -8021,6 +8021,24 @@ body > #body-container {
 .box .box-content.box-list ul li p {
   margin: 0;
 }
+
+.box .box-content.box-list2 {
+  padding: 0;
+}
+.box .box-content.box-list2 ul {
+  margin: 0;
+  list-style: none;
+}
+.box .box-content.box-list2 ul li {
+  padding: 10px;
+  border-bottom: 1px dotted #d5d5d5;
+  color: #555555;
+}
+.box .box-content.box-list2 ul li p {
+  margin: 0;
+}
+
+
 .box .box-content .box-collapse {
   border-bottom: 1px dotted #d5d5d5;
   height: 20px;
@@ -8130,7 +8148,7 @@ body > #body-container {
   font-size: 12px;
   border: none;
   height: 45px;
-  width: 140px;
+  width: 70px;
   line-height: 16px;
   padding-top: 6px;
 }
@@ -8149,7 +8167,7 @@ btn-group-box a.btn,
   font-size: 12px;
   border: none;
   height: 45px;
-  width: 140px;
+  width: 94px;
   line-height: 16px;
   padding-top: 6px;
   }
