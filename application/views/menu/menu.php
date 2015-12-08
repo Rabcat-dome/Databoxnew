@@ -26,7 +26,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="" class="brand"><i class="icon-data"> J3 DataBox</i></a>
+                    <div class="brand"><i class="icon-data"> J3 DataBox</i></div>
                     <div id="app-nav-top-bar" class="nav-collapse" >
 
                         <ul class="nav" style="margin-top: 10px; " >
