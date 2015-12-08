@@ -4,7 +4,7 @@
 $data1 =$_POST['data1'];
 ?>
 <?php    $tes  ="../../uploads/".$data1.".pdf"?>
-<embed src="<?php echo  $tes;?>"  ></embed>
+<embed src="<?php echo  $tes;?>"  height="450" class="span9"  ></embed>
 <input type="hidden" id="data1" name="data1" value="<?php echo $data1 ?>"></input>
 <?php  foreach ($box_detail as $row) { 
                                         $databox_id	    = $row['databox_id'];
@@ -35,7 +35,7 @@ $data1 =$_POST['data1'];
                                                   </div>
 														</td>
 														<td>
-														<label style="background-color :#ffffff; height: 25px; width : 350px; border-style: solid; border-width: 1px; font-size: 12px;">&nbsp; <?php echo $databox_id ?></label>
+														<label  style="background-color :#ffffff; height: 25px; width : 100%; border-style: solid; border-width: 1px; font-size: 12px;">&nbsp; <?php echo $databox_id ?></label>
 														</td>
 
 													</tr>
