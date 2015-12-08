@@ -2,99 +2,25 @@
  
 <?php // $this->load->view('header/header_title'); ?>
 <?php $this->load->view('menu/menu'); ?>
-
- <script src="java/javasm.js" type="text/javasm.js" ></script>
+      
+        <link href="../../asset/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+        <script src="../../asset/js/fileinput.js" type="text/javascript"></script>
+        <script src="java/javasm.js" type="text/javasm.js" ></script>
 
 
                                     <div class="span15">
                                     <div class="text-right">
                                     </div>
 <div class="span11"  style="margin-left : 25%">
-                                               <div class="container-signin">  
-                                                    <legend >เพิ่มหมวดเรื่อง</legend>
-
-                                                    <div class="input-prepend">
-                                                    </div>
-                                                    <div class="input-prepend">
-                                                    <div style="position:relative;">
-<a class='' href='javascript:;'>
-<?php $attributes = array('id' => 'menu_save'); 
-echo form_open('http://localhost/databoxx/index.php/mainFunction/menu_save', $attributes); ?>
-
-                                                            </select>
-                                                            <br>
-                                                            <br>
-                                                    <table>
-													<tr>
-                                                                  <td align="left">
-                                                                  <span class="add-on"  style="width : 20%;  text-align: left;">หมวดหลัก</span>
-                                                                  <select class='span6'  name="menu_master" id="menu_master"  >
-                                                                  <?php   foreach ($upload_menu_type as $row) { 
-																   echo "<option value=".$row['type_id'].">".$row['type_name']."</option>";
-																								}  ?>
-                                                            </td>
-                                                            </tr>
-																 </tr>
-																 <td>
-																 <br>
-																 </td>
-                                                            <tr>
-                                                            <tr>
-                                                                    <td align="left">
-                                                                    <span class="add-on" style="width : 100px;  text-align: left;">หมวดเรื่อง</span>
-                                                    <input type='text'  id='menu_second' name='menu_second' class='span6' /></input></td>
-                                                                    <td valign="bottom">
-                                                                    <a onclick="document.getElementById('menu_save').submit()" href="#" class="btn btn-small btn-danger">
-                                                    <i   class="btn-icon-only icon-save"  ></i>
-                                                    </a>
-                                                            </td>
-                                                            </tr>
-                                                            <tr>
-                                                            <td><br></td>
-                                                            </tr>
-                                                            <tr>
-                                                                     <td>
-     
-                                    </select>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    </tr>
-                                    <td><br></td>
-                                    <tr>
-                                    <td>
-                                    
-                      
-                                    </td>
-                                    </tr>
-                                    </table>
-                            </div>				
-                            </div>
-                                    <div style ='background-color: #ffffff;'>
-                                    </div >
-                            <div class="input-prepend">
-                            </div>
-                            </label>
-
-							</div>
-                          <?php echo form_close(); ?>
-	</div>
-	
-	<div align="center">
-	</div>
-	</div>
-<br>
-	
-	<div class="span11"  style="margin-left : 25%">
+	 <div class="span11"  style="margin-left : 25%">
 	 <div class="container-signin">
 	 <?php $attributes = array('id' => 'upload_pdf'); 
-echo form_open_multipart('http://localhost/databoxx/index.php/mainFunction/do_upload', $attributes); ?>
-
+echo form_open_multipart('localhost/j3databox/index.php/mainFunction/do_upload', $attributes); ?>
 													<div align="center">
                                                     <legend >เพิ่มหมวดเรื่อง</legend>
 													</div>
                                                     <div class="form-inner">
-                                                  
+                                               
                                                     <div class="input-prepend">
                                                     <div style="position:relative;">
 
@@ -107,23 +33,36 @@ echo form_open_multipart('http://localhost/databoxx/index.php/mainFunction/do_up
                                                     </div>
 													</tr>
                                                     <tr>
-                                                    <td width="10px" > 
-													<br>
+                                                    <td  > 
+												
+					<div class="span1" >
+   	                <input id="file-5" class="file" type="file" multiple  data-upload-url="#" >
+                    <div id="errorBlock" class="help-block"></div>
+                    </div>
+					</td>
+					   
+					<td> 
+
+					<div class="span1" >
+			  <span class="add-on" >&nbsp;&nbsp;&nbsp;</span>
+                    </div>
+                    </td> 
+						<td> 
+
+					<div class="span1" >
+				    <input id="file-6" class="file" type="file" multiple  data-upload-url="#">
+                    <div id="errorBlock" class="help-block"></div>
+                    </div>
+                    </td> 
+
+
+
+	
+
 												
 													
-                                       
-	
-   
-	   <div class="btn btn-default btn-file1"><span class="add-on" style="width : 15%;  text-align: left;">  แนบไฟล์</span> <input type="text"  id="filename"  placeholder="คลิกเพื่อทำการแนบไฟล์"  readonly/></input> <input type="file" id="file" name="userfile" onchange="setfilename(this.value);"/>
-        &nbsp;&nbsp;  </input> </div> 
-
-
-	
 
 												
-													
-
-													</td>
 
 													
                                                     </tr>
@@ -134,13 +73,7 @@ echo form_open_multipart('http://localhost/databoxx/index.php/mainFunction/do_up
 													
                                        
 	
-   
-	   <div class="btn btn-default btn-file2"><span class="add-on" style="width : 15%;  text-align: left;">  แนบไฟล์</span> <input type="text"  id="filename2"  placeholder="คลิกเพื่อทำการแนบไฟล์"  readonly/></input> <input type="file" id="file2" name="userfile" onchange="setfilename2(this.value);"/>
-        &nbsp;&nbsp;  </input> </div> 
-
-
-	
-
+   	 
 												
 													
 
