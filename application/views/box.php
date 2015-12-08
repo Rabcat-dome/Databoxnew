@@ -19,6 +19,7 @@
                         
                     
 						  <div id="span8" class="span12">
+
                 <div class="row">
 				<?php  
 				//top.location.href=this.options[this.selectedIndex].value;
@@ -50,7 +51,7 @@
                                 <tr>
                                     <th>เวลา</th>
                                     <th>ชื่องาน</th>
-									<th>คนที่อัพ</th>
+									
                                 </tr>
                             </thead>
                             <tbody> 
@@ -62,7 +63,6 @@
 						echo "<tr  >";
 						echo "<td  onclick=\"chk(".$hidden.")\"  width='20%' >".$row['date_upload']."</td>";	
 						echo "<td  onclick=\"chk(".$hidden.")\" width='70%'>".$row['subject']."</td>";
-						echo "<td  onclick=\"chk(".$hidden.")\" width='30%'>ผู้ใช้งาน</td>";
 						echo "</tr>";
 						} 
 						?>

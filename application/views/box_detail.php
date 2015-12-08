@@ -14,7 +14,7 @@ $data1 =$_POST['data1'];
 										$databox_search	= $row['databox_search'];
 										$databox_detail = $row['databox_detail']; 
 										$uploaded_url = $row['uploaded_url'];
-										$group_title	    = $row['group_title'];
+	
 									    }  ?>
                                                  
 
@@ -26,7 +26,7 @@ $data1 =$_POST['data1'];
                                                     <div class="input-prepend">
                                                     <div style="position:relative;">
 
-                                                    <a class='' href='javascript:;'>
+                                                   
                                                     <table border="0">
 													<tr>
 													 <td>
@@ -35,7 +35,7 @@ $data1 =$_POST['data1'];
                                                   </div>
 														</td>
 														<td>
-														<label style="background-color :#ffffff; height: 25px; width : 350px; border-style: groove; font-size: 12px;"><?php echo $databox_id ?></label>
+														<label style="background-color :#ffffff; height: 25px; width : 350px; border-style: solid; border-width: 1px; font-size: 12px;">&nbsp; <?php echo $databox_id ?></label>
 														</td>
 
 													</tr>
@@ -52,7 +52,7 @@ $data1 =$_POST['data1'];
                                                               </div>
 													    </td>
 														<td>
-														     <label style="background-color :#ffffff; height: 25px; width : 350px; border-style: groove; font-size: 12px;"><?php echo $subject ?></label>
+														     <label style="background-color :#ffffff; height: 25px; width : 350px;  border-style: solid; border-width: 1px;  font-size: 12px;">&nbsp; <?php echo $subject ?></label>
 														</td>
                                                      </tr>
                                                 
@@ -61,7 +61,7 @@ $data1 =$_POST['data1'];
 													       <div class="input-prepend"><span class="add-on" style="width: 100px; text-align: left; font-size: 14px;">หมวดเอกสาร</span></div>
                                                     </td>
 													 	<td>
-														     <label style="background-color :#ffffff; height: 25px; width : 350px; border-style: groove; font-size: 12px;"><?php echo $divisname ?></label>
+														     <label style="background-color :#ffffff; height: 25px; width : 350px; border-style: solid; border-width: 1px; font-size: 12px;">&nbsp; <?php echo $divisname ?></label>
 														</td>
                                                     </tr>
 														<tr>
@@ -69,7 +69,7 @@ $data1 =$_POST['data1'];
 													       <div class="input-prepend"><span class="add-on" style="width: 100px; text-align: left; font-size: 12px;">หมวดเอกสารหลัก</span></div>
                                                     </td>
 													 	<td>
-														     <label style="background-color :#ffffff; height: 25px; width : 350px; border-style: groove; font-size: 12px;"></label>
+														     <label style="background-color :#ffffff; height: 25px; width : 350px; border-style: solid; border-width: 1px;  font-size: 12px;"></label>
 														</td>
                                                     </tr>
 														<tr>
@@ -77,7 +77,7 @@ $data1 =$_POST['data1'];
 													       <div class="input-prepend"><span class="add-on" style="width: 100px; text-align: left;  font-size: 12px;">วันทีี่</span></div>
                                                     </td>
 													 	<td>
-														     <label style="background-color :#ffffff; height: 25px; width : 350px; border-style: groove; font-size: 12px;" ><?php echo $date ?></label>
+														     <label style="background-color :#ffffff; height: 25px; width : 350px; border-style: solid; border-width: 1px;  font-size: 12px;" >&nbsp; <?php echo $date ?></label>
 														</td>
                                                     </tr>
 
@@ -86,14 +86,15 @@ $data1 =$_POST['data1'];
 													       <div class="input-prepend"><span class="add-on" style="width: 100px; text-align: left; font-size: 12px;">คนที่อัพ</span></div>
                                                     </td>
 													 	<td>
-														     <label style="background-color :#ffffff; height: 25px; width : 350px; border-style: groove; font-size: 12px;" ></label>
+														     <label style="background-color :#ffffff; height: 25px; width : 350px; border-style: solid; border-width: 1px; font-size: 12px;" ></label>
 														</td>
                                                     </tr>
 
+													 <td>  
 													   <div class="input-prepend"><span class="add-on" style="width: 100px; text-align: left; font-size: 12px;">อยู่กอง</span></div>
                                                     </td>
 													 	<td>
-														     <label style="background-color :#ffffff; height: 25px; width : 350px; border-style: groove; font-size: 12px;" ><?php echo $uploaded_url ?></label>
+														     <label style="background-color :#ffffff; height: 25px; width : 350px; border-style: solid; border-width: 1px; font-size: 12px;" ></label>
 														</td>
                                                     </tr>
 
