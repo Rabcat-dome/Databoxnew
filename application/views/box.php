@@ -63,7 +63,7 @@
 
 
 			 <div class="span4">
-                <div class="blockoff-left">
+               
                 
 					  
                   
@@ -83,7 +83,7 @@ $(document).ready(function(){
 
 <div id="showajax" ></div>
                 
-                </div>
+             
             </div>
 
                         </div>
