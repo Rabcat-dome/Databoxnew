@@ -1,55 +1,34 @@
 
-<?php $this->load->view('java/javascript_head.php'); ?>
 <?php $this->load->view('menu/menu'); ?>
 
 
-<?php //<link href="../../asset/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css"/> ?>
-<link href="../../asset/plugins/dropzone/css/dropzone.css" rel="stylesheet" type="text/css"/>
 <link href="../../asset/css/custom.css" rel="stylesheet" type="text/css"/>
 
     <section class="page container">
     <div class="row">
            
-<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
-<script type="text/javascript">
-
-function postData(x){
-	
-
-	document.getElementById('form2').target = '#uploader';
-	document.getElementById('data2').value = x;
-	$.post("http://localhost/j3databoxNEW/index.php/mainFunction/databox_popup", { data: $("#data2").val()}, 
-		function(data){
-			$("#divPostData").html(data);
-		}
-
-	);
-}
-</script>
 
 
 
-<body>
+
+
 <!-- where the response will be displayed -->
 
   <input name="data2" type="hidden" id="data2" size="40" />
-   <div class="span15" style="margin-left: 8%">
+   <div class="span7" style="margin-left: 0%">
 			        <div class="box" >
                     <div class="box-header">
                         <i class="icon-bookmark"></i>
              <h5>UNIT</h5>
-				<button class="btn btn-box-right" id="button_unit" onclick="document.getElementById('box-content').style.display = 'block';
-				document.getElementById('button_unit').style.display = 'none';document.getElementById('button_unit_hidden').style.display = 'block' " >
-             <i class="icon-reorder"></i>
+				  <button class="btn btn-box-right" data-toggle="collapse" data-target=".box-list2">
+              <i class="icon-reorder"></i>
           </button>
-		  	<button class="btn btn-box-right" id="button_unit_hidden"  style="display: none" onclick="document.getElementById('box-content').style.display = 'none'; document.getElementById('button_unit').style.display = 'block'; document.getElementById('button_unit_hidden').style.display = 'none';  " >
-             <i class="icon-reorder"></i>
-          </button>
-		  <div id='databox_popup'></div>
-<form id="form2" name="form2" method="post" action="">
-  <div id="divPostData"></div>
+
+		 
+
+
                     </div>
-                    <div class="box-content" id="box-content" name="box-content"   style="display: none">
+                    <div class="box-content box-list2 collapse out" >
                         <div class="btn-group-box">
                         <table width="100%" border="0">
               <tr>
@@ -59,38 +38,20 @@ function postData(x){
                     <?php  
 					foreach ($unit as $ru) {  
 						if($ru['group_Id']=="1") {
-							
-							if($ru['short_division']!="สน.ผบช."){
 						
-						echo "<button  name='Button2' id='button2' value='Post'  class='btn' onmouseover=postData('".$ru['divisid']."')  data-toggle='modal' data-target='#uploader' style='cursor:pointer' /><h0 style='color:blue'>(0) <div  style='margin-top: -30px;  margin-left: 115px;  background-color: red; width: 0.9%;  height: 2%; text-align:center; position: absolute; color: #ffffff;' >1</div> </h0><br/>".$ru['short_division']."</button>";
+						echo "<button  name='Button2' id='button2' value='Post'  class='btn' onmouseover=postData('".$ru['divisid']."')  data-toggle='modal' data-target='#uploader' style='cursor:pointer' /><h0 style='color:blue'>(0) <div style='margin-top: -24px;  margin-left: 60px; width: 0.9%;  height: 5%; text-align:center; position: absolute; color: white;font-size:16px; text-shadow: 0 0 0.3em #FF2000, 0 0 0.3em #FF2000,
+        0 0 0.3em #FF2000;' >0</div> </h0><br/>".$ru['short_division']."</button>";
 						
-							}
 							} 
-
-                                if($ru['group_Id']=="5") {
-							if($ru['short_division']=="สน.ผบช."){
-									echo "<button class='btn1'></button><button  name='Button2' id='button2' value='Post'  class='btn' onmouseover=postData('".$ru['divisid']."')  data-toggle='modal' data-target='#uploader' style='cursor:pointer' /><h0 style='color:blue'>".$ru['divisid']." (0)</h0><br/>".$ru['short_division']."</button>";
-								}
-                          } 
-							
+            
 						} ?>
                       
-                        <td><?php    foreach ($unit as $ru) {  	   
-						
-						} ?></td>
+
                         </tr>
+                        
                         <tr>
                         <td><?php    foreach ($unit as $ru) {  
-						if($ru['group_Id']=="2") {
-							echo "<button  name='Button2' id='button2' value='Post'  class='btn' onmouseover=postData('".$ru['divisid']."')  data-toggle='modal' data-target='#uploader' style='cursor:pointer' /><h0 style='color:blue'>(0)</h0><br/>".$ru['short_division']."</button>";
-						} 
-						} ?></td>
-                        <td>&nbsp;</td>
-                        <td></td>
-                        </tr>
-                        <tr>
-                        <td><?php    foreach ($unit as $ru) {  
-						if($ru['group_Id']=="3") {
+						if($ru['group_Id']=="3"&&$ru['short_division']!="ผกม.สวฝ.") {
 								echo "<button  name='Button2' id='button2' value='Post'  class='btn' onmouseover=postData('".$ru['divisid']."')  data-toggle='modal' data-target='#uploader' style='cursor:pointer' /><h0 style='color:blue'>(0)</h0><br/>".$ru['short_division']."</button>";
 								} 
 						} ?></td>
@@ -99,12 +60,21 @@ function postData(x){
                         </tr>
                         <tr>
                         <td> <?php    foreach ($unit as $ru) {  
-						if($ru['group_Id']=="4") {
+						if($ru['group_Id']=="4"||($ru['group_Id']=="3"&&$ru['short_division']=="ผกม.สวฝ.")) {
 							echo "<button  name='Button2' id='button2' value='Post'  class='btn' onmouseover=postData('".$ru['divisid']."')  data-toggle='modal' data-target='#uploader' style='cursor:pointer' /><h0 style='color:blue'>(0)</h0><br/>".$ru['short_division']."</button>";
 						} 
 						} ?></td>
                         <td>&nbsp;</td>
                         <td> </td>
+                        </tr>
+                        <tr>
+                        <td><?php    foreach ($unit as $ru) {  
+            if($ru['group_Id']=="2") {
+              echo "<button  name='Button2' id='button2' value='Post'  class='btn' onmouseover=postData('".$ru['divisid']."')  data-toggle='modal' data-target='#uploader' style='cursor:pointer' /><h0 style='color:blue'>(0)</h0><br/>".$ru['short_division']."</button>";
+            } 
+            } ?></td>
+                        <td>&nbsp;</td>
+                        <td></td>
                         </tr>
                         <tr>
                         <td>	 <?php    foreach ($unit as $ru) {  
@@ -117,19 +87,9 @@ function postData(x){
 						
 						
 						} 
-						?>
+						?></div>
 					
 
-					
-						
-						
-
-<?php
-
-
-
-?>
-					</form>
 						</td>
                         <td>&nbsp;</td>
                         <td> </td>
@@ -149,9 +109,7 @@ function postData(x){
                     <div class="box-header">
                         <i class="icon-list"></i>
                         <h5>Last Update</h5>
-                        <button class="btn btn-box-right" data-toggle="collapse" data-target=".box-list">
-                            <i class="icon-reorder"></i>
-                        </button>
+
                     </div>
                     <div class="box-content box-list collapse in">
                         <ul>
@@ -244,6 +202,7 @@ function postData(x){
                            
                         </code>
                     </div>
+
                     
                     <?php $this->load->view('footer/footer'); ?>
   
