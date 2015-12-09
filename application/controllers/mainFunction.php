@@ -107,9 +107,7 @@ class mainFunction extends CI_Controller {
 	//-------------------------------------------------------- แสดงข้อมูลจากค้นหา แบบข้อมูลเดียว
 		public function data_detail()
 	{
-
-				//$data['menu'] = $this->j3databox->get_menu();
-							
+				//$data['menu'] = $this->j3databox->get_menu();	
 				$this->load->view('data_detail');
 	}
 	//--------------------------------------------------------- แสดงข้อมูลจากค้นหา แบบหลายข้อมูล
@@ -120,15 +118,29 @@ class mainFunction extends CI_Controller {
 				$data['last_update'] = $this->j3databox->get_Last_Update();
 		        $this->load->view('databox_search',$data);
 	}
-    
-	 	public function select()
+    	public function select()
 	{
 				$data['division'] = $this->j3databox->get_division();
 				$data['data_type'] = $this->j3databox->get_data_type_up();
                 $data['data_group_up'] = $this->j3databox->get_data_group_up();
-			
 		        $this->load->view('select',$data);
 	}
+    
+		public function save_upload()
+	{			
+	            $add_classified=array(
+			    "subject"=>$this->input->post("subject"),
+                "group_Id"=>$this->input->post("group_Id"),
+				);
+			    $this->db->insert('databox_upload1',$add_classified);
+
+				   $data['division'] = $this->j3databox->get_division();
+				$data['data_type'] = $this->j3databox->get_data_type_up();
+                $data['data_group_up'] = $this->j3databox->get_data_group_up();
+				$data['upload'] = $this->j3databox->get_upload();
+                $this->load->view('page_upload',$data);  // เปิดหน้า upload เพื่อที่ สร้างหน้าวิว ชัวคราว
+	}
+
 
     
 

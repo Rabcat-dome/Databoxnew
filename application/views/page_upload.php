@@ -19,8 +19,11 @@ function check(elem) {
 	 <div class="span11"  style="margin-left : 25%">
 	 <div class="container-signin">
  
-	 <?php $attributes = array('id' => 'upload_pdf'); 
-echo form_open_multipart('localhost/j3databox/index.php/mainFunction/do_upload', $attributes); ?>
+	 <?php	//$attributes = array('id' => 'upload_pdf'); 
+//echo form_open_multipart('localhost/j3databox/index.php/mainFunction/do_upload', $attributes); ?>
+ <?php	$attributes = array('id' => 'upload_pdf'); 
+echo form_open_multipart('http://localhost/j3databoxnew/index.php/mainFunction/save_upload', $attributes); ?>
+                                                 
 													<div align="center">
                                                     <legend >เพิ่มหมวดเรื่อง</legend>
 													</div>
@@ -32,9 +35,9 @@ echo form_open_multipart('localhost/j3databox/index.php/mainFunction/do_upload',
                                                     <a class='' href='javascript:;'>
                                                     <table width="41%" border="0">
 													<tr>
-													  <div class="input-prepend">
-                                                    <span class="add-on" style="width : 15%;  text-align: left;"><i class="icon-pencil"  ></i>  เรื่อง</span>
-                                                    <input type='text' class='span6' id='head' name='head' />
+													<div   class="input-prepend">
+                                                    <span  class="add-on" style="width : 15%;  text-align: left;"><i class="icon-pencil"  ></i>  เรื่อง</span>
+                                                    <input type='text' class='span6' id='subject' name='subject' />
                                                     </div>
 													</tr>
                                                     <tr>
@@ -94,7 +97,6 @@ echo form_open_multipart('localhost/j3databox/index.php/mainFunction/do_upload',
                                                     <td>
 																<input type="hidden" id="code" name="code" cols="45" rows="5"></input>
 													<script>
-													
 													function getComboA(sel) {
                                                     var value = sel.value;  
 													document.getElementById("code").value=value;
@@ -114,6 +116,7 @@ echo form_open_multipart('localhost/j3databox/index.php/mainFunction/do_upload',
 													});
 													});
 													</script>
+													<input type="hidden" id="group_Id" name="group_Id" ></input>
 										
 							
 
