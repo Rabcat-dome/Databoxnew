@@ -180,6 +180,44 @@ Class j3databox extends CI_Model
      }
 
 //----------------------------------------- หน้าแสดงข้อมูลหลังจากค้นหา
+//----------------------------------------จบหน้าภารกิจ
+
+//-----------------------------------------หน้าอัพโหด
+
+
+        function get_data_group_up()
+     {
+		$sql = "SELECT  * FROM  data_group";
+		$query = $this->db->query($sql);
+        return $query->result_array();	
+     }
+
+	    function get_division_group_up()
+     {
+		$sql = "SELECT  * FROM  division_group";
+		$query = $this->db->query($sql);
+        return $query->result_array();	
+     }
+	   function get_division()
+     {
+		$sql = "SELECT * FROM division";
+		$query = $this->db->query($sql);
+        return $query->result_array();	
+     }
+	    function get_upload()
+     {
+     	$sql = "SELECT  * FROM databox_upload   order  by databox_id ASC LIMIT 10 , 13 ";
+        $query = $this->db->query($sql);
+        return $query->result_array();	
+     }
+	 	  function get_data_type_up() 
+    {
+	    $sql = "SELECT  * FROM data_type";
+        $query = $this->db->query($sql);
+        return $query->result_array();	
+    }
+
+//----------------------------------------- หน้าแสดงข้อมูลหลังจากค้นหา
 
 
 
