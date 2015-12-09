@@ -76,15 +76,15 @@ echo form_open_multipart('localhost/j3databox/index.php/mainFunction/do_upload',
 
 													<div class="input-prepend"><span class="add-on" >หมวดเรื่อง</span>
                                                     <select id='btn1'  class='span6' onchange="getComboA(this)">
-																<?php
+												   <?php
 													foreach ($data_type as $row){
-												    $type_id_ck = $row['type_id']."'";
+												    $type_id_ck = $row['type_id']."-data_type'";
                                                     echo "<option  value='".$type_id_ck.">".$row['type_name']."</option>";
 													}
 													?>
 												    <?php
 													foreach ($division as $row){
-													$division_id_ck = $row['divisid']."'";
+													$division_id_ck = $row['divisid']."-division'";
                                                     echo "<option   value='".$division_id_ck."-divisid'>".$row['divisname']."</option>";
 													}
 													?>
@@ -92,19 +92,15 @@ echo form_open_multipart('localhost/j3databox/index.php/mainFunction/do_upload',
                                                     </select></td>
                                                     <tr>
                                                     <td>
-																<input type="text" id="code" name="code" cols="45" rows="5"></input>
+																<input type="hidden" id="code" name="code" cols="45" rows="5"></input>
 													<script>
 													
 													function getComboA(sel) {
-														document.getElementById("code").value="nnnnnnnsss";
                                                     var value = sel.value;  
-                                                	alert(value);
+													document.getElementById("code").value=value;
                                                      }
-
 													</script>
-
-													<div class="input-prepend"><span class="add-on"  >หมวดย่อย</span>
-                                                     <div id="showajax" ></div>
+                                                    <div id="showajax" ></div>
 													<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
 													<script type="text/javascript">
 													$(document).ready(function(){
@@ -123,10 +119,7 @@ echo form_open_multipart('localhost/j3databox/index.php/mainFunction/do_upload',
 
 													 </td>
                                                     <td  valign="bottom" align="right"> 
-							                        <div class="input-prepend" >
-													<a class="flip"  >
-                                                     <span class="add-on" >  + </span>
-                                                    </a>
+							                        <div class="input-prepend" >											
                                                     </div>
                                                    
                                                     </td>
@@ -136,35 +129,43 @@ echo form_open_multipart('localhost/j3databox/index.php/mainFunction/do_upload',
 													 <tr>
 													 <td>
 													
-													 <div class="panel_hidden">
-														 <table>
+													 <div class="panel_hidden" style="border-style: groove; border-color: red"">
+														 <table border="0">
 												    <tr>
 														 <td>
-													 <div class="input-prepend"><span class="add-on"  style="width : 20%;  text-align: left;">หมวดหลัก</span>
+													 <div class="input-prepend"><span class="add-on"  style="width : 30%;  text-align: left;">หมวดหลัก</span>
                                                      <select class='span5'  name="menu_master" id="menu_master"  >
                                                      <?php   foreach ($upload_menu_type as $row) {  echo "<option value=".$row['type_id'].">".$row['type_name']."</option>"; }  ?>
 													 </select>
 													    </td>
 													</tr>
-													<tr><td>&nbsp;</td></tr>
+									
 												    <tr>
 														  <td>
-													<div class="input-prepend"><span class="add-on" style="width : 20%;  text-align: left;">หมวดเรื่อง</span>
+													<div class="input-prepend"><span class="add-on" style="width : 30%;  text-align: left;">เพิ่มหมวดเรื่องย่อย</span>
                                                     <input type='text'  id='menu_second' name='menu_second' class='span5' /></input>
 														 </td>
-														 <td>
-														    <input type="button" name="id"></input>
-														 <td>
 													</tr>
+													<tr>
+														 <td>
 														
+											
+													     </td>
+													</tr>
+													<tr>
+														 <td>
+														
+														<a onclick="document.getElementById('upload_pdf').submit()" href="#"  class="btn btn-small btn-danger">
+                                                        <i class="btn-icon-only icon-save"  >บันทึก</i>
+                                                        </a>
+													     </td>
+													</tr>	
 												    </table>
 													 </td>
 													 </tr>
 														</div>
 													</table>
 													<table>
-													
-                                            
                                                     <div class="input-prepend">
                                                      <span class="add-on" style="width : 15%;  text-align: left;">คำค้นหา</span>
                                                     <input type='text' class='span6' id='serach'  />

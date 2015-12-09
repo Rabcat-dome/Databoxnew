@@ -126,7 +126,7 @@ class mainFunction extends CI_Controller {
 				$data['division'] = $this->j3databox->get_division();
 				$data['data_type'] = $this->j3databox->get_data_type_up();
                 $data['data_group_up'] = $this->j3databox->get_data_group_up();
-				$data['upload'] = $this->j3databox->get_upload();
+			
 		        $this->load->view('select',$data);
 	}
 

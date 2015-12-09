@@ -204,12 +204,6 @@ Class j3databox extends CI_Model
 		$query = $this->db->query($sql);
         return $query->result_array();	
      }
-	    function get_upload()
-     {
-     	$sql = "SELECT  * FROM databox_upload   order  by databox_id ASC LIMIT 10 , 13 ";
-        $query = $this->db->query($sql);
-        return $query->result_array();	
-     }
 	 	  function get_data_type_up() 
     {
 	    $sql = "SELECT  * FROM data_type";
