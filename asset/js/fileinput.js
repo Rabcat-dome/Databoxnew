@@ -2560,7 +2560,7 @@
         showCaption: true,
         showPreview: true,
         showRemove: true,
-        showUpload: true,
+        showUpload: false,
         showCancel: true,
         showClose: true,
         showUploadedThumbs: true,
@@ -2678,7 +2678,7 @@
         msgImageHeightLarge: 'Height of image file "{name}" cannot exceed {size} px.',
         msgImageResizeError: 'Could not get the image dimensions to resize.',
         msgImageResizeException: 'Error while resizing the image.<pre>{errors}</pre>',
-        dropZoneTitle: 'Drag & drop files here &hellip;'
+        dropZoneTitle: 'แนบไฟล์..............'
     };
 
     $.extend($.fn.fileinput.defaults, $.fn.fileinputLocales.en);

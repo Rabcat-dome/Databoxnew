@@ -90,8 +90,10 @@ class mainFunction extends CI_Controller {
 	   public function page_upload()
      {          
 	
-                $data['division_group'] = $this->j3databox->get_division_group_re();
-		        $data['data_type'] = $this->j3databox->get_data_type();
+            
+		        $data['division'] = $this->j3databox->get_division();
+				$data['data_type'] = $this->j3databox->get_data_type_up();
+                $data['data_group_up'] = $this->j3databox->get_data_group_up();
 				$data['upload'] = $this->j3databox->get_upload();
                 $this->load->view('page_upload',$data);  // เปิดหน้า upload เพื่อที่ สร้างหน้าวิว ชัวคราว
               
@@ -117,6 +119,15 @@ class mainFunction extends CI_Controller {
 			    $data['division_group'] = $this->j3databox->get_division_group();
 				$data['last_update'] = $this->j3databox->get_Last_Update();
 		        $this->load->view('databox_search',$data);
+	}
+    
+	 	public function select()
+	{
+				$data['division'] = $this->j3databox->get_division();
+				$data['data_type'] = $this->j3databox->get_data_type_up();
+                $data['data_group_up'] = $this->j3databox->get_data_group_up();
+				$data['upload'] = $this->j3databox->get_upload();
+		        $this->load->view('select',$data);
 	}
 
     

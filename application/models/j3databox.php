@@ -6,6 +6,16 @@ Class j3databox extends CI_Model
           // Call the Model constructor
           parent::__construct();
      }
+//------ที่เพิ่มใหม่    นับจำนวนเอกสารแต่ละกอง
+     function get_num_box($groupID){
+                $this->db->select('*')->from('databox_upload')
+                ->where('group_id',$groupID);
+                return $this->db->count_all_results();}
+     function get_num_box_week($groupID){
+                $this->db->select('*')->from('databox_upload')
+                ->where('group_id',$groupID)
+                ->where('date_upload >',mdate("%Y-%m-%d",strtotime("-8 days")));
+                return $this->db->count_all_results();}
 //------------------------------------------ ค้นหาข้อมูล
       function get_search()
      {

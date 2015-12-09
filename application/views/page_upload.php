@@ -1,19 +1,24 @@
 
- 
+
 <?php // $this->load->view('header/header_title'); ?>
 <?php $this->load->view('menu/menu'); ?>
-      
+<script>
+function check(elem) {
+    document.getElementById('mySelect1').disabled = !elem.selectedIndex;
+}
+</script>
+    
+		<link href="../../asset/css/bootstrap.min.css" rel="stylesheet">
         <link href="../../asset/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
         <script src="../../asset/js/fileinput.js" type="text/javascript"></script>
         <script src="java/javasm.js" type="text/javasm.js" ></script>
-
-
                                     <div class="span15">
                                     <div class="text-right">
                                     </div>
 <div class="span11"  style="margin-left : 25%">
 	 <div class="span11"  style="margin-left : 25%">
 	 <div class="container-signin">
+ 
 	 <?php $attributes = array('id' => 'upload_pdf'); 
 echo form_open_multipart('localhost/j3databox/index.php/mainFunction/do_upload', $attributes); ?>
 													<div align="center">
@@ -35,7 +40,7 @@ echo form_open_multipart('localhost/j3databox/index.php/mainFunction/do_upload',
                                                     <tr>
                                                     <td  > 
 												
-					<div class="span1" >
+				 <div class="span1" >
    	                <input id="file-5" class="file" type="file" multiple  data-upload-url="#" >
                     <div id="errorBlock" class="help-block"></div>
                     </div>
@@ -44,38 +49,20 @@ echo form_open_multipart('localhost/j3databox/index.php/mainFunction/do_upload',
 					<td> 
 
 					<div class="span1" >
-			  <span class="add-on" >&nbsp;&nbsp;&nbsp;</span>
+			  <span class="add-on1"  >&nbsp;&nbsp;&nbsp;</span>
                     </div>
                     </td> 
 						<td> 
 
-					<div class="span1" >
+					 <div class="span1" >
 				    <input id="file-6" class="file" type="file" multiple  data-upload-url="#">
                     <div id="errorBlock" class="help-block"></div>
                     </div>
                     </td> 
-
-
-
-	
-
-												
-													
-
-												
-
-													
                                                     </tr>
 													<tr>
                                                     <td width="10px" > 
 													<br>
-												
-													
-                                       
-	
-   	 
-												
-													
 
 													</td>									
                                                     </tr>
@@ -86,33 +73,55 @@ echo form_open_multipart('localhost/j3databox/index.php/mainFunction/do_upload',
                                                  
                                                     <table>
 													 <td>   
+
 													<div class="input-prepend"><span class="add-on" >หมวดเรื่อง</span>
-                                                    <select class='span6'>
-														<?php
+                                                    <select id='btn1'  class='span6' onchange="getComboA(this)">
+																<?php
 													foreach ($data_type as $row){
-                                                    echo "<option value=''>".$row['type_name']."</option>";
+												    $type_id_ck = $row['type_id']."'";
+                                                    echo "<option  value='".$type_id_ck.">".$row['type_name']."</option>";
 													}
 													?>
-														<?php
-													foreach ($data_type as $row){
-                                                    echo "<option value=''>".$row['type_name']."</option>";
+												    <?php
+													foreach ($division as $row){
+													$division_id_ck = $row['divisid']."'";
+                                                    echo "<option   value='".$division_id_ck."-divisid'>".$row['divisname']."</option>";
 													}
 													?>
-
-
 													
                                                     </select></td>
                                                     <tr>
-                                                    <td>   <div class="input-prepend"><span class="add-on" >หมวดย่อย</span>
-                                                    <select class='span6'>
-														<?php
-													foreach ($data_type as $row){ echo "<option value=''>".$row['type_name']."</option>"; }
-													?>
+                                                    <td>
+																<input type="text" id="code" name="code" cols="45" rows="5"></input>
+													<script>
 													
+													function getComboA(sel) {
+														document.getElementById("code").value="nnnnnnnsss";
+                                                    var value = sel.value;  
+                                                	alert(value);
+                                                     }
 
+													</script>
 
-													
-                                                    </select></td>
+													<div class="input-prepend"><span class="add-on"  >หมวดย่อย</span>
+                                                     <div id="showajax" ></div>
+													<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+													<script type="text/javascript">
+													$(document).ready(function(){
+													$("#btn1").change(function(){
+													$.post("http://localhost/j3databoxNEW/index.php/mainFunction/select", { 
+													data1: $("#code").val()}, 
+													function(data){
+													$("#showajax").html(data);
+													}
+													);
+													});
+													});
+													</script>
+										
+							
+
+													 </td>
                                                     <td  valign="bottom" align="right"> 
 							                        <div class="input-prepend" >
 													<a class="flip"  >
@@ -144,7 +153,7 @@ echo form_open_multipart('localhost/j3databox/index.php/mainFunction/do_upload',
                                                     <input type='text'  id='menu_second' name='menu_second' class='span5' /></input>
 														 </td>
 														 <td>
-														   sssssshhhhhh <input type="button" name="id"></input>
+														    <input type="button" name="id"></input>
 														 <td>
 													</tr>
 														
@@ -195,7 +204,7 @@ echo form_open_multipart('localhost/j3databox/index.php/mainFunction/do_upload',
                                     <th>รหัส</th>
                                     <th>เรื่อง</th>
                                     <th style="width: 30%" >คำค้นหา</th>
-                                    <th style="width: 70px" >คำสัง</th>
+                                    <th style="width: 15%" >คำสัง</th>
                            
                                     </tr>
                                     </thead>
@@ -262,7 +271,7 @@ $add_id  = $databox_id."add";
                                             '<?php echo  $databox_id  ?>','<?php echo  $subject  ?>','<?php echo  $databox_search  ?>',
                                             '<?php echo  $databox_id_div  ?>','<?php echo  $subject_div  ?>','<?php echo  $databox_search_div  ?>',
                                             '<?php echo  $save_id  ?>');"  ></i>
-                                    </a>
+                                               </a>
                                                      <a href="javascript:;" class="btn btn-small btn-danger">
                                                 <i class="btn-icon-only icon-remove" onClick="close_row(
                                                         '<?php echo  $databox_id_text  ?>','<?php echo  $subject_text ?>','<?php echo  $databox_search_text; ?>',
@@ -283,6 +292,10 @@ $add_id  = $databox_id."add";
                                                 </div>
                                                 </div>
                                                 </div>
+
 <?php echo form_close(); ?>
 <?php $this->load->view('footer/footer'); ?>
+
+
+
 
