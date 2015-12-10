@@ -126,13 +126,45 @@ class mainFunction extends CI_Controller {
 		        $this->load->view('select',$data);
 	}
     
-		public function save_upload()
+		public function save_upload1()
 	{			
+			    
+		$config['upload_path'] = 'application/uploads/';
+		$config['allowed_types'] = 'jpg|jpeg|png|pdf';
+		$config['max_size']	= '1000';
+		$config['max_width']  = '102400';
+		$config['max_height']  = '76800';
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			$error = array('error' => $this->upload->display_errors());
+			//$data['menu_classified_sub'] = $this->j3databox->get_classified_sub();
+		//	$data['upload_menu_sub'] = $this->j3databox->get_menu_sub();
+		//	$data['upload_menu_type'] = $this->j3databox->get_upload_menu_type();
+	//		$data['upload_menu'] = $this->j3databox->get_upload_menu();
+			$data['upload'] = $this->j3databox->get_upload();
+            $this->load->view('page_upload',$data);  // เปิดหน้า upload เพื่อที่ สร้างหน้าวิว ชัวคราว
+             
+			
+		}
+		else
+		{
+		//	$data = array('upload_data' => $this->upload->data());
+            //	$data['menu_classified_sub'] = $this->j3databox->get_classified_sub();
+			 //   $data['upload_menu_sub'] = $this->j3databox->get_menu_sub();
+		//		$data['upload_menu_type'] = $this->j3databox->get_upload_menu_type();
+	//			$data['upload_menu'] = $this->j3databox->get_upload_menu();
+				$data['upload'] = $this->j3databox->get_upload();
+                $this->load->view('page_upload',$data);  // เปิดหน้า upload เพื่อที่ สร้างหน้าวิว ชัวคราว
+			
+		}
 	            $add_classified=array(
 			    "subject"=>$this->input->post("subject"),
                 "group_Id"=>$this->input->post("group_Id"),
 				);
-			    $this->db->insert('databox_upload1',$add_classified);
+			    $this->db->insert('databox_upload',$add_classified);
 
 				   $data['division'] = $this->j3databox->get_division();
 				$data['data_type'] = $this->j3databox->get_data_type_up();
@@ -141,6 +173,64 @@ class mainFunction extends CI_Controller {
                 $this->load->view('page_upload',$data);  // เปิดหน้า upload เพื่อที่ สร้างหน้าวิว ชัวคราว
 	}
 
+	function save_upload() {
+		$name_array = array();
+		$count = count($_FILES['userfile1']['size']);
+		foreach($_FILES as $key=>$value)
+		for($s=0; $s<=$count-1; $s++) {
+		$_FILES['userfile']['name']=$value['name'][$s];
+		$_FILES['userfile']['type']    = $value['type'][$s];
+		$_FILES['userfile']['tmp_name'] = $value['tmp_name'][$s];
+		$_FILES['userfile']['error']       = $value['error'][$s];
+		$_FILES['userfile']['size']    = $value['size'][$s];   
+		    $config['upload_path'] = 'application/uploads/';
+				$config['allowed_types'] = 'jpg|jpeg|png|pdf';
+				$config['max_size']	= '1000';
+		$config['max_width']  = '102400';
+		$config['max_height']  = '76800';
+		$this->load->library('upload', $config);
+		$this->upload->do_upload();
+		$data = $this->upload->data();
+		$name_array[] = $data['file_name'];
+			}
+
+			$names= implode(',', $name_array);
+/*			$this->load->database();
+			$db_data = array('id'=> NULL,
+							 'name'=> $names);
+		$this->db->insert('testtable',$db_data);
+*/			print_r($names);
+
+
+	$name_array1 = array();
+		$count1 = count($_FILES['userfile2']['size']);
+		foreach($_FILES as $key=>$value1)
+		for($s=0; $s<=$count1-1; $s++) {
+		$_FILES['userfile']['name']=$value1['name'][$s];
+		$_FILES['userfile']['type']    = $value1['type'][$s];
+		$_FILES['userfile']['tmp_name'] = $value1['tmp_name'][$s];
+		$_FILES['userfile']['error']       = $value1['error'][$s];
+		$_FILES['userfile']['size']    = $value1['size'][$s];   
+		    $config1['upload_path'] = 'application/uploads/';
+				$config1['allowed_types'] = 'jpg|jpeg|png|pdf';
+				$config1['max_size']	= '1000';
+		$config1['max_width']  = '102400';
+		$config1['max_height']  = '76800';
+		$this->load->library('upload', $config);
+		$this->upload->do_upload();
+		$data = $this->upload->data();
+		$name_array[] = $data['file_name'];
+			}
+
+			$names= implode(',', $name_array);
+/*			$this->load->database();
+			$db_data = array('id'=> NULL,
+							 'name'=> $names);
+		$this->db->insert('testtable',$db_data);
+*/			print_r($names);
+
+	}
+		
 
     
 

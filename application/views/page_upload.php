@@ -44,7 +44,7 @@ echo form_open_multipart('http://localhost/j3databoxnew/index.php/mainFunction/s
                                                     <td  > 
 												
 				 <div class="span1" >
-   	                <input id="file-5" class="file" type="file" multiple  data-upload-url="#" >
+   	                <input class="file" type="file"   name="userfile1[]" id="userfile1" multiple  data-upload-url="#" >
                     <div id="errorBlock" class="help-block"></div>
                     </div>
 					</td>
@@ -58,10 +58,11 @@ echo form_open_multipart('http://localhost/j3databoxnew/index.php/mainFunction/s
 						<td> 
 
 					 <div class="span1" >
-				    <input id="file-6" class="file" type="file" multiple  data-upload-url="#">
+				    <input id="file-6" class="file" type="file"   name="userfile2[]" id="userfile2" multiple  data-upload-url="#">
                     <div id="errorBlock" class="help-block"></div>
                     </div>
                     </td> 
+
                                                     </tr>
 													<tr>
                                                     <td width="10px" > 
