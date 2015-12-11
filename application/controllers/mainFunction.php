@@ -85,20 +85,7 @@ class mainFunction extends CI_Controller {
 				
 				$this->load->view('box',$data); 
 	}
-	//---------------------------------------------------หน้า อัพโหล
 
-	   public function page_upload()
-     {          
-	
-            
-		        $data['division'] = $this->j3databox->get_division();
-				$data['data_type'] = $this->j3databox->get_data_type_up();
-                $data['data_group_up'] = $this->j3databox->get_data_group_up();
-                $data['data_type_up'] = $this->j3databox->get_data_type_up();
-				$data['upload'] = $this->j3databox->get_upload();
-                $this->load->view('page_upload',$data);  // เปิดหน้า upload เพื่อที่ สร้างหน้าวิว ชัวคราว
-              
-     }
   
 	   public function box_detail()
      {
@@ -119,55 +106,63 @@ class mainFunction extends CI_Controller {
 				$data['last_update'] = $this->j3databox->get_Last_Update();
 		        $this->load->view('databox_search',$data);
 	}
+		//---------------------------------------------------หน้า อัพโหล
+
+	   public function page_upload()
+     {          
+	
+            
+		        $data['division'] = $this->j3databox->get_division();
+				$data['data_type'] = $this->j3databox->get_data_type_up();
+                $data['data_group_up'] = $this->j3databox->get_data_group_up();
+                $data['data_type_up'] = $this->j3databox->get_data_type_up();
+				$data['upload'] = $this->j3databox->get_upload();
+                $this->load->view('page_upload',$data);  // เปิดหน้า upload เพื่อที่ สร้างหน้าวิว ชัวคราว
+              
+     }
     	public function select()
-	{
+	{           
+			    $data['data_division'] = $this->j3databox->get_data_division();
+			    $data['data_type_up'] = $this->j3databox->get_data_type_up();
 				$data['division'] = $this->j3databox->get_division();
 				$data['data_type'] = $this->j3databox->get_data_type_up();
                 $data['data_group_up'] = $this->j3databox->get_data_group_up();
 		        $this->load->view('select',$data);
 	}
-    
-		public function save_upload1()
-	{			
-			    
-		$config['upload_path'] = 'application/uploads/';
-		$config['allowed_types'] = 'pdf|jpeg|pdf|png';
-		$config['max_size']	= '1000';
-		$config['max_width']  = '102400';
-		$config['max_height']  = '76800';
 
-		$this->load->library('upload', $config);
-
-		if ( ! $this->upload->do_upload())
-		{
-			$error = array('error' => $this->upload->display_errors());
-			//$data['menu_classified_sub'] = $this->j3databox->get_classified_sub();
-		//	$data['upload_menu_sub'] = $this->j3databox->get_menu_sub();
-		//	$data['upload_menu_type'] = $this->j3databox->get_upload_menu_type();
-	//		$data['upload_menu'] = $this->j3databox->get_upload_menu();
-			$data['upload'] = $this->j3databox->get_upload();
-            $this->load->view('page_upload',$data);  // เปิดหน้า upload เพื่อที่ สร้างหน้าวิว ชัวคราว
-             
+	 public function save()
+     {          
+			    $check = $this->input->post("check");
+				$databox_id = $this->input->post("databox_save");
+			    $databox_data=array(
+				"subject"=> $this->input->post("subject_save"),
+				"databox_search"=>$this->input->post("databox_search_text_save"),
+				);
+				
+				 
+				if($check!="save"){
+				$this->db->where('databox_id', $databox_id);
+				$this->db->delete('databox_upload'); 
 			
-		}
-		else
-		{
-		//	$data = array('upload_data' => $this->upload->data());
-            //	$data['menu_classified_sub'] = $this->j3databox->get_classified_sub();
-			 //   $data['upload_menu_sub'] = $this->j3databox->get_menu_sub();
-		//		$data['upload_menu_type'] = $this->j3databox->get_upload_menu_type();
-	//			$data['upload_menu'] = $this->j3databox->get_upload_menu();
+				}
+					
+				if($check=="save"){
+			    $this->db->where('databox_id', $databox_id);
+			    $this->db->update('databox_upload', $databox_data); 
+		
+				 }
+			    $data['division'] = $this->j3databox->get_division();
+				$data['data_type'] = $this->j3databox->get_data_type_up();
+                $data['data_group_up'] = $this->j3databox->get_data_group_up();
+                $data['data_type_up'] = $this->j3databox->get_data_type_up();
 				$data['upload'] = $this->j3databox->get_upload();
                 $this->load->view('page_upload',$data);  // เปิดหน้า upload เพื่อที่ สร้างหน้าวิว ชัวคราว
 
-		}
-	          
-	}
-
+     }
+    
 	function save_upload() {
 		$name_array = array();
-		$count = count($_FILES['userfile1']['size']);
-		$count1 = count($_FILES['userfile2']['size']);
+		$count = count($_FILES['userfile']['size']);
 		foreach($_FILES as $key=>$value)
 		for($s=0; $s<=$count-1; $s++) {
 		$_FILES['userfile']['name']=$value['name'][$s];
@@ -186,24 +181,44 @@ class mainFunction extends CI_Controller {
 		$name_array[] = $data['file_name'];
 			}
 	     $names= implode(',', $name_array);
-   		 print_r($names);
+         
+    	 $pdf=   $name_array[0];
+		 $word=   $name_array[1];
+			$menu_second = $this->input->post("menu_second");
+				if($menu_second==""){
+					 $now =  date("Y-m-d"); 
+                   
          $add_classified=array(
 			    "subject"=>$this->input->post("subject"),
-			    "databox_search"=>$this->input->post("subject"),
+			    "databox_search"=>$this->input->post("search"),
                 "databox_detail"=>$this->input->post("databox_detail"),
-			    "uploaded_url"=>$this->input->post("uploaded_url"),
-			    "upload_urlpdf"=>$this->input->post("upload_urlpdf"),
-			    "group_Id"=>$this->input->post("group_Id"),
-			    "date_upload"=>$this->input->post("date_upload"),
-			    "user_id"=>$this->input->post("user_id"),
+			    "date_upload"=> $now,
+		        "upload_urlpdf"=> $pdf,	  
+		        "uploaded_url"=> $word,
+			    "group_Id"=> $this->input->post("group_Id"),
 				);
 			    $this->db->insert('databox_upload',$add_classified);
-				$data['division'] = $this->j3databox->get_division();
+			}
+			if($menu_second!=""){
+				$data_group_id = $this->input->post("data_group_id");
+				$data_group_id_ex = explode("-", $data_group_id);
+				
+               if($data_group_id_ex[1]=="data_type"){ $data_group=array(    "groupname"=>$this->input->post("menu_second"), "dataId"=>$data_group_id_ex[2],);
+			     $this->db->insert('data_group',$data_group);};
+			   if($data_group_id_ex[1]=="division"){ $data_group=array(      "groupname"=>$this->input->post("menu_second"), "divisId"=>$data_group_id_ex[0],);
+			       $this->db->insert('data_group',$data_group);};
+			}
+			  
+		        $data['division'] = $this->j3databox->get_division();
 				$data['data_type'] = $this->j3databox->get_data_type_up();
                 $data['data_group_up'] = $this->j3databox->get_data_group_up();
+                $data['data_type_up'] = $this->j3databox->get_data_type_up();
 				$data['upload'] = $this->j3databox->get_upload();
                 $this->load->view('page_upload',$data);  // เปิดหน้า upload เพื่อที่ สร้างหน้าวิว ชัวคราว
 	}
+
+	
+	
 		
 
 }

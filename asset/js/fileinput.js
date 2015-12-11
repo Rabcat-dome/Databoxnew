@@ -339,7 +339,7 @@
         '     </div>\n' +
         '</div>';
     tFooter = '<div class="file-thumbnail-footer">\n' +
-        '    <div class="file-footer-caption" title="{caption}">{caption}</div>\n' +
+        '    <div class="file-footer-caption" title="{caption}"></div>\n' +
         '    {progress} {actions}\n' +
         '</div>';
     tActions = '<div class="file-actions">\n' +

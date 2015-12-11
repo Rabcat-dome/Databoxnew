@@ -19,7 +19,7 @@ Class j3databox extends CI_Model
 //------------------------------------------ ค้นหาข้อมูล
       function get_search()
      {
-     		$this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
+     		   $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
                 ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
 				->join('division', 'division.group_Id = data_group.group_Id', 'LEFT')
 			    ->limit(15, 0);
@@ -203,11 +203,20 @@ Class j3databox extends CI_Model
 	 	  function get_data_type_up() 
     {
 	   
-		   $this->db->select('*')->select('data_type.type_id')->from('data_type')
+		  $this->db->select('*')->select('data_type.type_id')->from('data_type')
           ->join('data_group', 'data_type.type_id = data_group.dataId', 'LEFT');
 	      $query = $this->db->get();
 		  return $query->result_array();	
     }
+	 	  function get_data_division() 
+    {
+
+		$this->db->select('*')->select('division.divisId')->from('division')
+          ->join('data_group', 'data_group.divisId = division.divisId', 'LEFT');
+	      $query = $this->db->get();
+		  return $query->result_array();		
+    }
+	
 
 //----------------------------------------- หน้าแสดงข้อมูลหลังจากค้นหา
 

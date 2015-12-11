@@ -1,5 +1,3 @@
-
-
 <?php // $this->load->view('header/header_title'); ?>
 <?php $this->load->view('menu/menu'); ?>
 <script>
@@ -15,12 +13,11 @@ function check(elem) {
                                     <div class="span15">
                                     <div class="text-right">
                                     </div>
-<div class="span11"  style="margin-left : 25%">
-	 <div class="span11"  style="margin-left : 25%">
+<div class="span11"  style="margin-left : 90px">
+	 <div class="span11"  style="margin-left : 90px">
 	 <div class="container-signin">
  
-	 <?php	//$attributes = array('id' => 'upload_pdf'); 
-//echo form_open_multipart('localhost/j3databox/index.php/mainFunction/do_upload', $attributes); ?>
+
  <?php	$attributes = array('id' => 'upload_pdf'); 
 echo form_open_multipart('http://localhost/j3databoxnew/index.php/mainFunction/save_upload', $attributes); ?>
                                                  
@@ -42,9 +39,8 @@ echo form_open_multipart('http://localhost/j3databoxnew/index.php/mainFunction/s
 													</tr>
                                                     <tr>
                                                     <td  > 
-												
 				 <div class="span1" >
-   	                <input class="file" type="file"   name="userfile1[]" id="userfile1"   data-upload-url="#" >
+   	                <input class="file" type="file"   name="userfile[]" id="userfile"   data-upload-url="#" >
                     <div id="errorBlock" class="help-block"></div>
                     </div>
 					</td>
@@ -73,38 +69,34 @@ echo form_open_multipart('http://localhost/j3databoxnew/index.php/mainFunction/s
                                                     </table>
                                                     </div>				
                                                     </div>
-                                                    
-                                                 
                                                     <table>
 													 <td>   
-
-
-											
-
 													<div class="input-prepend"><span class="add-on" >หมวดเรื่อง</span>
                                                     <select id='btn1'  class='span6' onchange="getComboA(this)">
 												   <?php
 													foreach ($data_type_up as $row){
-												    $type_id_ck = $row['group_Id']."-data_type'";
+												    $type_id_ck = $row['group_Id']."-data_type-".$row['type_id']."'";
                                                     echo "<option  value='".$type_id_ck.">".$row['type_name']."</option>";
-													}
-
+													}	
 													?>
+													
 												    <?php
 													foreach ($division as $row){
-													//$division_id_ck = $row['divisid']."-division'";
-                                                    //echo "<option   value='".$division_id_ck."-divisid'>".$row['divisname']."</option>";
+													$division_id_ck = $row['divisid']."-division'";
+                                                    echo "<option   value='".$division_id_ck."-divisid'>".$row['divisname']."</option>";
 													}
 													?>
 													
                                                     </select></td>
                                                     <tr>
                                                     <td>
-																<input type="hidden" id="code" name="code" cols="45" rows="5"></input>
+													<input type="hidden" id="code" name="code" cols="45" rows="5"></input>
 													<script>
 													function getComboA(sel) {
                                                     var value = sel.value;  
 													document.getElementById("code").value=value;
+												    document.getElementById("data_group_id").value=value;
+													   document.getElementById("test").value=value;
                                                      }
 													</script>
                                                     <div id="showajax" ></div>
@@ -122,9 +114,6 @@ echo form_open_multipart('http://localhost/j3databoxnew/index.php/mainFunction/s
 													});
 													</script>
 													<input type="hidden" id="group_Id" name="group_Id" ></input>
-										
-							
-
 													 </td>
                                                     <td  valign="bottom" align="right"> 
 							                        <div class="input-prepend" >											
@@ -136,18 +125,29 @@ echo form_open_multipart('http://localhost/j3databoxnew/index.php/mainFunction/s
                                                     </div>
 													 <tr>
 													 <td>
-													
 													 <div class="panel_hidden" style="border-style: groove; border-color: red"">
 														 <table border="0">
 												    <tr>
 														 <td>
 													 <div class="input-prepend"><span class="add-on"  style="width : 30%;  text-align: left;">หมวดหลัก</span>
-                                                     <select class='span5'  name="menu_master" id="menu_master"  >
-                                                     <?php   foreach ($upload_menu_type as $row) {  echo "<option value=".$row['type_id'].">".$row['type_name']."</option>"; }  ?>
+                                                     <select class='span5'  name="data_group_id" id="data_group_id"   >
+
+													<?php
+													foreach ($data_type as $row){
+                                                    echo "<option  value='".$row['group_Id']."-data_type-".$row['type_id']."'>".$row['type_name']."</option>";
+													}
+													?>
+
+
+
+												    <?php
+													foreach ($division as $row){
+                                                    echo "<option   value='".$row['divisid']."-division'>".$row['divisname']."</option>";
+													}
+													?>
 													 </select>
 													    </td>
 													</tr>
-									
 												    <tr>
 														  <td>
 													<div class="input-prepend"><span class="add-on" style="width : 30%;  text-align: left;">เพิ่มหมวดเรื่องย่อย</span>
@@ -157,12 +157,12 @@ echo form_open_multipart('http://localhost/j3databoxnew/index.php/mainFunction/s
 													<tr>
 														 <td>
 														
+
 											
 													     </td>
 													</tr>
 													<tr>
 														 <td>
-														
 														<a onclick="document.getElementById('upload_pdf').submit()" href="#"  class="btn btn-small btn-danger">
                                                         <i class="btn-icon-only icon-save"  >บันทึก</i>
                                                         </a>
@@ -175,22 +175,20 @@ echo form_open_multipart('http://localhost/j3databoxnew/index.php/mainFunction/s
 													</table>
 													<table>
                                                     <div class="input-prepend">
-                                                     <span class="add-on" style="width : 15%;  text-align: left;">คำค้นหา</span>
-                                                    <input type='text' class='span6' id='serach'  />
+                                                    <span class="add-on" style="width : 15%;  text-align: left;">คำค้นหา</span>
+                                                    <input type='text' class='span6' id='search'  name="search" />
                                                     </div>
                                                     <div class="input-prepend">
-                                                     <span class="add-on" style="width : 40%;  text-align: left;" style="width : 15%;">รายละเอียด</span><br>
-                                                    <textarea rows="4" cols="1" class='span6' ></textarea>
+                                                    <span class="add-on" style="width : 40%;  text-align: left;" style="width : 15%;">รายละเอียด</span><br>
+                                                    <textarea rows="4" cols="1" class='span6'  id='databox_detail'  name="databox_detail" ></textarea>
                                                     </div>
                                                     </label>
                                                     </div>
-													 </table>
+													</table>
                                                     <footer class="signin-actions">
-                                         
 													<a onclick="document.getElementById('upload_pdf').submit()" href="#" class="btn btn-small btn-danger">
                                                     <i   class="btn-icon-only icon-save"  >บันทึก</i>
                                                     </a>
-													   
                                                     </footer>
                                                     </div>
                                                     <div class="row">          
@@ -201,11 +199,12 @@ echo form_open_multipart('http://localhost/j3databoxnew/index.php/mainFunction/s
                                     <?php    ?>
                                     <?php echo form_close(); ?>
                                     <?php $attributes = array('id' => 'myform'); 
-                                    echo form_open('http://localhost/databoxx/index.php/mainFunction/save', $attributes); ?>
-                                    <div class="span21">
+                                    echo form_open('http://localhost/j3databoxnew/index.php/mainFunction/save', $attributes); ?>
+								
+                                    <div class="span15" >
                                     <input type="hidden" name="check" id="check" ></input>
-<br>
-<br>
+									<br>
+									<br>
                                     <table id="sample-table" class="table table-hover table-bordered tablesorter" >
                                     <thead>
                                     <tr>
@@ -237,22 +236,23 @@ $save_id  = $databox_id."save";
 $add_id  = $databox_id."add";  
 
 ?>
+<?php $this->load->view('java/javascript_upload_insert'); ?>
                                     <script>
                                     //alert(<?php echo $databox_id;?>);
                                     </script>
                                     <tr>
                                     <td>
-                                    <input type="text" name="databox_id" id="<?php echo  $databox_id_text;  ?>" value="<?php echo  $databox_id  ?>"   
+                                    <input type="text" name="databox_id"  class="span9" id="<?php echo  $databox_id_text;  ?>" value="<?php echo  $databox_id  ?>"   
                                     onkeypress="return runScript(event)" style="display: none" >
                                     <div id="<?php echo  $databox_id_div;  ?>"><?php echo  $databox_id  ?></div>
                                     </td>
                                     <td>
-                                    <input type="text" name="subject" id="<?php echo  $subject_text;  ?>" value="<?php echo  $subject  ?>" 
+                                    <input type="text" name="subject"  class="span9" id="<?php echo  $subject_text;  ?>" value="<?php echo  $subject  ?>" 
                                     onkeypress="return runScript(event)" style="display: none" >
                                     <div id="<?php echo  $subject_div;  ?>"><?php echo  $subject  ?></div>
                                     </td>
                                     <td>
-                                    <input type="text" name="databox_search"   id="<?php echo  $databox_search_text;  ?>" value="<?php echo  $databox_search  ?>" onkeypress="return runScript(event)" style="display: none" >
+                                    <input type="text" name="databox_search"  class="span5"  id="<?php echo  $databox_search_text;  ?>" value="<?php echo  $databox_search  ?>" onkeypress="return runScript(event)" style="display: none" >
                                     <div id="<?php echo  $databox_search_div;  ?>" ><?php echo  $databox_search  ?>
                                     </div></td>
                                     <td class="td-actions"  >
