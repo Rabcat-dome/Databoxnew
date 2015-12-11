@@ -349,9 +349,9 @@
         '    <div class="file-upload-indicator" title="{indicatorTitle}">{indicator}</div>\n' +
         '    <div class="clearfix"></div>\n' +
         '</div>';
-    tActionDelete = '<button type="button" class="kv-file-remove {removeClass}" ' +
-        'title="{removeTitle}"{dataUrl}{dataKey}>{removeIcon}</button>\n';
-    tActionUpload = '<button type="button" class="kv-file-upload {uploadClass}" title="{uploadTitle}">' +
+    tActionDelete = '' +
+        '';
+    tActionUpload = '' +
         '   {uploadIcon}\n</button>\n';
     tZoom = '<button type="button" class="btn btn-default btn-xs btn-block" title="{zoomTitle}: {caption}" onclick="{dialog}">\n' +
         '   {zoomInd}\n' +
@@ -2557,12 +2557,12 @@
 
     $.fn.fileinput.defaults = {
         language: 'en',
-        showCaption: true,
+        showCaption: false,
         showPreview: true,
         showRemove: true,
         showUpload: false,
         showCancel: true,
-        showClose: true,
+        showClose: false,
         showUploadedThumbs: true,
         autoReplace: false,
         mainClass: '',

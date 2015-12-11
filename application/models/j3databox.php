@@ -206,9 +206,11 @@ Class j3databox extends CI_Model
      }
 	 	  function get_data_type_up() 
     {
-	    $sql = "SELECT  * FROM data_type";
-        $query = $this->db->query($sql);
-        return $query->result_array();	
+	   
+		   $this->db->select('*')->select('data_type.type_id')->from('data_type')
+          ->join('data_group', 'data_type.type_id = data_group.dataId', 'LEFT');
+	      $query = $this->db->get();
+		  return $query->result_array();	
     }
 
 //----------------------------------------- หน้าแสดงข้อมูลหลังจากค้นหา

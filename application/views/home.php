@@ -42,8 +42,8 @@
                         <tr>
                         <td><?php    foreach ($unit as $ru) {  
 						if($ru['group_Id']=="3"&&$ru['short_division']!="ผกม.สวฝ.") {
-								echo "<button  name='Button2' id='button2' value='Post'  class='btn' onmouseover=postData('".$ru['divisid']."')  data-toggle='modal' data-target='#uploader' style='cursor:pointer' /><h0 style='color:blue'>(0) <div style='margin-top: -24px;  margin-left: 60px; width: 0.9%;  height: 5%; text-align:center; position: absolute; color: white;font-size:16px; text-shadow: 0 0 0.3em #FF2000, 0 0 0.3em #FF2000,
-        0 0 0.3em #FF2000;' >0</div> </h0><br/>".$ru['short_division']."</button>";
+								echo "<button  name='Button2' id='button2' value='Post'  class='btn'   style='cursor:pointer' /><h0 style='color:blue'>(".$this->j3databox->get_num_box($ru['group_Id']).") <div style='margin-top: -24px;  margin-left: 60px; width: 0.9%;  height: 5%; text-align:center; position: absolute; color: white;font-size:16px; text-shadow: 0 0 0.3em #FF2000, 0 0 0.3em #FF2000,
+        0 0 0.3em #FF2000;' >".$this->j3databox->get_num_box_week($ru['group_Id'])."</div> </h0><br/>".$ru['short_division']."</button>";
 								} 
 						} ?></td>
                         <td>&nbsp;</td>
@@ -52,8 +52,8 @@
                         <tr>
                         <td> <?php    foreach ($unit as $ru) {  
 						if($ru['group_Id']=="4"||($ru['group_Id']=="3"&&$ru['short_division']=="ผกม.สวฝ.")) {
-							echo "<button  name='Button2' id='button2' value='Post'  class='btn' onmouseover=postData('".$ru['divisid']."')  data-toggle='modal' data-target='#uploader' style='cursor:pointer' /><h0 style='color:blue'>(0)</h0><br/>".$ru['short_division']."</button>";
-						} 
+							echo "<button  name='Button2' id='button2' value='Post'  class='btn'   style='cursor:pointer' /><h0 style='color:blue'>(".$this->j3databox->get_num_box($ru['group_Id']).") <div style='margin-top: -24px;  margin-left: 60px; width: 0.9%;  height: 5%; text-align:center; position: absolute; color: white;font-size:16px; text-shadow: 0 0 0.3em #FF2000, 0 0 0.3em #FF2000,
+        0 0 0.3em #FF2000;' >".$this->j3databox->get_num_box_week($ru['group_Id'])."</div> </h0><br/>".$ru['short_division']."</button>";} 
 						} ?></td>
                         <td>&nbsp;</td>
                         <td> </td>
@@ -61,8 +61,8 @@
                         <tr>
                         <td><?php    foreach ($unit as $ru) {  
             if($ru['group_Id']=="2") {
-              echo "<button  name='Button2' id='button2' value='Post'  class='btn' onmouseover=postData('".$ru['divisid']."')  data-toggle='modal' data-target='#uploader' style='cursor:pointer' /><h0 style='color:blue'>(0)</h0><br/>".$ru['short_division']."</button>";
-            } 
+              echo "<button  name='Button2' id='button2' value='Post'  class='btn'   style='cursor:pointer' /><h0 style='color:blue'>(".$this->j3databox->get_num_box($ru['group_Id']).") <div style='margin-top: -24px;  margin-left: 60px; width: 0.9%;  height: 5%; text-align:center; position: absolute; color: white;font-size:16px; text-shadow: 0 0 0.3em #FF2000, 0 0 0.3em #FF2000,
+        0 0 0.3em #FF2000;' >".$this->j3databox->get_num_box_week($ru['group_Id'])."</div> </h0><br/>".$ru['short_division']."</button>";} 
             } ?></td>
                         <td>&nbsp;</td>
                         <td></td>
@@ -71,8 +71,8 @@
                         <td>	 <?php    foreach ($unit as $ru) {  
 						if($ru['group_Id']=="5") {
 							if($ru['short_division']!="สน.ผบช."){
-								echo "<button  name='Button2' id='button2' value='Post'  class='btn' onmouseover=postData('".$ru['divisid']."')  data-toggle='modal' data-target='#uploader' style='cursor:pointer' /><h0 style='color:blue'> (0)</h0><br/>".$ru['short_division']."</button>";
-							}
+								echo "<button  name='Button2' id='button2' value='Post'  class='btn'   style='cursor:pointer' /><h0 style='color:blue'>(".$this->j3databox->get_num_box($ru['group_Id']).") <div style='margin-top: -24px;  margin-left: 60px; width: 0.9%;  height: 5%; text-align:center; position: absolute; color: white;font-size:16px; text-shadow: 0 0 0.3em #FF2000, 0 0 0.3em #FF2000,
+        0 0 0.3em #FF2000;' >".$this->j3databox->get_num_box_week($ru['group_Id'])."</div> </h0><br/>".$ru['short_division']."</button>";}
 					
 						}
 						

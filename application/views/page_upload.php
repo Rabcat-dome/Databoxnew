@@ -44,7 +44,7 @@ echo form_open_multipart('http://localhost/j3databoxnew/index.php/mainFunction/s
                                                     <td  > 
 												
 				 <div class="span1" >
-   	                <input class="file" type="file"   name="userfile1[]" id="userfile1" multiple  data-upload-url="#" >
+   	                <input class="file" type="file"   name="userfile1[]" id="userfile1"   data-upload-url="#" >
                     <div id="errorBlock" class="help-block"></div>
                     </div>
 					</td>
@@ -58,7 +58,7 @@ echo form_open_multipart('http://localhost/j3databoxnew/index.php/mainFunction/s
 						<td> 
 
 					 <div class="span1" >
-				    <input id="file-6" class="file" type="file"   name="userfile2[]" id="userfile2" multiple  data-upload-url="#">
+				    <input id="file-6" class="file" type="file"   name="userfile2[]" id="userfile2"   data-upload-url="#">
                     <div id="errorBlock" class="help-block"></div>
                     </div>
                     </td> 
@@ -78,18 +78,22 @@ echo form_open_multipart('http://localhost/j3databoxnew/index.php/mainFunction/s
                                                     <table>
 													 <td>   
 
+
+											
+
 													<div class="input-prepend"><span class="add-on" >หมวดเรื่อง</span>
                                                     <select id='btn1'  class='span6' onchange="getComboA(this)">
 												   <?php
-													foreach ($data_type as $row){
-												    $type_id_ck = $row['type_id']."-data_type'";
+													foreach ($data_type_up as $row){
+												    $type_id_ck = $row['group_Id']."-data_type'";
                                                     echo "<option  value='".$type_id_ck.">".$row['type_name']."</option>";
 													}
+
 													?>
 												    <?php
 													foreach ($division as $row){
-													$division_id_ck = $row['divisid']."-division'";
-                                                    echo "<option   value='".$division_id_ck."-divisid'>".$row['divisname']."</option>";
+													//$division_id_ck = $row['divisid']."-division'";
+                                                    //echo "<option   value='".$division_id_ck."-divisid'>".$row['divisname']."</option>";
 													}
 													?>
 													
@@ -194,7 +198,6 @@ echo form_open_multipart('http://localhost/j3databoxnew/index.php/mainFunction/s
                                     </div>
 									</div>
 									</div>
-        
                                     <?php    ?>
                                     <?php echo form_close(); ?>
                                     <?php $attributes = array('id' => 'myform'); 

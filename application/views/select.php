@@ -34,13 +34,11 @@ $pieces = explode("-", $test);
 														}												
 													?>
 													<?php
-													if($pieces[1]=="data_type"){
-													foreach ($data_group_up as $row){ 
-														if($pieces[0]==$row["dataId"]){
-															$group_Id = $row["group_Id"];
+													if($pieces[1]=="data_type"){ 
+													foreach ($data_type_up as $row){ 
+												    $group_Id = $row["group_Id"];
 													echo "<option value='".$group_Id."'>".$row["groupname"]."</option>"; }
-                                                         }
-														}
+													}
 													
 													?>
                                                     </select>
