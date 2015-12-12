@@ -1,7 +1,8 @@
  							
 								
 								<?php $attributes = array('id' => 'menu_select'); 
-echo form_open('http://localhost/j3databox/index.php/mainFunction/executive', $attributes); ?>							
+echo form_open('http://localhost/j3databoxNew/index.php/mainFunction/executive', $attributes); 
+?>							
  <?php $this->load->view('java/javascript_box'); ?> 
 		<section class="page container">
             <div class="row">
@@ -81,7 +82,7 @@ echo form_open('http://localhost/j3databox/index.php/mainFunction/executive', $a
 													
 								
 													  
-													
+													form_close();
 													?>
 
 

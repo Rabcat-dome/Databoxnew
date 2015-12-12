@@ -6,6 +6,16 @@ Class j3databox extends CI_Model
           // Call the Model constructor
           parent::__construct();
      }
+//------loading scrollbar
+     function get_num_index(){
+                $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
+                ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
+                ->join('division', 'division.group_Id = data_group.group_Id', 'LEFT');
+                $this->db->order_by("databox_id", "desc");
+
+                return $this->db->count_all_results();
+}
+
 //------ที่เพิ่มใหม่    นับจำนวนเอกสารแต่ละกอง
      function get_num_box($groupID){
                 $this->db->select('*')->from('databox_upload')
@@ -19,7 +29,7 @@ Class j3databox extends CI_Model
 //------------------------------------------ ค้นหาข้อมูล
       function get_search()
      {
-     		   $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
+     		$this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
                 ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
 				->join('division', 'division.group_Id = data_group.group_Id', 'LEFT')
 			    ->limit(15, 0);
@@ -98,9 +108,8 @@ Class j3databox extends CI_Model
      {
 		$data_group= $this->input->post("data_group");
 		$divis_id= $this->input->post("divis_id");
-		$data_group= $this->input->post("data_group");
-		$data_group= $this->input->post("data_group");
-        $this->db->select('*')->select('databox_upload.division_id')->from('databox_upload')
+
+        $this->db->select('*')->from('databox_upload')
 			    ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
                 ->join('division', 'data_group.divisId = division.divisId', 'LEFT')
 				->join('division_group', 'division_group.group_Id = division.group_Id', 'LEFT');
@@ -203,20 +212,11 @@ Class j3databox extends CI_Model
 	 	  function get_data_type_up() 
     {
 	   
-		  $this->db->select('*')->select('data_type.type_id')->from('data_type')
+		   $this->db->select('*')->select('data_type.type_id')->from('data_type')
           ->join('data_group', 'data_type.type_id = data_group.dataId', 'LEFT');
 	      $query = $this->db->get();
 		  return $query->result_array();	
     }
-	 	  function get_data_division() 
-    {
-
-		$this->db->select('*')->select('division.divisId')->from('division')
-          ->join('data_group', 'data_group.divisId = division.divisId', 'LEFT');
-	      $query = $this->db->get();
-		  return $query->result_array();		
-    }
-	
 
 //----------------------------------------- หน้าแสดงข้อมูลหลังจากค้นหา
 
