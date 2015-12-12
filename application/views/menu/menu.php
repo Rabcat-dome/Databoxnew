@@ -70,12 +70,27 @@
 
 </div>
 				<tbody>
-				<?php	
+		    <?php	$attributes = array('id' => 'main'); 
+            echo form_open_multipart('http://localhost/j3databoxnew/index.php/mainFunction/databox_search', $attributes); ?>
 
-				 foreach ($search as $r) {
-			echo "<tr style='display: table-row;'><td class='even'><a href='/j3databoxNEW/index.php/mainFunction/data_detail' >".$r['subject']."</a></td></tr>";
+            
+				<?php	
+		    foreach ($search as $r) {
+		$hidden=$r['databox_id'];
+			echo "<tr style='display: table-row;  onclick=\"chk('test1')\"'><td class='even' onclick=\"chk()\" >".$r['subject']."</td></tr>";
+
 				}
 				?>
+			
+				<script>
+			function chk(test1)
+			{
+			
+			alert(test1);
+			}
+			</script>
+            <?php echo form_close(); ?>
+			
 				</tbody>
 			</table>
 			</div>

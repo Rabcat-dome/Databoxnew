@@ -35,7 +35,7 @@ class mainFunction extends CI_Controller {
    
 		public function executive()
 	{    
-			
+			    $data['search'] = $this->j3databox->get_search();
 		        $data['not'] = ""; 
 				$data['not2'] = ""; 
 				$data['divis_id_f'] = ""; 
@@ -72,7 +72,6 @@ class mainFunction extends CI_Controller {
 				$data['divis_id_f'] =$coll[1];
 				}
 	            }
-
 				if($data_group!=""){ 
 				$data['box'] = $this->j3databox->get_data_group_table();
                 $data['not'] = $this->input->post("select_id_type");
@@ -80,9 +79,7 @@ class mainFunction extends CI_Controller {
 				$data2 =$this->input->post("divis_id");
 				$data['not2'] =  $data1."-".$data2;
 				$data['data_group'] = $this->input->post("data_group");
-				
 				}
-				
 				$this->load->view('box',$data); 
 	}
 
@@ -101,6 +98,17 @@ class mainFunction extends CI_Controller {
 	//--------------------------------------------------------- áÊ´§¢éÍÁÙÅ¨Ò¡¤é¹ËÒ áººËÅÒÂ¢éÍÁÙÅ
 	 	public function databox_search()
 	{
+			    $data_group = $this->input->post("data_group");
+		        $select_id_type = $this->input->post("select_id_type");
+				$select_id = $this->input->post("select_id");
+				$select_disvisid = $this->input->post("select_disvisid");
+				$group_Id =$this->input->post("group_Id");
+			    $data['search'] = $this->j3databox->get_search();
+		        $data['not'] = ""; 
+				$data['not2'] = ""; 
+				$data['divis_id_f'] = ""; 
+				$data['group_Id_f'] = ""; 
+
 			    $data['data_type'] = $this->j3databox->get_data_type();
 			    $data['division_group'] = $this->j3databox->get_division_group();
 				$data['last_update'] = $this->j3databox->get_Last_Update();
@@ -110,8 +118,7 @@ class mainFunction extends CI_Controller {
 
 	   public function page_upload()
      {          
-	
-            
+			    $data['search'] = $this->j3databox->get_search();
 		        $data['division'] = $this->j3databox->get_division();
 				$data['data_type'] = $this->j3databox->get_data_type_up();
                 $data['data_group_up'] = $this->j3databox->get_data_group_up();
@@ -161,6 +168,9 @@ class mainFunction extends CI_Controller {
      }
     
 	function save_upload() {
+	   
+		$subject = $this->input->post("subject");
+		$re_name =    date("Y-m-d")."-".$subject+"-¼¸¡";
 		$name_array = array();
 		$count = count($_FILES['userfile']['size']);
 		foreach($_FILES as $key=>$value)
@@ -170,6 +180,7 @@ class mainFunction extends CI_Controller {
 		$_FILES['userfile']['tmp_name'] = $value['tmp_name'][$s];
 		$_FILES['userfile']['error']       = $value['error'][$s];
 		$_FILES['userfile']['size']    = $value['size'][$s];   
+		$config['file_name'] = $re_name;
 		$config['upload_path'] = 'application/uploads/';
 	    $config['allowed_types'] = 'pdf|jpeg|jpg|png|doc|docx|avi|mp4';
 		$config['max_size']	= '1000';
@@ -208,7 +219,7 @@ class mainFunction extends CI_Controller {
 			   if($data_group_id_ex[1]=="division"){ $data_group=array(      "groupname"=>$this->input->post("menu_second"), "divisId"=>$data_group_id_ex[0],);
 			       $this->db->insert('data_group',$data_group);};
 			}
-			  
+			    $data['search'] = $this->j3databox->get_search();
 		        $data['division'] = $this->j3databox->get_division();
 				$data['data_type'] = $this->j3databox->get_data_type_up();
                 $data['data_group_up'] = $this->j3databox->get_data_group_up();
