@@ -43,7 +43,7 @@
 						  
 							<div class="tables">
 				<strong><input type="text" id="search"  name="search" style="width: 400px" onkeypress="handle(event)">	</input></strong>
-			</p>
+		
 			<style>
 			
 			a:hover { 
@@ -63,8 +63,8 @@
              padding-left: 10px;
 			 " >
 			
-			<table width="100%" id="tblData" class="target" bgcolor="#ACAAFC">
-			<div style="position: relative;" class="container"> <a href="#games">
+			<table width="300px" id="tblData" class="target" bgcolor="#ACAAFC">
+			<div style="position: absolute;" class="container"> <a href="#games">
  
     </a>
 
@@ -73,20 +73,20 @@
 		    <?php	$attributes = array('id' => 'main'); 
             echo form_open_multipart('http://localhost/j3databoxnew/index.php/mainFunction/databox_search', $attributes); ?>
 
-            
+            <input type="hidden" name="id_box" id="id_box"></input>
 				<?php	
 		    foreach ($search as $r) {
 		$hidden=$r['databox_id'];
-			echo "<tr style='display: table-row;  onclick=\"chk('test1')\"'><td class='even' onclick=\"chk()\" >".$r['subject']."</td></tr>";
+			echo "<tr style='display: table-row; '><td class='even' onclick=\"chk_menu(".$hidden.")\" >".$r['subject']."</td></tr>";
 
 				}
 				?>
 			
 				<script>
-			function chk(test1)
+			function chk_menu(test1)
 			{
-			
-			alert(test1);
+		 document.getElementById("id_box").value=test1;
+		 document.getElementById('main').submit();
 			}
 			</script>
             <?php echo form_close(); ?>

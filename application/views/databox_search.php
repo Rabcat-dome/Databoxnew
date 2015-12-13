@@ -29,14 +29,33 @@
                             </thead>
                             <tbody> 
 							  <input type="hidden" id="code" cols="45" rows="5"></textarea>
-                            <?php    foreach ($last_update as $row) {  
-								$hidden=$row['databox_id'];
+							 
+                            <?php  
+				
+						if($id_box==""){
+						foreach ($last_update as $row) {  
+						$hidden=$row['databox_id'];
 						echo "<tr>";
 						echo "<td onclick=\"chk(".$hidden.")\"  width='20%'>".$row['date_upload']."</a></td>";	
 						echo "<td onclick=\"chk(".$hidden.")\" width='20%'>".$row['groupname']."</a></td>";	
 						echo "<td onclick=\"chk(".$hidden.")\"  width='100%'>".$row['subject']."</a></td>";
 						echo "</tr>";
-						} ?>
+						} 
+						};
+						if($id_box!=""){
+						foreach ($last_update as $row) {  
+							$hidden=$row['databox_id'];
+							if($id_box==$hidden){
+						
+						echo "<tr>";
+						echo "<td onclick=\"chk(".$hidden.")\"  width='20%'>".$row['date_upload']."</a></td>";	
+						echo "<td onclick=\"chk(".$hidden.")\" width='20%'>".$row['groupname']."</a></td>";	
+						echo "<td onclick=\"chk(".$hidden.")\"  width='100%'>".$row['subject']."</a></td>";
+						echo "</tr>";
+							}
+						} 
+						};
+						?>
 
 					
                             </tbody>

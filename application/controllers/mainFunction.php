@@ -49,7 +49,7 @@ class mainFunction extends CI_Controller {
 				$select_to2 = $select_to1 + $select_id;
 				$select_to3 = $select_to2 + $group_Id;
                 $data['data_group'] = $this->j3databox->get_data_group();
-				 $data['division_by'] = $this->j3databox->get_division_by();
+				$data['division_by'] = $this->j3databox->get_division_by();
 			    $data['data_type'] = $this->j3databox->get_data_type();
 			    $data['division_group'] = $this->j3databox->get_division_group_division();
 				if($select_to3==""){
@@ -108,10 +108,10 @@ class mainFunction extends CI_Controller {
 				$data['not2'] = ""; 
 				$data['divis_id_f'] = ""; 
 				$data['group_Id_f'] = ""; 
-
+				$data['id_box'] = $this->input->post("id_box");
 			    $data['data_type'] = $this->j3databox->get_data_type();
 			    $data['division_group'] = $this->j3databox->get_division_group();
-				$data['last_update'] = $this->j3databox->get_Last_Update();
+				$data['last_update'] = $this->j3databox->get_last_update();
 		        $this->load->view('databox_search',$data);
 	}
 		//---------------------------------------------------หน้า อัพโหล

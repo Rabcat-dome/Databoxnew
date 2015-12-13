@@ -41,7 +41,8 @@ Class j3databox extends CI_Model
      {
 		  $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
           ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
-		  ->join('division', 'division.group_Id = data_group.group_Id', 'LEFT');
+		  ->join('division', 'division.divisid = data_group.divisid', 'LEFT')
+		   ->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT');
 	      $query = $this->db->get();
 		  return $query->result_array();	
      }
@@ -185,7 +186,6 @@ Class j3databox extends CI_Model
      }
 
 //----------------------------------------- หน้าแสดงข้อมูลหลังจากค้นหา
-//----------------------------------------จบหน้าภารกิจ
 
 //-----------------------------------------หน้าอัพโหด
 
