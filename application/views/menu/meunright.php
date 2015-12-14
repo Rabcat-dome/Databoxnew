@@ -14,11 +14,11 @@ echo form_open('http://localhost/j3databoxNew/index.php/mainFunction/executive',
                                      <li>
                               
                                          <li>
-								    	 <input type  = "hidden" id="check_meun"          name="check_meun"       <?php echo "value=".$not; ?>></input>
-										 <input type  = "hidden" id="check_meun2"         name="check_meun2"      <?php echo "value=".$not2; ?>></input>
-				                         <input type  = "hidden" id="select_id_type"      name="select_id_type"  ></input>
-                                         <input type  = "hidden" id="select_id"           name="select_id"       ></input>
-										 <input type  = "hidden" id="select_disvisid"     name="select_disvisid" value="-"></input>
+								    	 <input type  = "text" id="check_meun"          name="check_meun"       <?php echo "value=".$not; ?>></input>
+										 <input type  = "text" id="check_meun2"         name="check_meun2"      <?php echo "value=".$not2; ?>></input>
+				                         <input type  = "text" id="select_id_type"      name="select_id_type"  ></input>
+                                         <input type  = "text" id="select_id"           name="select_id"       ></input>
+										 <input type  = "text" id="select_disvisid"     name="select_disvisid" value="-"></input>
 										 <?php $collapse = explode("-", $not2); 
                                               $collapse1 =$collapse[0];
 										 ?>
@@ -55,18 +55,52 @@ echo form_open('http://localhost/j3databoxNew/index.php/mainFunction/executive',
 													 }
 													 if($group_Id=="1"){
 													 echo "<li>";
-													 echo "<a onClick=select_disvisid('".$group_Id."-".$disvis."')>".$row['divisname']."</a>";
+													 //echo "<a onClick=select_disvisid('".$group_Id."-".$disvis."')>".$row['divisname']."</a>";
+                                                     
+													 
+
+													  echo	"<a  href='javascript:;' data-toggle='collapse' data-target='#".$disvis."'>
+										                    ".$row['divisname']."<i class='fa fa-fw fa-caret-down'></i><i class='icon-chevron-right pull-right'></i></a>";
+													   echo "<ul id='".$disvis."' class='collapse'>";
+													   
+														 
+													     foreach ($data_group as $row) { 
+														$divisId_g	= $row['divisId'];
+														if($divisId_g==$disvis){
+													     echo "<li>";
+														 echo "<a onClick=select_disvisid('".$group_Id."-".$disvis."')>".$row['groupname']."</a>";
+														 //echo $row['groupname'];
+														                       }
+														 echo "</li>";
+														 }
+												
+														  echo "</ul>";
+													 
+													 
 													 echo "</li>";
 													}
 													if($group_Id!="1"){
 													 echo "<li>";
-													 echo "<a onClick=select_disvisid('".$group_Id."-".$disvis."')>".$row['divisname']."</a>";
+													 //echo "<a onClick=select_disvisid('".$group_Id."-".$disvis."')>".$row['divisname']."</a>";
+                                                           
+												       echo	"<a  href='javascript:;' data-toggle='collapse' data-target='#".$disvis."'>
+										              ".$row['divisname']."<i class='fa fa-fw fa-caret-down'></i><i class='icon-chevron-right pull-right'></i></a>";
+													     echo "<ul id='".$disvis."' class='collapse'>";
+													    echo "<li>";
+													   foreach ($data_group as $row) {  
+														
+														 echo "111111";
+														 }
+														 echo "</li>";
+														  echo "</ul>";
+
+
 													 echo "</li>";
 													}
 													
 													  foreach ($division_by as $row) {  
 													
-												       $divisid_by   =	 $row['divisid'];
+												        $divisid_by   =	 $row['divisid'];
 													    $divisid_by1 = $divisid_by-1;
 													 if($disvis== $divisid_by1 ){
 													  echo "</ul>";

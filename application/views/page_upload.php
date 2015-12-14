@@ -18,6 +18,7 @@ function check(elem) {
 	 <div class="container-signin">
  
 
+
  <?php	$attributes = array('id' => 'upload_pdf'); 
 echo form_open_multipart('http://localhost/j3databoxnew/index.php/mainFunction/save_upload', $attributes); ?>
                                                  
@@ -125,7 +126,7 @@ echo form_open_multipart('http://localhost/j3databoxnew/index.php/mainFunction/s
                                                     </div>
 													 <tr>
 													 <td>
-													 <div class="panel_hidden" style="border-style: groove; border-color: red"">
+													 <div  id="panel_hidden" name="panel_hidden" class="" style="border-style: groove; border-color: red; display: none;">
 														 <table border="0">
 												    <tr>
 														 <td>

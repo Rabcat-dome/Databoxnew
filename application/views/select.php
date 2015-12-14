@@ -1,11 +1,19 @@
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		$(".flip").click(function() {
-			$(".panel_hidden").slideToggle("slow");
-		});
-	});
+
+<script>
+function myFunction_add() {
+	 document.getElementById("panel_hidden").style.display='block';
+	 document.getElementById("flip_add").style.display='none';
+	 document.getElementById("flip_close").style.display='block';
+}
+function myFunction_close() {
+	 document.getElementById("panel_hidden").style.display='none';
+	 document.getElementById("flip_add").style.display='block';
+	 document.getElementById("flip_close").style.display='none';
+}
 </script>
+
+
 <?php
 $test=$_POST['data1'];
 $pieces = explode("-", $test);
@@ -16,7 +24,7 @@ $pieces = explode("-", $test);
 
 </div>
 <div class="input-prepend"><span class="add-on"  >หมวดย่อย</span>
-                                                <select class='span6'  onchange="getSelect(this)">
+                                                <select class='span6'  onchange="getSelect(this)" >
 													<?php
 													if($pieces[1]=="division"){
 											                           
@@ -55,7 +63,11 @@ $pieces = explode("-", $test);
 													document.getElementById("group_Id").value=value1;
                                                      }
 													</script>
+												     <div class="flip_add" id="flip_add" onclick="myFunction_add()" >
+                                                     <span class="add-on" > + </span>
+                                                     </div>
 
-														<a class="flip"  >
-                                                     <span class="add-on" >  + </span>
-                                                    </a>
+													 <div id="flip_close" onclick="myFunction_close()" style="display: none;">
+                                                     <span class="add-on" > - </span>
+                                                     </div>
+												

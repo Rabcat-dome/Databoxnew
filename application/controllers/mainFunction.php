@@ -56,6 +56,9 @@ class mainFunction extends CI_Controller {
 				$data['not2'] = ""; 
 				$data['divis_id_f'] = ""; 
 				$data['group_Id_f'] = ""; 
+
+				
+
 				$data_group = $this->input->post("data_group");
 		        $select_id_type = $this->input->post("select_id_type");
 				$select_id = $this->input->post("select_id");
@@ -79,7 +82,7 @@ class mainFunction extends CI_Controller {
 
                 if($select_to3!=""){ if($data_group==""){
 			    $data['data_group_select'] = $this->j3databox->get_data_group_box();
-				//$data['box'] = $this->j3databox->get_Databox_if();
+				$data['box'] = $this->j3databox->get_Databox_if();
                 $data['not'] = $this->input->post("select_id_type");
 				$data['not2'] = $this->input->post("select_disvisid");
 				$data_ck= $this->input->post("select_id_type");
@@ -92,7 +95,7 @@ class mainFunction extends CI_Controller {
 	            }
 
 				if($data_group!=""){ 
-				//$data['box'] = $this->j3databox->get_data_group_table();
+				$data['box'] = $this->j3databox->get_data_group_table();
                 $data['not'] = $this->input->post("select_id_type");
 			    $data1=$this->input->post("data_group");
 				$data2 =$this->input->post("divis_id");
@@ -117,8 +120,21 @@ class mainFunction extends CI_Controller {
 				$this->load->view('data_detail');
 	}
 	//--------------------------------------------------------- แสดงข้อมูลจากค้นหา แบบหลายข้อมูล
+	
 	 	public function databox_search()
 	{
+			 	//-------pagination
+ 				$this->load->library('pagination');
+ 				$config['base_url']=base_url()."index.php/mainFunction/databox_search";
+ 				$config['per_page']=20;
+ 				$test=$config['per_page'];
+ 				$config['total_rows']=count($this->j3databox->get_Databox_search_num($test));
+ 				$config["full_tag_open"]="<div class='pagination'>";
+ 				$config["full_tag_close"]="</div>";
+ 				$this->pagination->initialize($config);
+
+		 	 	//-------End  pagination
+
 			    $data_group = $this->input->post("data_group");
 		        $select_id_type = $this->input->post("select_id_type");
 				$select_id = $this->input->post("select_id");
@@ -132,7 +148,7 @@ class mainFunction extends CI_Controller {
 				$data['id_box'] = $this->input->post("id_box");
 			    $data['data_type'] = $this->j3databox->get_data_type();
 			    $data['division_group'] = $this->j3databox->get_division_group();
-				$data['last_update'] = $this->j3databox->get_last_update();
+				$data['last_update'] = $this->j3databox->get_Databox_search($test);
 		        $this->load->view('databox_search',$data);
 	}
 		//---------------------------------------------------หน้า อัพโหล
@@ -198,7 +214,7 @@ class mainFunction extends CI_Controller {
 	function save_upload() {
 	   
 		$subject = $this->input->post("subject");
-		$re_name =    date("Y-m-d")."-".$subject+"-ผธก";
+		$re_name =    date("Y-m-d")."-".$subject."-ผธก";
 		$name_array = array();
 		$count = count($_FILES['userfile']['size']);
 		foreach($_FILES as $key=>$value)

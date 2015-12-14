@@ -6,6 +6,38 @@ Class j3databox extends CI_Model
           // Call the Model constructor
           parent::__construct();
      }
+	 //--------databox_search
+      function get_Databox_search($test)
+     {
+	     	
+
+	            $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
+                ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
+				->join('division', 'division.divisId = data_group.divisId', 'LEFT')
+ 				->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT');
+				
+				$this->db->order_by('databox_upload.databox_id','DESC');
+				$this->db->limit($test,$this->uri->segment(3));
+			   $query = $this->db->get();
+		       return $query->result_array();
+     }
+
+	  function get_Databox_search_num()
+     {
+	      	
+
+	            $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
+                ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
+				->join('division', 'division.divisId = data_group.divisId', 'LEFT')
+ 				->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT');
+
+				
+				$this->db->order_by('databox_upload.databox_id','DESC');
+				//$this->db->limit($test,$this->uri->segment(3));
+			   $query = $this->db->get();
+		       return $query->result_array();
+     }
+
 //------loading scrollbar
 
      
@@ -139,12 +171,19 @@ Class j3databox extends CI_Model
 		$select_disvisid= $this->input->post("select_disvisid");
         $select_disvisid_ex = explode("-",$select_disvisid);
 		$data_group= $this->input->post("data_group");
-        $this->db->select('*')->select('databox_upload.division_id')->from('databox_upload')
-			    ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
-                ->join('division', 'data_group.divisId = division.divisId', 'LEFT')
-				->join('division_group', 'division_group.group_Id = division.group_Id', 'LEFT');
-			$this->db->like('division_group.group_Id',  $select_disvisid_ex[0], 'none'); 
-			$this->db->like('division.divisId',$select_disvisid_ex[1]);
+
+
+		
+        $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
+                ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
+				->join('division', 'division.divisId = data_group.group_Id', 'LEFT');
+				$this->db->where('data_group.group_Id like','%'. $select_disvisid_ex[0].'%');
+				$this->db->where('division.divisId like','%'.$select_disvisid_ex[1].'%');
+				$this->db->order_by('databox_upload.databox_id','DESC');
+			
+
+
+
 			$query = $this->db->get();
 		    return $query->result_array();
 	 }
@@ -164,6 +203,13 @@ Class j3databox extends CI_Model
 		    return $query->result_array();
 	 }
 
+function get_data_division()
+	{
+		$sql = "SELECT  * FROM  `division`";
+		$query = $this->db->query($sql);
+        return $query->result_array();	
+
+     }
 
  function get_Databox_if()
      {
@@ -174,12 +220,22 @@ Class j3databox extends CI_Model
          $select_disvisid_ex = explode("-",$select_disvisid);
       	if( $select_id_type=="")
 		 {
-			$this->db->select('*')->select('databox_upload.division_id')->from('databox_upload')
-                ->join('division', 'division.divisId = databox_upload.division_id', 'LEFT')
-				->join('division_group', 'division_group.group_Id = division.group_Id', 'LEFT');
-			$this->db->like('division_group.group_Id',  $select_disvisid_ex[0], 'none'); 
-			//$this->db->like('division.divisId',  $select_disvisid_ex[1],'none'); 
-			$this->db->like('division.divisId',$select_disvisid_ex[1]);
+
+		/*	
+			SELECT  FROM `databox_upload` LEFT JOIN `data_group` ON `data_group`.`group_Id` = `databox_upload`.`group_Id` LEFT JOIN `division` ON `division`.`divisId` = `data_group`.`divisId` LEFT JOIN `division_group` ON `division`.`group_id` = `division_group`.`group_Id`
+       
+		   
+		   SELECT  FROM `databox_upload` LEFT JOIN `data_group` ON `data_group`.`group_Id` = `databox_upload`.`group_Id` LEFT JOIN `division` ON `division`.`divisId` = `data_group`.`divisId` LEFT JOIN `division_group` ON `division_group`.`group_id` = `data_group`.`group_Id`
+			 
+			 */
+	            $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
+                ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
+				->join('division', 'division.divisId = data_group.divisId', 'LEFT')
+				->join('division_group', 'division.group_id = `division_group.group_Id', 'LEFT');
+				$this->db->where('division_group.group_id like','%'. $select_disvisid_ex[0].'%');
+				$this->db->where('division.divisId like','%'.$select_disvisid_ex[1].'%');
+				$this->db->order_by('databox_upload.databox_id','DESC');
+
 		 }
 	   	if( $select_id_type!="")
 		 {
