@@ -45,19 +45,17 @@ class mainFunction extends CI_Controller {
  				$config['per_page']=20;
  				$test=$config['per_page'];
  				$config['total_rows']=count($this->j3databox->get_Databox_num($test));
-
+               
  				$config["full_tag_open"]="<div class='pagination'>";
  				$config["full_tag_close"]="</div>";
  				$this->pagination->initialize($config);
 
 		 	//-------End  pagination
-
+                $data['unit'] =  $this->j3databox->get_unit();
 		        $data['not45'] = ""; 
 				$data['not2'] = ""; 
 				$data['divis_id_f'] = ""; 
 				$data['group_Id_f'] = ""; 
-
-				
 
 				$data_group = $this->input->post("data_group");
 		        $select_id_type = $this->input->post("select_id_type");
@@ -99,7 +97,7 @@ class mainFunction extends CI_Controller {
                 $data['not'] = $this->input->post("select_id_type");
 			    $data1=$this->input->post("data_group");
 				$data2 =$this->input->post("divis_id");
-				$data['not2'] =  $data1."-".$data2;
+				$data['not2'] =  $data1."-aaa".$data2;
 				$data['data_group'] = $this->input->post("data_group");
 				
 				}

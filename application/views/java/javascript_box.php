@@ -21,8 +21,9 @@ function select_id_type_submit(select_type) {
 }
 
 function select_disvisid(group_Id)  {
+	
 	  var check_meun2 =document.getElementById("check_meun2").value;
-   
+
       document.getElementById("select_disvisid").value =group_Id;
       select_disvisid_submit(group_Id);
 }
@@ -44,5 +45,11 @@ function chk(id) {
         document.getElementById('span8').className = 'span12';	 
 	 }
      document.getElementById('code').value = id;	
+}
+function box_bn(id_bn) {
+     alert(id_bn);
+	  var check_meun2 =document.getElementById("check_meun2").value;
+      document.getElementById("select_disvisid").value =id_bn;
+     select_disvisid_submit(id_bn);
 }
 </script>

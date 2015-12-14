@@ -6,6 +6,7 @@
 				  <input type  = "hidden" id="group_Id"         name="group_Id"      <?php echo "value=".$group_Id_f; ?>></input>
 				  <input type  = "hidden" id="divis_id"         name="divis_id"      <?php echo "value=".$divis_id_f; ?>></input>
                   <input type  = "hidden" id="data_group"       name="data_group"      ></input>
+				   <input type  = "hidden" id="code"       name="code"   value=    ></input>
 			
 
                        

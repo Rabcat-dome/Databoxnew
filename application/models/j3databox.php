@@ -234,6 +234,8 @@ function get_data_division()
 				->join('division_group', 'division.group_id = `division_group.group_Id', 'LEFT');
 				$this->db->where('division_group.group_id like','%'. $select_disvisid_ex[0].'%');
 				$this->db->where('division.divisId like','%'.$select_disvisid_ex[1].'%');
+				 if(isset($select_disvisid_ex[2])){  $select_disvisid_ex2 =$select_disvisid_ex[2];} else{$select_disvisid_ex2 = "";} 
+				$this->db->where('databox_upload.group_Id like','%'.$select_disvisid_ex2.'%');
 				$this->db->order_by('databox_upload.databox_id','DESC');
 
 		 }
