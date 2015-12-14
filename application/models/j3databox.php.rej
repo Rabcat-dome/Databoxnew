@@ -1,0 +1,6 @@
+diff a/application/models/j3databox.php b/application/models/j3databox.php	(rejected hunks)
+@@ -43,3 +43,4 @@
+           ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
+ 		  ->join('division', 'division.divisid = data_group.divisid', 'LEFT')
++		   ->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT');
+ 	      $query = $this->db->get();

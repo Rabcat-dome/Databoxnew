@@ -1,4 +1,4 @@
-<?php
+<?php 
 Class j3databox extends CI_Model
 {
   function __construct()
@@ -7,6 +7,15 @@ Class j3databox extends CI_Model
           parent::__construct();
      }
 //------loading scrollbar
+
+     
+	 function getEmployee(){	
+		$this->db->select("EMPLOYEE_ID,EMPLOYEE_NAME");
+		$this->db->from('trn_employee');				
+		$query = $this->db->get();		
+		return $query->result();			
+	}
+	
      function get_num_index(){
                 $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
                 ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
@@ -36,13 +45,47 @@ Class j3databox extends CI_Model
 			   $query = $this->db->get();
 		       return $query->result_array();	
      }
+	 
+	  function get_Databox($test)
+     {
+
+ 				if(isset($_POST['data_group'])){$temp = $_POST['data_group'];}else{$temp = "";} 
+				if(isset($_POST['divis_id'])){$temp2 = $_POST['divis_id'];}else{$temp2 = "";} 
+
+	            $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
+                ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
+				->join('division', 'division.divisId = data_group.group_Id', 'LEFT');
+				$this->db->where('data_group.group_Id like','%'.$temp.'%');
+				$this->db->where('division.divisId like','%'.$temp2.'%');
+				$this->db->order_by('databox_upload.databox_id','DESC');
+				$this->db->limit($test,$this->uri->segment(3));
+			   $query = $this->db->get();
+		       return $query->result_array();
+     }
+
+	  function get_Databox_num($test)
+     {
+
+ 				if(isset($_POST['data_group'])){$temp = $_POST['data_group'];}else{$temp = "";} 
+				if(isset($_POST['divis_id'])){$temp2 = $_POST['divis_id'];}else{$temp2 = "";} 
+
+	            $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
+                ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
+				->join('division', 'division.divisId = data_group.group_Id', 'LEFT');
+				$this->db->where('data_group.group_Id like','%'.$temp.'%');
+				$this->db->where('division.divisId like','%'.$temp2.'%');
+				$this->db->order_by('databox_upload.databox_id','DESC');
+				//$this->db->limit($test,$this->uri->segment(3));
+			   $query = $this->db->get();
+		       return $query->result_array();
+     }
 //---------------------------------------- หน้าแรก
 	 function get_Last_Update()  
      {
 		  $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
           ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
 		  ->join('division', 'division.divisid = data_group.divisid', 'LEFT')
-		   ->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT');
+		  ->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT');
 	      $query = $this->db->get();
 		  return $query->result_array();	
      }
@@ -150,14 +193,7 @@ Class j3databox extends CI_Model
      }
 
 
-	  function get_Databox()
-     {
-	            $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
-                ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
-				->join('division', 'division.group_Id = data_group.group_Id', 'LEFT');
-			   $query = $this->db->get();
-		       return $query->result_array();
-     }
+	
 	  function get_data_box_detail()
      {     
 		   $data1= $this->input->post("data1");
@@ -167,6 +203,14 @@ Class j3databox extends CI_Model
 		   $this->db->where('databox_upload.databox_id ',  $data1);
 	      $query = $this->db->get();
 		  return $query->result_array();	
+     }
+	  function get_data_box_detail1()
+     {     
+		$sql = "select * FROM databox_upload order by databox_id desc limit 10";
+		$query = $this->db->query($sql);
+        return $query->result_array();	
+
+
      }
 //----------------------------------------จบหน้าภารกิจ
 

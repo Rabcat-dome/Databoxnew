@@ -6,6 +6,9 @@
 				  <input type  = "hidden" id="divis_id"         name="divis_id"      <?php echo "value=".$divis_id_f; ?>></input>
                   <input type  = "hidden" id="data_group"       name="data_group"      ></input>
 				  <?php $this->load->view('java/javascript_box'); ?>
+<div class="span2">
+
+</div>
 
       		  <div id="span8" class="span12">
 
