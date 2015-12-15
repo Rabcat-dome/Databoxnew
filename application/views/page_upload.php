@@ -20,7 +20,7 @@ function check(elem) {
 
 
  <?php	$attributes = array('id' => 'upload_pdf'); 
-echo form_open_multipart('http://localhost/j3databoxnew/index.php/mainFunction/save_upload', $attributes); ?>
+echo form_open_multipart('http://127.0.0.1/j3databoxnew/index.php/mainFunction/save_upload', $attributes); ?>
                                                  
 													<div align="center">
                                                     <legend >เพิ่มหมวดเรื่อง</legend>
@@ -105,7 +105,7 @@ echo form_open_multipart('http://localhost/j3databoxnew/index.php/mainFunction/s
 													<script type="text/javascript">
 													$(document).ready(function(){
 													$("#btn1").change(function(){
-													$.post("http://localhost/j3databoxNEW/index.php/mainFunction/select", { 
+													$.post("http://127.0.0.1/j3databoxNEW/index.php/mainFunction/select", { 
 													data1: $("#code").val()}, 
 													function(data){
 													$("#showajax").html(data);
@@ -200,7 +200,7 @@ echo form_open_multipart('http://localhost/j3databoxnew/index.php/mainFunction/s
                                     <?php    ?>
                                     <?php echo form_close(); ?>
                                     <?php $attributes = array('id' => 'myform'); 
-                                    echo form_open('http://localhost/j3databoxnew/index.php/mainFunction/save', $attributes); ?>
+                                    echo form_open('http://127.0.0.1/j3databoxnew/index.php/mainFunction/save', $attributes); ?>
 								
                                     <div class="span15" >
                                     <input type="hidden" name="check" id="check" ></input>

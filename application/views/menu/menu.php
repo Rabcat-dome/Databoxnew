@@ -71,7 +71,7 @@
 </div>
 				<tbody>
 		    <?php	$attributes = array('id' => 'main'); 
-            echo form_open_multipart('http://localhost/j3databoxnew/index.php/mainFunction/databox_search', $attributes); ?>
+            echo form_open_multipart('http://127.0.0.1/j3databoxnew/index.php/mainFunction/databox_search', $attributes); ?>
 
             <input type="hidden" name="id_box" id="id_box"></input>
 				<?php	

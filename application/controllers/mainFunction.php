@@ -18,6 +18,8 @@ class mainFunction extends CI_Controller {
      }
 
 
+
+
 	  	public function post_receiver()
 	{
            
@@ -170,8 +172,8 @@ class mainFunction extends CI_Controller {
 	 	public function test()
 	{       
 
-$data['main_content'] = '/upload';
-   $this->load->view('test', $data);
+$data['pdfx'] = 'application/pdf/Resume.pdf';
+$this->load->view('test', $data);
 	}
 
 	 public function save()
@@ -220,7 +222,7 @@ $data['main_content'] = '/upload';
 		$_FILES['userfile']['error']       = $value['error'][$s];
 		$_FILES['userfile']['size']    = $value['size'][$s];   
 		$config['file_name'] = $tis620;
-		$config['upload_path'] = 'application/uploads/';
+		$config['upload_path'] = 'uploads/';
 	    $config['allowed_types'] = 'pdf|jpeg|jpg|png|doc|docx|avi|mp4';
 		$config['max_size']	= '1000';
 		$config['max_width']  = '102400';

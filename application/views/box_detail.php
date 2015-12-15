@@ -18,7 +18,7 @@ $data1 =$_POST['data1'];
 	
 									    }  ?>
 									
-										<?php   $tes  ="application/uploads/111.pdf"?>
+										<?php   $tes  ="http://127.0.0.1/j3databoxnew/uploads/".$upload_urlpdf.""?>
                                              <embed src="<?php echo  $tes; ?>"  height="450" class="span9"  ></embed>    
  
 													<div align="center">

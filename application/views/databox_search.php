@@ -76,7 +76,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
      $("#tableId tr").click(function(){
- $.post("http://localhost/j3databoxNEW/index.php/mainFunction/box_detail", { 
+ $.post("http://127.0.0.1/j3databoxNEW/index.php/mainFunction/box_detail", { 
       data1: $("#code").val()}, 
       function(data){
   $("#showajax").html(data);

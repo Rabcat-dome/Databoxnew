@@ -69,6 +69,7 @@ Class j3databox extends CI_Model
                 ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
 				->join('division', 'division.group_Id = data_group.group_Id', 'LEFT')
 			    ->limit(15, 0);
+               $this->db->order_by("databox_upload.databox_id","desc");
 			   $query = $this->db->get();
 		       return $query->result_array();	
      }
