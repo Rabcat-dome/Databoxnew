@@ -313,9 +313,10 @@ function get_data_division()
                                                      
 		   
 
-	$this->db->select("*");
-		$this->db->from('data_type','data_group');		
-		  $this->db->where('data_type.type_id= data_group.dataId');
+	 $this->db->select("*");
+	 $this->db->from('data_type,data_group');		
+     $this->db->where('data_type.type_id= data_group.dataId');
+	 $this->db->group_by("dataId"); 
 		$query = $this->db->get();		
 		return $query->result();	
 
