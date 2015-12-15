@@ -41,12 +41,7 @@ Class j3databox extends CI_Model
 //------loading scrollbar
 
      
-	 function getEmployee(){	
-		$this->db->select("EMPLOYEE_ID,EMPLOYEE_NAME");
-		$this->db->from('trn_employee');				
-		$query = $this->db->get();		
-		return $query->result();			
-	}
+
 	
      function get_num_index(){
                 $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
@@ -314,11 +309,22 @@ function get_data_division()
 	 	  function get_data_type_up() 
     {
 	   
-		   $this->db->select('*')->select('data_group.dataId')->from('data_group')
-          ->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT');
-		   $this->db->group_by("dataId"); 
-	      $query = $this->db->get();
-		  return $query->result_array();	
+		   //$this->db->select('*')->select('data_group.dataId')->from('data_group8')
+                                                     
+		   
+
+	$this->db->select("*");
+		$this->db->from('data_type','data_group');		
+		  $this->db->where('data_type.type_id= data_group.dataId');
+		$query = $this->db->get();		
+		return $query->result();	
+
+		 //  SELECT * FROM `data_type`,`data_group` WHERE `data_type`.`type_id`= `data_group`.`dataId` GROUP BY `dataId`
+          
+		 //  ->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT');
+		 //  $this->db->group_by("dataId"); 
+	     // $query = $this->db->get();
+		 // return $query->result_array();	
     }
 
 //----------------------------------------- หน้าแสดงข้อมูลหลังจากค้นหา
