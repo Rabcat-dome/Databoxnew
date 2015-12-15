@@ -1,6 +1,6 @@
 
 <?php
-
+$data1 =$_POST['data1'];
 $data1 =$_POST['data1'];
 ?>
 
@@ -17,7 +17,8 @@ $data1 =$_POST['data1'];
 										$upload_urlpdf = $row['upload_urlpdf'];
 	
 									    }  ?>
-										<?php   $tes  ="http://localhost/j3databoxnew/uploads/".$upload_urlpdf.".pdf"?>
+									
+										<?php   $tes  ="application/uploads/111.pdf"?>
                                              <embed src="<?php echo  $tes; ?>"  height="450" class="span9"  ></embed>    
  
 													<div align="center">
@@ -54,7 +55,7 @@ $data1 =$_POST['data1'];
                                                               </div>
 													    </td>
 														<td>
-														     <label style="background-color :#ffffff; height: 25px;   border-style: solid; border-width: 1px;  font-size: 12px;">&nbsp; <?php echo $subject ?></label>
+														     <label style="background-color :#ffffff; height: 25px;   border-style: solid; border-width: 1px;  font-size: 12px;">&nbsp; <?php echo $upload_urlpdf ?></label>
 														</td>
                                                      </tr>
                                                 

@@ -23,7 +23,7 @@ class mainFunction extends CI_Controller {
            
 		    $this->load->view('post_receiver');
 	}
-	//---------------------------------------------------- Ë¹éÒáÃ¡
+	//---------------------------------------------------- à¸«à¸™à¹‰à¸²à¹à¸£à¸
 	 	public function index()
 	{
 		
@@ -32,7 +32,7 @@ class mainFunction extends CI_Controller {
 			$data['search'] = $this->j3databox->get_search();
 		    $this->load->view('home',$data);
 	}
-    //---------------------------------------------------- ÀÒÃ¡Ô¨
+    //---------------------------------------------------- à¸ à¸²à¸£à¸à¸´à¸ˆ
    
 		public function executive()
 	{    
@@ -101,13 +101,13 @@ class mainFunction extends CI_Controller {
 		   $data['box_detail'] = $this->j3databox->get_data_box_detail();
 		   $this->load->view('box_detail',$data); 
 	 }
-	//-------------------------------------------------------- áÊ´§¢éÍÁÙÅ¨Ò¡¤é¹ËÒ áºº¢éÍÁÙÅà´ÕÂÇ
+	//-------------------------------------------------------- à¹à¸ªà¸”à¸‡à¸‚à¹‰à¸­à¸¡à¸¹à¸¥à¸ˆà¸²à¸à¸„à¹‰à¸™à¸«à¸² à¹à¸šà¸šà¸‚à¹‰à¸­à¸¡à¸¹à¸¥à¹€à¸”à¸µà¸¢à¸§
 		public function data_detail()
 	{
 				//$data['menu'] = $this->j3databox->get_menu();	
 				$this->load->view('data_detail');
 	}
-	//--------------------------------------------------------- áÊ´§¢éÍÁÙÅ¨Ò¡¤é¹ËÒ áººËÅÒÂ¢éÍÁÙÅ
+	//--------------------------------------------------------- à¹à¸ªà¸”à¸‡à¸‚à¹‰à¸­à¸¡à¸¹à¸¥à¸ˆà¸²à¸à¸„à¹‰à¸™à¸«à¸² à¹à¸šà¸šà¸«à¸¥à¸²à¸¢à¸‚à¹‰à¸­à¸¡à¸¹à¸¥
 	
 	 	public function databox_search()
 	{
@@ -140,7 +140,7 @@ class mainFunction extends CI_Controller {
 				$data['last_update'] = $this->j3databox->get_Databox_search($test);
 		        $this->load->view('databox_search',$data);
 	}
-		//---------------------------------------------------Ë¹éÒ ÍÑ¾âËÅ
+		//---------------------------------------------------à¸«à¸™à¹‰à¸² à¸­à¸±à¸žà¹‚à¸«à¸¥
 
 	   public function page_upload()
      {          
@@ -150,7 +150,7 @@ class mainFunction extends CI_Controller {
                 $data['data_group_up'] = $this->j3databox->get_data_group_up();
                 $data['data_type_up'] = $this->j3databox->get_data_type_up();
 				$data['upload'] = $this->j3databox->get_upload();
-                $this->load->view('page_upload',$data);  // à»Ô´Ë¹éÒ upload à¾×èÍ·Õè ÊÃéÒ§Ë¹éÒÇÔÇ ªÑÇ¤ÃÒÇ
+                $this->load->view('page_upload',$data);  // à¹€à¸›à¸´à¸”à¸«à¸™à¹‰à¸² upload à¹€à¸žà¸·à¹ˆà¸­à¸—à¸µà¹ˆ à¸ªà¸£à¹‰à¸²à¸‡à¸«à¸™à¹‰à¸²à¸§à¸´à¸§ à¸Šà¸±à¸§à¸„à¸£à¸²à¸§
               
      }
     	public function select()
@@ -162,12 +162,16 @@ class mainFunction extends CI_Controller {
                 $data['data_group_up'] = $this->j3databox->get_data_group_up();
 		        $this->load->view('select',$data);
 	}
+		public function welcom()
+	{           
+			   
+		        $this->load->view('welcom');
+	}
 	 	public function test()
-	{           //$data['Main_Nav_Query']  = mysql_query("SELECT  * FROM  databox_upload");
-			    //$data['q'] = mysql_query("SELECT * FROM `databox_upload` ORDER BY `subject` ASC");
-                $data['q'] = $this->j3databox->get_data_box_detail1();
-			
-		        $this->load->view('test',$data);
+	{       
+
+$data['main_content'] = '/upload';
+   $this->load->view('test', $data);
 	}
 
 	 public function save()
@@ -196,14 +200,16 @@ class mainFunction extends CI_Controller {
                 $data['data_group_up'] = $this->j3databox->get_data_group_up();
                 $data['data_type_up'] = $this->j3databox->get_data_type_up();
 				$data['upload'] = $this->j3databox->get_upload();
-                $this->load->view('page_upload',$data);  // à»Ô´Ë¹éÒ upload à¾×èÍ·Õè ÊÃéÒ§Ë¹éÒÇÔÇ ªÑÇ¤ÃÒÇ
+                $this->load->view('page_upload',$data);  // à¹€à¸›à¸´à¸”à¸«à¸™à¹‰à¸² upload à¹€à¸žà¸·à¹ˆà¸­à¸—à¸µà¹ˆ à¸ªà¸£à¹‰à¸²à¸‡à¸«à¸™à¹‰à¸²à¸§à¸´à¸§ à¸Šà¸±à¸§à¸„à¸£à¸²à¸§
 
      }
     
 	function save_upload() {
 	   
-		$subject = $this->input->post("subject");
-		$re_name =    date("Y-m-d")."-".$subject."-¼¸¡";
+	$subject = $this->input->post("subject");
+	    $re_name =    date("Y-m-d")."-".$subject."-à¸œà¸˜à¸";		 
+        $tis620 = iconv("utf-8", "tis-620", $re_name );
+        $utf8 = iconv("tis-620", "utf-8", $tis620 );
 		$name_array = array();
 		$count = count($_FILES['userfile']['size']);
 		foreach($_FILES as $key=>$value)
@@ -213,7 +219,7 @@ class mainFunction extends CI_Controller {
 		$_FILES['userfile']['tmp_name'] = $value['tmp_name'][$s];
 		$_FILES['userfile']['error']       = $value['error'][$s];
 		$_FILES['userfile']['size']    = $value['size'][$s];   
-		$config['file_name'] = $re_name;
+		$config['file_name'] = $tis620;
 		$config['upload_path'] = 'application/uploads/';
 	    $config['allowed_types'] = 'pdf|jpeg|jpg|png|doc|docx|avi|mp4';
 		$config['max_size']	= '1000';
@@ -224,10 +230,20 @@ class mainFunction extends CI_Controller {
 		$data = $this->upload->data();
 		$name_array[] = $data['file_name'];
 			}
-	     $names= implode(',', $name_array);
+
+function viewMinutesFile(){
+    $file = $this->minutes_model->getFile($id);
+    $this->output
+           ->set_content_type('application/pdf')
+           ->set_output(file_get_contents($your_pdf_file));
+           }
+		
          
-    	 $pdf=   $name_array[0];
-		 $word=   $name_array[1];
+	     $names= implode(',', $name_array);
+        
+        $pdf=    date("Y-m-d")."-".$subject."-à¸œà¸˜à¸.pdf";	
+		$word=   date("Y-m-d")."-".$subject."-à¸œà¸˜à¸.docx";	
+
 			$menu_second = $this->input->post("menu_second");
 				if($menu_second==""){
 					 $now =  date("Y-m-d"); 
@@ -252,13 +268,14 @@ class mainFunction extends CI_Controller {
 			   if($data_group_id_ex[1]=="division"){ $data_group=array(      "groupname"=>$this->input->post("menu_second"), "divisId"=>$data_group_id_ex[0],);
 			       $this->db->insert('data_group',$data_group);};
 			}
+			
 			    $data['search'] = $this->j3databox->get_search();
 		        $data['division'] = $this->j3databox->get_division();
 				$data['data_type'] = $this->j3databox->get_data_type_up();
                 $data['data_group_up'] = $this->j3databox->get_data_group_up();
                 $data['data_type_up'] = $this->j3databox->get_data_type_up();
 				$data['upload'] = $this->j3databox->get_upload();
-                $this->load->view('page_upload',$data);  // à»Ô´Ë¹éÒ upload à¾×èÍ·Õè ÊÃéÒ§Ë¹éÒÇÔÇ ªÑÇ¤ÃÒÇ
+                $this->load->view('page_upload',$data);  // à¹€à¸›à¸´à¸”à¸«à¸™à¹‰à¸² upload à¹€à¸žà¸·à¹ˆà¸­à¸—à¸µà¹ˆ à¸ªà¸£à¹‰à¸²à¸‡à¸«à¸™à¹‰à¸²à¸§à¸´à¸§ à¸Šà¸±à¸§à¸„à¸£à¸²à¸§
 	}
 
 	

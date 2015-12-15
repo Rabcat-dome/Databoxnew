@@ -1,4 +1,5 @@
 <?php
+
 function ldap_login($username,$password,$goback_url){  //usernameกับpass ควรทำเป็นsessionไว้เช็คในหน้าที่บังคับ  ส่วนgoback url คือหน้าที่ให้ไปล๊อกอินใหม่
 
 //server ที่ติดตั้งต้องเปิด ldap ก่อนนะจ๊ะ

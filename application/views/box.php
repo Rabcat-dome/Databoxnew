@@ -1,6 +1,6 @@
 <?php $this->load->view('header/header_title'); ?>
 <?php $this->load->view('menu/menu');  ?>
-<?php $this->load->view('menu/meunright'); ?>
+<?php $this->load->view('menu/menuright'); ?>
 <?php /// $this->load->view('java/javascript_upload'); ?>
 <?php echo $not45;?>
 				  <input type  = "hidden" id="group_Id"         name="group_Id"      <?php echo "value=".$group_Id_f; ?>></input>
