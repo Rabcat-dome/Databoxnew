@@ -15,9 +15,6 @@ class mainFunction extends CI_Controller {
           $this->load->database();
           $this->load->library('form_validation');
 		  $this->load->model('j3databox');
-
-     
-
      }
 
 
@@ -56,7 +53,6 @@ class mainFunction extends CI_Controller {
 				$data['not2'] = ""; 
 				$data['divis_id_f'] = ""; 
 				$data['group_Id_f'] = ""; 
-
 				$data_group = $this->input->post("data_group");
 		        $select_id_type = $this->input->post("select_id_type");
 				$select_id = $this->input->post("select_id");
@@ -70,28 +66,22 @@ class mainFunction extends CI_Controller {
 			    $data['data_type'] = $this->j3databox->get_data_type();
 			    $data['division_group'] = $this->j3databox->get_division_group_division();
 				if($select_to3==""){
-				
- 				
 				$data['box'] = $this->j3databox->get_Databox($test);
-
 				$data['not2'] = $this->input->post("select_disvisid");
 				$data['not'] = $this->input->post("select_id_type");
 				}
-
                 if($select_to3!=""){ if($data_group==""){
 			    $data['data_group_select'] = $this->j3databox->get_data_group_box();
 				$data['box'] = $this->j3databox->get_Databox_if();
                 $data['not'] = $this->input->post("select_id_type");
 				$data['not2'] = $this->input->post("select_disvisid");
 				$data_ck= $this->input->post("select_id_type");
-			
 				$coll = $this->input->post("select_disvisid");
 				$coll = explode("-", $coll); 
                 $data['group_Id_f'] =$coll[0];
 				$data['divis_id_f'] =$coll[1];
 				}
 	            }
-
 				if($data_group!=""){ 
 				$data['box'] = $this->j3databox->get_data_group_table();
                 $data['not'] = $this->input->post("select_id_type");

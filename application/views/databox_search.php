@@ -16,7 +16,7 @@
                    	
           	 <div id="Person-1" class="box">
                  <div class="box-header">
-                            <i class="icon-user iconิ-large"></i>
+                            <i class="icon-user icon-large"></i>
                              <h5>ข้อมูล Databox</h5>
                         </div>
 						   <div class="box-content box-table">

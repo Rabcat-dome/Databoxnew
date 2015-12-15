@@ -3,8 +3,8 @@
 
 $data1 =$_POST['data1'];
 ?>
-<?php    $tes  ="../../uploads/".$data1.".pdf"?>
-<embed src="<?php echo  $tes;?>"  height="450" class="span9"  ></embed>
+
+
 <input type="hidden" id="data1" name="data1" value="<?php echo $data1 ?>"></input>
 <?php  foreach ($box_detail as $row) { 
                                         $databox_id	    = $row['databox_id'];
@@ -14,10 +14,12 @@ $data1 =$_POST['data1'];
 										$databox_search	= $row['databox_search'];
 										$databox_detail = $row['databox_detail']; 
 										$uploaded_url = $row['uploaded_url'];
+										$upload_urlpdf = $row['upload_urlpdf'];
 	
 									    }  ?>
-                                                 
-
+										<?php   $tes  ="http://localhost/j3databoxnew/uploads/".$upload_urlpdf.".pdf"?>
+                                             <embed src="<?php echo  $tes; ?>"  height="450" class="span9"  ></embed>    
+ 
 													<div align="center">
                                                     <legend > </legend>
 													</div>
@@ -58,7 +60,7 @@ $data1 =$_POST['data1'];
                                                 
 													<tr>
                                                     <td>  
-													       <div class="input-prepend"><span class="add-on" style="width: 100px; text-align: left; font-size: 14px;">หมวดเอกสาร</span></div>
+													       <div class="input-prepend"><span class="add-on" style="width: 100px; text-align: left; font-size: 14px;">ประเภทเอกสาร</span></div>
                                                     </td>
 													 	<td>
 														     <label style="background-color :#ffffff; height: 25px;  border-style: solid; border-width: 1px; font-size: 12px;">&nbsp; <?php echo $divisname ?></label>
@@ -66,7 +68,7 @@ $data1 =$_POST['data1'];
                                                     </tr>
 														<tr>
                                                     <td>  
-													       <div class="input-prepend"><span class="add-on" style="width: 100px; text-align: left; font-size: 12px;">หมวดเอกสารหลัก</span></div>
+													       <div class="input-prepend"><span class="add-on" style="width: 100px; text-align: left; font-size: 12px;">หมวดย่อย</span></div>
                                                     </td>
 													 	<td>
 														     <label style="background-color :#ffffff; height: 25px; border-style: solid; border-width: 1px;  font-size: 12px;"></label>
@@ -74,7 +76,7 @@ $data1 =$_POST['data1'];
                                                     </tr>
 														<tr>
                                                     <td>  
-													       <div class="input-prepend"><span class="add-on" style="width: 100px; text-align: left;  font-size: 12px;">วันทีี่</span></div>
+													       <div class="input-prepend"><span class="add-on" style="width: 100px; text-align: left;  font-size: 12px;">วันที่จัดทำ</span></div>
                                                     </td>
 													 	<td>
 														     <label style="background-color :#ffffff; height: 25px;  border-style: solid; border-width: 1px;  font-size: 12px;" >&nbsp; <?php echo $date ?></label>
@@ -83,7 +85,7 @@ $data1 =$_POST['data1'];
 
 														<tr>
                                                     <td>  
-													       <div class="input-prepend"><span class="add-on" style="width: 100px; text-align: left; font-size: 12px;">คนที่อัพ</span></div>
+													       <div class="input-prepend"><span class="add-on" style="width: 100px; text-align: left; font-size: 12px;">ผู้จัดทำ</span></div>
                                                     </td>
 													 	<td>
 														     <label style="background-color :#ffffff; height: 25px;  border-style: solid; border-width: 1px; font-size: 12px;" ></label>
@@ -91,7 +93,7 @@ $data1 =$_POST['data1'];
                                                     </tr>
 
 													 <td>  
-													   <div class="input-prepend"><span class="add-on" style="width: 100px; text-align: left; font-size: 12px;">อยู่กอง</span></div>
+													   <div class="input-prepend"><span class="add-on" style="width: 100px; text-align: left; font-size: 12px;">หน่วยงาน</span></div>
                                                     </td>
 													 	<td>
 														     <label style="background-color :#ffffff; height: 25px;  border-style: solid; border-width: 1px; font-size: 12px;" ></label>

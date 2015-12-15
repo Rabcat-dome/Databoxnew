@@ -314,8 +314,9 @@ function get_data_division()
 	 	  function get_data_type_up() 
     {
 	   
-		   $this->db->select('*')->select('data_type.type_id')->from('data_type')
-          ->join('data_group', 'data_type.type_id = data_group.dataId', 'LEFT');
+		   $this->db->select('*')->select('data_group.dataId')->from('data_group')
+          ->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT');
+		   $this->db->group_by("dataId"); 
 	      $query = $this->db->get();
 		  return $query->result_array();	
     }
