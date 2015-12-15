@@ -42,7 +42,7 @@ class mainFunction extends CI_Controller {
  				$config['per_page']=20;
  				$test=$config['per_page'];
  				$config['total_rows']=count($this->j3databox->get_Databox_num($test));
-               
+                 $data['search'] = $this->j3databox->get_search();
  				$config["full_tag_open"]="<div class='pagination'>";
  				$config["full_tag_close"]="</div>";
  				$this->pagination->initialize($config);
@@ -113,6 +113,7 @@ class mainFunction extends CI_Controller {
 	{
 			 	//-------pagination
  				$this->load->library('pagination');
+
  				$config['base_url']=base_url()."index.php/mainFunction/databox_search";
  				$config['per_page']=20;
  				$test=$config['per_page'];
