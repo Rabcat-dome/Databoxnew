@@ -47,7 +47,7 @@ function chk(id) {
      document.getElementById('code').value = id;	
 }
 function box_bn(id_bn) {
-     alert(id_bn);
+    
 	  var check_meun2 =document.getElementById("check_meun2").value;
       document.getElementById("select_disvisid").value =id_bn;
      select_disvisid_submit(id_bn);
