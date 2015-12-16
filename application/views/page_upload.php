@@ -64,7 +64,6 @@ echo form_open_multipart('http://127.0.0.1/j3databoxnew/index.php/mainFunction/s
 													<tr>
                                                     <td width="10px" > 
 													<br>
-
 													</td>									
                                                     </tr>
                                                     </table>
@@ -72,12 +71,20 @@ echo form_open_multipart('http://127.0.0.1/j3databoxnew/index.php/mainFunction/s
                                                     </div>
                                                     <table>
 													 <td>   
-													<div class="input-prepend"><span class="add-on" >หมวดเรื่อง</span>
+													 <script>
+													 $('input[type="radio"]').on('click change', function(e) {
+													 console.log(e.type);
+													});
+													 </script>
+													 <input type="radio" name="s-radio" value="1">  ปกติ    </input><input type="radio" name="s-radio" value="2">  ลับ   </input><input type="radio" name="s-radio" value="3">  ลับมาก   </input><input type="radio" name="s-radio" value="4">  ลับที่สุด   </input><br><p>
+													<div class="input-prepend"><span class="add-on" >ประเภทเอกสาร</span>
                                                     <select id='btn1'  class='span6' onchange="getComboA(this)">
+													<option  value='0'> กรุณาเลือกรายการ </option>
 												   <?php
+
 													foreach ($data_type_up as $row){
 												    $type_id_ck = $row['group_Id']."-data_type-".$row['type_id']."'";
-                                                    echo "<option  value='".$type_id_ck.">".$row['type_name']."</option>";
+												    echo "<option  value='".$type_id_ck.">".$row['type_name']."</option>";
 													}	
 													?>
 													
@@ -92,14 +99,16 @@ echo form_open_multipart('http://127.0.0.1/j3databoxnew/index.php/mainFunction/s
                                                     <tr>
                                                     <td>
 													<input type="hidden" id="code" name="code" cols="45" rows="5"></input>
+													
 													<script>
 													function getComboA(sel) {
                                                     var value = sel.value;  
 													document.getElementById("code").value=value;
 												    document.getElementById("data_group_id").value=value;
-													   document.getElementById("test").value=value;
+													document.getElementById("test").value=value;
                                                      }
 													</script>
+
                                                     <div id="showajax" ></div>
 													<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
 													<script type="text/javascript">
@@ -114,6 +123,7 @@ echo form_open_multipart('http://127.0.0.1/j3databoxnew/index.php/mainFunction/s
 													});
 													});
 													</script>
+													
 													<input type="hidden" id="group_Id" name="group_Id" ></input>
 													 </td>
                                                     <td  valign="bottom" align="right"> 
@@ -130,7 +140,7 @@ echo form_open_multipart('http://127.0.0.1/j3databoxnew/index.php/mainFunction/s
 														 <table border="0">
 												    <tr>
 														 <td>
-													 <div class="input-prepend"><span class="add-on"  style="width : 30%;  text-align: left;">หมวดหลัก</span>
+													 <div class="input-prepend"><span class="add-on"  style="width : 30%;  text-align: left;">ประเภทเอกสาร</span>
                                                      <select class='span5'  name="data_group_id" id="data_group_id"   >
 
 													<?php
@@ -209,10 +219,12 @@ echo form_open_multipart('http://127.0.0.1/j3databoxnew/index.php/mainFunction/s
                                     <table id="sample-table" class="table table-hover table-bordered tablesorter" >
                                     <thead>
                                     <tr>
-                                    <th>รหัส</th>
+                                    <th>วันที่</th>
                                     <th>เรื่อง</th>
-                                    <th style="width: 30%" >คำค้นหา</th>
-                                    <th style="width: 15%" >คำสัง</th>
+                                    <th style="width: 10%" >ชั้นความลับ</th>
+                                    <th style="width: 10%" >ประเภทเอกสาร</th>
+									<th style="width: 10%" >หมวดเอกสาร</th>
+									<th style="width: 10%" >คำสั่ง</th>
                            
                                     </tr>
                                     </thead>
@@ -224,17 +236,19 @@ echo form_open_multipart('http://127.0.0.1/j3databoxnew/index.php/mainFunction/s
 
 foreach ($upload as $row) { 
 
-$databox_id       = $row['databox_id']; 
-$subject          = $row['subject']; 
-$databox_search  = $row['databox_search']; 
-$databox_id_text  = $databox_id."id"; 
-$subject_text  = $databox_id."subject"; 
+$databox_id           = $row['databox_id']; 
+$subject              = $row['subject']; 
+$date_upload          = $row['date_upload']; 
+$databox_search       = $row['databox_search']; 
+$secrets              = $row['secrets_id']; 
+$databox_id_text      = $databox_id."id"; 
+$subject_text         = $databox_id."subject"; 
 $databox_search_text  = $databox_id."search"; 
-$databox_id_div  = $databox_id."id_div"; 
-$subject_div = $databox_id."subject_div"; 
-$databox_search_div  = $databox_id."search_div"; 
-$save_id  = $databox_id."save"; 
-$add_id  = $databox_id."add";  
+$databox_id_div       = $databox_id."id_div"; 
+$subject_div          = $databox_id."subject_div"; 
+$databox_search_div   = $databox_id."search_div"; 
+$save_id              = $databox_id."save"; 
+$add_id               = $databox_id."add";  
 
 ?>
 <?php $this->load->view('java/javascript_upload_insert'); ?>
@@ -245,7 +259,7 @@ $add_id  = $databox_id."add";
                                     <td>
                                     <input type="text" name="databox_id"  class="span9" id="<?php echo  $databox_id_text;  ?>" value="<?php echo  $databox_id  ?>"   
                                     onkeypress="return runScript(event)" style="display: none" >
-                                    <div id="<?php echo  $databox_id_div;  ?>"><?php echo  $databox_id  ?></div>
+                                    <div id="<?php echo  $databox_id_div;  ?>"><?php echo  $date_upload  ?></div>
                                     </td>
                                     <td>
                                     <input type="text" name="subject"  class="span9" id="<?php echo  $subject_text;  ?>" value="<?php echo  $subject  ?>" 
@@ -253,8 +267,16 @@ $add_id  = $databox_id."add";
                                     <div id="<?php echo  $subject_div;  ?>"><?php echo  $subject  ?></div>
                                     </td>
                                     <td>
-                                    <input type="text" name="databox_search"  class="span5"  id="<?php echo  $databox_search_text;  ?>" value="<?php echo  $databox_search  ?>" onkeypress="return runScript(event)" style="display: none" >
-                                    <div id="<?php echo  $databox_search_div;  ?>" ><?php echo  $databox_search  ?>
+                                    <input type="text" name="databox_search"  class="span5"  id="<?php echo  $databox_search_text;  ?>" value="<?php echo  $secrets  ?>" onkeypress="return runScript(event)" style="display: none" >
+                                    <div id="<?php echo  $databox_search_div;  ?>" ><?php echo  $secrets  ?>
+                                    </div></td>
+									    <td>
+                                    <input type="text" name="databox_search"  class="span5"  id="<?php echo  $databox_search_text;  ?>" value="<?php echo  $secrets  ?>" onkeypress="return runScript(event)" style="display: none" >
+                                    <div id="<?php echo  $databox_search_div;  ?>" ><?php echo  $secrets  ?>
+                                    </div></td>
+									    <td>
+                                    <input type="text" name="databox_search"  class="span5"  id="<?php echo  $databox_search_text;  ?>" value="<?php echo  $secrets  ?>" onkeypress="return runScript(event)" style="display: none" >
+                                    <div id="<?php echo  $databox_search_div;  ?>" ><?php echo  $secrets  ?>
                                     </div></td>
                                     <td class="td-actions"  >
                                             <div id="<?php echo  $add_id;  ?>"  >

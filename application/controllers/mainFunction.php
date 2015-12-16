@@ -89,7 +89,7 @@ class mainFunction extends CI_Controller {
                 $data['not'] = $this->input->post("select_id_type");
 			    $data1=$this->input->post("data_group");
 				$data2 =$this->input->post("divis_id");
-				$data['not2'] =  $data1."-aaa".$data2;
+				$data['not2'] =  $data1."-".$data2;
 				$data['data_group'] = $this->input->post("data_group");
 				
 				}
@@ -191,11 +191,9 @@ $this->load->view('test', $data);
 				$this->db->delete('databox_upload'); 
 			
 				}
-					
 				if($check=="save"){
 			    $this->db->where('databox_id', $databox_id);
 			    $this->db->update('databox_upload', $databox_data); 
-		
 				 }
 			    $data['division'] = $this->j3databox->get_division();
 				$data['data_type'] = $this->j3databox->get_data_type_up();
@@ -252,6 +250,7 @@ function viewMinutesFile(){
                    
          $add_classified=array(
 			    "subject"=>$this->input->post("subject"),
+			    "secrets_id"=>$this->input->post("s-radio"),
 			    "databox_search"=>$this->input->post("search"),
                 "databox_detail"=>$this->input->post("databox_detail"),
 			    "date_upload"=> $now,

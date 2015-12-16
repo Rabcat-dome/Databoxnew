@@ -1,7 +1,7 @@
  							
 								
 								<?php $attributes = array('id' => 'menu_select'); 
-echo form_open('http://localhost/j3databoxNew/index.php/mainFunction/executive', $attributes); 
+echo form_open('http://127.0.0.1/j3databoxNew/index.php/mainFunction/executive', $attributes); 
 ?>							
  <?php $this->load->view('java/javascript_box'); ?> 
 		<section class="page container">
@@ -36,8 +36,7 @@ echo form_open('http://localhost/j3databoxNew/index.php/mainFunction/executive',
 						if($ru['group_Id']=="1") {
 						$group_Id_r = $ru['group_Id'];
                         $disvis_r = $ru['divisid'];
-						echo "<button   onclick=\"onClick=box_bn('".$group_Id_r."-".$disvis_r."')\"  name='Button2' id='button2' value='Post'  class='btn'   style='cursor:pointer' /><h0 style='color:blue'>(".$this->j3databox->get_num_box($ru['group_Id']).") <div style='margin-top: -24px;  margin-left: 60px; width: 0.9%;  height: 5%; text-align:center; position: absolute; color: white;font-size:16px; text-shadow: 0 0 0.3em #FF2000, 0 0 0.3em #FF2000,
-        0 0 0.3em #FF2000;' >".$this->j3databox->get_num_box_week($ru['group_Id'])."</div> </h0><br/>".$ru['divisid']." </button>";
+						echo "<button   onclick=\"onClick=box_bn('".$group_Id_r."-".$disvis_r."')\"  name='Button2' id='button2' value='Post'  class='btn'   style='cursor:pointer' /><h0 style='color:blue'>(".$this->j3databox->get_num_box($ru['group_Id']).") <div style='margin-top: -24px;  margin-left: 60px; width: 0.9%;  height: 5%; text-align:center; position: absolute; color: white;font-size:16px; text-shadow: 0 0 0.3em #FF2000, 0 0 0.3em #FF2000, 0 0 0.3em #FF2000;>".$this->j3databox->get_num_box_week($ru['group_Id'])."</div> </h0><br/>".$ru['divisid']." </button>";
 						
 							} 
            

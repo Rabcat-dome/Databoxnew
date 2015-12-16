@@ -18,18 +18,17 @@ function myFunction_close() {
 $test=$_POST['data1'];
 $pieces = explode("-", $test);
 ?>												
-
- <div class="text-right">
-                                                  
-
-</div>
+<table  >
+<tr>
+<td>
 <div class="input-prepend"><span class="add-on"  >หมวดย่อย</span>
+  
                                                 <select class='span6'  onchange="getSelect(this)" >
 													<?php
 													if($pieces[1]=="division"){
 											                           
 													foreach ($data_division as $row){ 
-														 $row_id = $row["divisId"];
+														 $row_id = $row["divisid"];
 														 if( $pieces[0] ==$row_id){
 													$group_Id = $row["group_Id"];
 													echo "<option value='".$group_Id."'>".$row["groupname"]."</option>";
@@ -57,17 +56,23 @@ $pieces = explode("-", $test);
 													?>
 													
                                                     </select>
+												
+                                                   </td>
+												   	
+                                                   <td>
 													<script>
 													function getSelect(sel1) {
                                                     var value1 = sel1.value;  
 													document.getElementById("group_Id").value=value1;
                                                      }
 													</script>
-												     <div class="flip_add" id="flip_add" onclick="myFunction_add()" >
-                                                     <span class="add-on" > + </span>
+												     <div class="flip_add" id="flip_add" onclick="myFunction_add()"  >
+                                                     <span class="add-on"  >&nbsp;+&nbsp; </span>
                                                      </div>
 
 													 <div id="flip_close" onclick="myFunction_close()" style="display: none;">
-                                                     <span class="add-on" > - </span>
+                                                     <span class="add-on" >&nbsp;-&nbsp;</span>
                                                      </div>
-												
+													 </tr>
+</td>
+												</table>

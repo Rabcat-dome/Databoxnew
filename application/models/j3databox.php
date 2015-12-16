@@ -24,14 +24,10 @@ Class j3databox extends CI_Model
 
 	  function get_Databox_search_num()
      {
-	      	
-
 	            $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
                 ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
 				->join('division', 'division.divisId = data_group.divisId', 'LEFT')
  				->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT');
-
-				
 				$this->db->order_by('databox_upload.databox_id','DESC');
 				//$this->db->limit($test,$this->uri->segment(3));
 			   $query = $this->db->get();
@@ -200,11 +196,20 @@ Class j3databox extends CI_Model
 	 }
 
 function get_data_division()
-	{
-		$sql = "SELECT  * FROM  `division`";
+	{/*
+	
+		 
+	     $this->db->select('*')->select('division.dataId')->from('division')
+		   ->join('data_type', 'division.dataId = data_group.dataId', 'LEFT');
+	      $query = $this->db->get();
+		  return $query->result_array();	
+
+		  */
+		  	$sql = "SELECT  * FROM  division,data_group where division.divisId=data_group.divisId";
 		$query = $this->db->query($sql);
         return $query->result_array();	
 
+		
      }
 
  function get_Databox_if()
