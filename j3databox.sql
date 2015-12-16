@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2015 at 09:24 AM
+-- Generation Time: Dec 16, 2015 at 09:39 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -631,8 +631,18 @@ INSERT INTO `division_group` (`group_Id`, `group_title`) VALUES
 
 CREATE TABLE IF NOT EXISTS `secrets` (
   `id` int(1) NOT NULL,
-  `sname` varchar(20) NOT NULL
+  `sname` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `secrets`
+--
+
+INSERT INTO `secrets` (`id`, `sname`) VALUES
+(1, 'ปกติ'),
+(2, 'ลับ'),
+(3, 'ลับมาก'),
+(4, 'ลับที่สุด');
 
 --
 -- Indexes for dumped tables
@@ -673,6 +683,12 @@ ALTER TABLE `division`
 --
 ALTER TABLE `division_group`
   ADD PRIMARY KEY (`group_Id`);
+
+--
+-- Indexes for table `secrets`
+--
+ALTER TABLE `secrets`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables

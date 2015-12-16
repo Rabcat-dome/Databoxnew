@@ -196,20 +196,10 @@ Class j3databox extends CI_Model
 	 }
 
 function get_data_division()
-	{/*
-	
-		 
-	     $this->db->select('*')->select('division.dataId')->from('division')
-		   ->join('data_type', 'division.dataId = data_group.dataId', 'LEFT');
-	      $query = $this->db->get();
-		  return $query->result_array();	
-
-		  */
-		  	$sql = "SELECT  * FROM  division,data_group where division.divisId=data_group.divisId";
+	{
+		$sql = "SELECT  * FROM  division,data_group where division.divisId=data_group.divisId";
 		$query = $this->db->query($sql);
         return $query->result_array();	
-
-		
      }
 
  function get_Databox_if()
@@ -222,13 +212,7 @@ function get_data_division()
       	if( $select_id_type=="")
 		 {
 
-		/*	
-			SELECT  FROM `databox_upload` LEFT JOIN `data_group` ON `data_group`.`group_Id` = `databox_upload`.`group_Id` LEFT JOIN `division` ON `division`.`divisId` = `data_group`.`divisId` LEFT JOIN `division_group` ON `division`.`group_id` = `division_group`.`group_Id`
-       
-		   
-		   SELECT  FROM `databox_upload` LEFT JOIN `data_group` ON `data_group`.`group_Id` = `databox_upload`.`group_Id` LEFT JOIN `division` ON `division`.`divisId` = `data_group`.`divisId` LEFT JOIN `division_group` ON `division_group`.`group_id` = `data_group`.`group_Id`
-			 
-			 */
+	
 	            $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
                 ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
 				->join('division', 'division.divisId = data_group.divisId', 'LEFT')
@@ -283,9 +267,18 @@ function get_data_division()
      }
 	    function get_upload()
      {
-     	$sql = "SELECT  * FROM  databox_upload";
+
+		 $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
+          ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
+		  ->join('division', 'division.divisid = data_group.divisid', 'LEFT')
+		  ->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT');
+	      $query = $this->db->get();
+		  return $query->result_array();	
+
+     /*	$sql = "SELECT  * FROM  databox_upload";
         $query = $this->db->query($sql);
         return $query->result_array();	
+		*/
      }
 
 //----------------------------------------- หน้าแสดงข้อมูลหลังจากค้นหา
