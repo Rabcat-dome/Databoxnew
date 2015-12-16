@@ -240,7 +240,7 @@ $databox_id           = $row['databox_id'];
 $subject              = $row['subject']; 
 $date_upload          = $row['date_upload']; 
 $databox_search       = $row['databox_search']; 
-$secrets              = $row['secrets_id']; 
+$secrets              = $row['sname']; 
 $divisname            = $row['divisname']; 
 if($divisname ==""){$divisname  = $row['type_name']; }
 $groupname            = $row['groupname']; 

@@ -271,7 +271,9 @@ function get_data_division()
 		 $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
           ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
 		  ->join('division', 'division.divisid = data_group.divisid', 'LEFT')
-		  ->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT');
+		  ->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT')
+		  ->join('secrets', 'secrets.id = databox_upload.secrets_id', 'LEFT');
+		 	$this->db->limit('10',$this->uri->segment(3));
 	      $query = $this->db->get();
 		  return $query->result_array();	
 
