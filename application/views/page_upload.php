@@ -241,6 +241,7 @@ $subject              = $row['subject'];
 $date_upload          = $row['date_upload']; 
 $databox_search       = $row['databox_search']; 
 $secrets              = $row['secrets_id']; 
+$group                = $row['group_Id']; 
 $databox_id_text      = $databox_id."id"; 
 $subject_text         = $databox_id."subject"; 
 $databox_search_text  = $databox_id."search"; 
@@ -272,7 +273,7 @@ $add_id               = $databox_id."add";
                                     </div></td>
 									    <td>
                                     <input type="text" name="databox_search"  class="span5"  id="<?php echo  $databox_search_text;  ?>" value="<?php echo  $secrets  ?>" onkeypress="return runScript(event)" style="display: none" >
-                                    <div id="<?php echo  $databox_search_div;  ?>" ><?php echo  $secrets  ?>
+                                    <div id="<?php echo  $databox_search_div;  ?>" ><?php echo  $group  ?>
                                     </div></td>
 									    <td>
                                     <input type="text" name="databox_search"  class="span5"  id="<?php echo  $databox_search_text;  ?>" value="<?php echo  $secrets  ?>" onkeypress="return runScript(event)" style="display: none" >
