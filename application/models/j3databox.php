@@ -283,7 +283,7 @@ function get_data_division()
      }
 	    function get_upload()
      {
-     	$sql = "SELECT  * FROM `databox_upload`   order  by `databox_id` ASC LIMIT 10 , 13 ";
+     	$sql = "SELECT  * FROM  databox_upload";
         $query = $this->db->query($sql);
         return $query->result_array();	
      }
