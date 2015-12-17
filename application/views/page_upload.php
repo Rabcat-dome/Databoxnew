@@ -235,13 +235,17 @@ echo form_open_multipart('http://127.0.0.1/j3databoxnew/index.php/mainFunction/s
 <?php
 
 foreach ($upload as $row) { 
-
+$group_Id              = $row['group_Id']; 
+$divisId              = $row['divisId']; 
+$type_id              = $row['type_id']; 
 $databox_id           = $row['databox_id']; 
+$group_title          = $row['group_title']; 
 $subject              = $row['subject']; 
 $date_upload          = $row['date_upload']; 
 $databox_search       = $row['databox_search']; 
 $secrets              = $row['sname']; 
-$divisname            = $row['divisname']; 
+$secrets_id           = $row['id']; 
+$divisname            = $row['group_title']; 
 if($divisname ==""){$divisname  = $row['type_name']; }
 $groupname            = $row['groupname']; 
 $databox_id_text      = $databox_id."id"; 
@@ -256,7 +260,6 @@ $add_id               = $databox_id."add";
 ?>
 <?php $this->load->view('java/javascript_upload_insert'); ?>
                                     <script>
-                                    //alert(<?php echo $databox_id;?>);
                                     </script>
                                     <tr>
                                     <td>
@@ -270,15 +273,56 @@ $add_id               = $databox_id."add";
                                     <div id="<?php echo  $subject_div;  ?>"><?php echo  $subject  ?></div>
                                     </td>
                                     <td>
-                                    <input type="text" name="databox_search"  class="span5"  id="<?php echo  $databox_search_text;  ?>" value="<?php echo  $secrets  ?>" onkeypress="return runScript(event)" style="display: none" >
-                                    <div id="<?php echo  $databox_search_div;  ?>" ><?php echo  $secrets  ?>
+                                    <select type="text" name="databox_search"  class="span5"  id="<?php echo  $databox_search_text;  ?>" onkeypress="return runScript(event)" style="display: none" >
+									
+									<option  value='1'  <?php if($secrets_id=="1"){echo "selected";} ?> >ปกติ</option>
+									<option  value='2'  <?php if($secrets_id=="2"){echo "selected";} ?> >ลับ</option>
+									<option  value='3'  <?php if($secrets_id=="3"){echo "selected";} ?> >ลับมาก</option>
+									<option  value='4'  <?php if($secrets_id=="4"){echo "selected";} ?> >ลับที่สุด</option>
+   
+									</select>
+                                    <div name="<?php echo  $databox_search_div;  ?>" ><?php echo  $secrets  ?>
                                     </div></td>
-									    <td>
-                                    <input type="text" name="databox_search"  class="span5"  id="<?php echo  $databox_search_text;  ?>" value="<?php echo  $secrets  ?>" onkeypress="return runScript(event)" style="display: none" >
-                                    <div id="<?php echo  $databox_search_div;  ?>" ><?php echo  $divisname  ?>
+									<td>
+                                
+									  <select class='span5' name="databox_search"  class="span5"  id="<?php echo  $databox_search_text;  ?>" 
+									  onkeypress="return runScript(event)" style="display: none"  >
+													<?php
+													foreach ($data_type as $row){
+													?>
+                                                    <option  value='<?php echo $row['dataId'] ?>'  <?php  if($type_id==$row['dataId']){   echo "selected";  }?>  >
+													<?php echo $row['type_name']; ?></option>";
+													<?php
+													}
+													?>
+												    <?php
+													foreach ($division_group_up as $row){
+												     ?>
+												    <option  value='<?php echo $row['group_Id'] ?>' <?php  if($divisId==$row['group_Id']){   echo  "selected"; }?> >
+													<?php echo $row['group_title']; ?></option>";
+													<?php
+													}
+													?>
+									 </select>
+                                    <div id="<?php echo  $databox_search_div;  ?>" ><?php echo  $divisname; ?>
                                     </div></td>
-									    <td>
-                                    <input type="text" name="databox_search"  class="span5"  id="<?php echo  $databox_search_text;  ?>" value="<?php echo  $secrets  ?>" onkeypress="return runScript(event)" style="display: none" >
+									<td>
+                                      <select class='span5' name="databox_search"  class="span5"  id="<?php echo  $databox_search_text;  ?>"
+									  onkeypress="return runScript(event)" 
+									  style="display: none"  >
+													<?php
+													foreach ($data_group_up as $row){
+										            $group_Id_g = $row['group_Id'];
+										            if($group_Id==$group_Id_g){
+													?>
+                                                    <option  value='<?php echo $row['group_Id'] ?>'  >
+													<?php echo $row['groupname'] ?></option>";
+													<?php
+													}
+													}
+													?>
+												 
+									 </select>
                                     <div id="<?php echo  $databox_search_div;  ?>" ><?php echo  $groupname  ?>
                                     </div></td>
                                     <td class="td-actions"  >

@@ -146,6 +146,7 @@ class mainFunction extends CI_Controller {
 
 	   public function page_upload()
      {          
+		        $data['division_group_up'] = $this->j3databox->get_division_group_up();
 			    $data['search'] = $this->j3databox->get_search();
 		        $data['division'] = $this->j3databox->get_division();
 				$data['data_type'] = $this->j3databox->get_data_type_up();
