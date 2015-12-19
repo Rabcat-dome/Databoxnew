@@ -7920,7 +7920,7 @@ body > #body-container {
   color: #999999;
 }
 .box {
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   border: 1px solid #e2e2e2;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;

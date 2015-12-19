@@ -1,7 +1,7 @@
 
 <?php
 $data1 =$_POST['data1'];
-$data1 =$_POST['data1'];
+
 ?>
 
 

@@ -183,7 +183,8 @@ $this->load->view('test', $data);
 				$databox_id = $this->input->post("databox_save");
 			    $databox_data=array(
 				"subject"=> $this->input->post("subject_save"),
-				"databox_search"=>$this->input->post("databox_search_text_save"),
+				"group_Id"=>$this->input->post("group_Id_save"),
+				"secrets_id"=>$this->input->post("secrets_save"),
 				);
 				
 				 
