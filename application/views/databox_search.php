@@ -54,22 +54,28 @@ echo form_open_multipart('http://127.0.0.1/j3databoxnew/index.php/mainFunction/d
   </script>
 
 
+ 
+  
   <div style="float:left;" >
       ค้นหาวันที่ :
      <input name="from-date" type="text" id="from-datepicker"  />
   </div>
 
-  <div style="float:left;" >
+  <div style="float:left; " >
       ถึง :
      <input name="to-date" type="text" id="to-datepicker" />
   </div>
-  ค้นหา ชื่อ/คำค้นหา/เรื่องย่อย
-    <div style="float:left;">
+   </p>
+<br>
+<br>
+    <div >
+          ค้นหา ชื่อ/คำค้นหา/เนื้อหา : 
      <input name="search" type="text" id="search" />
-  </div>
 <a onclick="document.getElementById('upload_pdf').submit()" href="#"  class="btn btn-small btn-danger">
                          <i class="btn-icon-only icon-save"  >ค้นหา</i>
                                                         </a>
+    </div>
+
 
       		  <div id="span8" class="span12">
 
