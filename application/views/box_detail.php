@@ -19,7 +19,12 @@ $data1 =$_POST['data1'];
 									    }  ?>
 									
 										<?php   $tes  ="http://127.0.0.1/j3databoxnew/uploads/".$upload_urlpdf.""?>
-                                             <embed src="<?php echo  $tes; ?>"  height="450" class="span9"  ></embed>    
+                                           <?php if($upload_urlpdf!=""){?>
+											 <embed src="<?php echo  $tes; ?>"  height="450" class="span9"  ></embed>  
+											<?php } ?>
+											  <?php if($upload_urlpdf==""){?>
+											 <img src="http://127.0.0.1/j3databoxnew/uploads/not_pic.png" style="height:450;">
+											<?php } ?>  
  
 													<div align="center">
                                                     <legend > </legend>

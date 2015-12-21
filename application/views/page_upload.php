@@ -383,7 +383,7 @@ $databox_group_text  = $databox_id."group";
                                                 </div>
                                                 </div>
 														<input id="nnn"></input>
-															<div id="ccc" name="ccc">mmmmm</div>
+															<div id="ccc" name="ccc"></div>
 												<script type="text/javascript">
 
 

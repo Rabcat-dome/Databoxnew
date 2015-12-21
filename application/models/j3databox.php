@@ -9,13 +9,30 @@ Class j3databox extends CI_Model
 	 //--------databox_search
       function get_Databox_search($test)
      {
-	     	
+	     	   
+			
 
+
+			  $fromdate= $this->input->post("from-date");
+			   $begin_fromdate ="";
+				$begin_ex = explode("/",$fromdate);
+
+				if($fromdate!=""){
+                $begin_fromdate  = $begin_ex[2]."-".$begin_ex[1]."-".$begin_ex[0];
+                }
+
+				  $todate= $this->input->post("to-date");
+			    $todate_end ="";
+				$todate_ex = explode("/",$todate);
+
+				if($todate!=""){
+                $todate_end  = $todate_ex[2]."-".$todate_ex[1]."-".$todate_ex[0];
+                }
 	            $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
                 ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
 				->join('division', 'division.divisId = data_group.divisId', 'LEFT')
  				->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT');
-				
+				$this->db->where("databox_upload.date_upload BETWEEN  '$begin_fromdate' AND '$todate_end'", NULL, FALSE );
 				$this->db->order_by('databox_upload.databox_id','DESC');
 				$this->db->limit($test,$this->uri->segment(3));
 			   $query = $this->db->get();
@@ -136,6 +153,18 @@ Class j3databox extends CI_Model
         $query = $this->db->query($sql);
         return $query->result_array();	
     }
+  function get_data_type_ms() 
+    {
+
+		   $this->db->select('*')->select('data_group.dataId')->from('data_group')
+		   ->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT');
+		   $this->db->where('data_group.dataId = data_type.type_id');
+		   $this->db->group_by('data_group.dataId'); 
+	      $query = $this->db->get();
+		  return $query->result_array();
+
+		
+    }
 	    function get_division_group()
      {
 		$sql = "SELECT  * FROM  `division_group`";
@@ -208,6 +237,8 @@ function get_data_division()
 	 	 $select_id_type = $this->input->post("select_id_type");
 		 $select_disvisid= $this->input->post("select_disvisid");
          $select_disvisid_ex = explode("-",$select_disvisid);
+		if( $select_disvisid_ex[1]!="type_id")
+		 {
       	if( $select_id_type=="")
 		 {
 
@@ -218,18 +249,27 @@ function get_data_division()
 				->join('division_group', 'division.group_id = `division_group.group_Id', 'LEFT');
 				$this->db->where('division_group.group_id like','%'. $select_disvisid_ex[0].'%');
 				$this->db->where('division.divisId like','%'.$select_disvisid_ex[1].'%');
-				 if(isset($select_disvisid_ex[2])){  $select_disvisid_ex2 =$select_disvisid_ex[2];} else{$select_disvisid_ex2 = "";} 
+				 if(isset($select_disvisid_ex[2])){  $select_disvisid_ex2 =$select_disvisid_ex[2]; 
+				 if($select_disvisid_ex[2]=="box"){$select_disvisid_ex2 = "";}
+				 } else{$select_disvisid_ex2 = "";} 
 				$this->db->where('databox_upload.group_Id like','%'.$select_disvisid_ex2.'%');
 				$this->db->order_by('databox_upload.databox_id','DESC');
 
 		 }
-	   	if( $select_id_type!="")
+		 }
+	
+
+		  if( $select_disvisid_ex[1]=="type_id")
 		 {
-			$this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
-                ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
-				->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT');
-			$this->db->where('data_type.type_id ',  $select_id_type);
-		  }
+	            $this->db->select('*')->select('data_group.dataId')->from('data_group')
+				->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT')
+				->join('databox_upload', 'databox_upload.group_id = data_group.group_id', 'LEFT');
+				$this->db->where('data_type.type_id',  $select_disvisid_ex[0]);
+				$this->db->where('databox_upload.subject !=',  'null');
+				if(isset($select_disvisid_ex[2])){  $select_disvisid_ex2 =$select_disvisid_ex[2];} else{$select_disvisid_ex2 = "";} 
+				$this->db->where('data_group.group_id like','%'. $select_disvisid_ex2.'%');
+		 }
+
 			$query = $this->db->get();
 		    return $query->result_array();
      }

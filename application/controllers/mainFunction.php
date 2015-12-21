@@ -66,6 +66,7 @@ class mainFunction extends CI_Controller {
                 $data['data_group'] = $this->j3databox->get_data_group();
 				 $data['division_by'] = $this->j3databox->get_division_by();
 			    $data['data_type'] = $this->j3databox->get_data_type();
+				$data['data_type_ms'] = $this->j3databox->get_data_type_ms();
 			    $data['division_group'] = $this->j3databox->get_division_group_division();
 				if($select_to3==""){
 				$data['box'] = $this->j3databox->get_Databox($test);
@@ -89,10 +90,11 @@ class mainFunction extends CI_Controller {
                 $data['not'] = $this->input->post("select_id_type");
 			    $data1=$this->input->post("data_group");
 				$data2 =$this->input->post("divis_id");
+				$data3 =$this->input->post("divis_id");
 				$data['not2'] =  $data1."-".$data2;
 				$data['data_group'] = $this->input->post("data_group");
-				
 				}
+				
 				
 				$this->load->view('box',$data); 
 	}

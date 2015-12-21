@@ -54,6 +54,7 @@
 
 
 			</style>
+			
 			<div id="show" name="show"   style="display:none;  position: absolute;  background-color: #ffffff; -webkit-box-shadow: 
 			-2px 1px 17px 2px rgba(0,0,0,0.75);
             -moz-box-shadow: -2px 1px 17px 2px rgba(0,0,0,0.75);
@@ -73,11 +74,12 @@
 		    <?php	$attributes = array('id' => 'main'); 
             echo form_open_multipart('http://127.0.0.1/j3databoxnew/index.php/mainFunction/databox_search', $attributes); ?>
 
+
             <input type="hidden" name="id_box" id="id_box"></input>
 				<?php	
 		    foreach ($search as $r) {
 		$hidden=$r['databox_id'];
-			echo "<tr style='display: table-row; '><td class='even' onclick=\"chk_menu(".$hidden.")\" >".$r['subject']."</td></tr>";
+			echo "<tr style='display: table-row; '><td class='even' click=\"chk_menu(".$hidden.")\" > <div style='color:#000000'>".$r['subject']."</div></td></tr>";
 
 				}
 				?>

@@ -8,8 +8,7 @@
                                     <div class="text-right">
                                     </div>
                                     
-
-                                                   
+<input type="text" placeholder="Pickup Date" id="datepicker" name="datepicker" class="formfield_text hasDatepicker">  
 												
 <div class="panel_hidden">
 

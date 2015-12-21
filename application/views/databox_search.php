@@ -8,10 +8,47 @@
 				  <?php $this->load->view('java/javascript_box'); ?>
 <div class="span2">
 
+
 </div>
+ <?php	$attributes = array('id' => 'upload_pdf'); 
+echo form_open_multipart('http://127.0.0.1/j3databoxnew/index.php/mainFunction/databox_search', $attributes); ?>
+ <script>
+   
+	  $(function() {
+		  $( "#from-datepicker" ).datepicker({
+        dateFormat: "yy-mm-dd"
+    });
+
+   
+
+    });
+  </script>
+
+  <script>
+    $(function() {
+		  $( "#to-datepicker" ).datepicker({
+        dateFormat: "yy-mm-dd"
+    });
+
+   
+
+    });
+  </script>
+
 
       		  <div id="span8" class="span12">
 
+
+  <div style="float:left; width:330px">
+     <input name="from-date" type="text" id="from-datepicker"  />
+  </div>
+
+  <div style="float:left; width:330px">
+     <input name="to-date" type="text" id="to-datepicker" />
+  </div>
+<a onclick="document.getElementById('upload_pdf').submit()" href="#"  class="btn btn-small btn-danger">
+                                                        <i class="btn-icon-only icon-save"  >ค้นหา</i>
+                                                        </a>
                 <div class="row">
                    	
           	 <div id="Person-1" class="box">
@@ -103,7 +140,7 @@ $(document).ready(function(){
                 
                 </div>
             </div>
-                         
+                         <?php echo form_close(); ?>
                     <?php $this->load->view('footer/footer'); ?>
                     
 
