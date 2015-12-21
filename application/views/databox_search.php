@@ -1,6 +1,25 @@
-									    <?php $this->load->view('header/header_title'); ?>
-										<?php $this->load->view('menu/menu'); ?>
-										<?php $this->load->view('java/javascript_head.php'); ?>
+	       <?php $this->load->view('header/header_title'); ?>
+	       <?php $this->load->view('menu/menu'); ?>
+	       <?php $this->load->view('java/javascript_head.php'); ?>
+
+<section class="page container">
+    <div class="row">
+
+        <div class="span2" >
+          
+                <ul id="person-list" class="nav nav-list">
+                    <li class="nav-header">&nbsp;</li>
+                    <li class="active">
+                
+                  
+                    <li class="nav-header">&nbsp;</li>
+                    <li>
+                   
+           
+                      <li class="nav-header">&nbsp;</li>
+                  
+  
+            </div>
 
 				 <input type  = "hidden" id="group_Id"         name="group_Id"      <?php echo "value=".$group_Id_f; ?>></input>
                   <input type  = "hidden" id="data_group"       name="data_group"      ></input>
@@ -35,18 +54,21 @@ echo form_open_multipart('http://127.0.0.1/j3databoxnew/index.php/mainFunction/d
   </script>
 
 
-  <div style="float:left; width:330px">
+  <div style="float:left;" >
+      ค้นหาวันที่ :
      <input name="from-date" type="text" id="from-datepicker"  />
   </div>
 
-  <div style="float:left; width:330px">
+  <div style="float:left;" >
+      ถึง :
      <input name="to-date" type="text" id="to-datepicker" />
   </div>
-    <div style="float:left; width:330px">
+  ค้นหา ชื่อ/คำค้นหา/เรื่องย่อย
+    <div style="float:left;">
      <input name="search" type="text" id="search" />
   </div>
 <a onclick="document.getElementById('upload_pdf').submit()" href="#"  class="btn btn-small btn-danger">
-                                                        <i class="btn-icon-only icon-save"  >ค้นหา</i>
+                         <i class="btn-icon-only icon-save"  >ค้นหา</i>
                                                         </a>
 
       		  <div id="span8" class="span12">
@@ -58,9 +80,8 @@ echo form_open_multipart('http://127.0.0.1/j3databoxnew/index.php/mainFunction/d
                  <div class="box-header">
                             <i class="icon-user iconิ-large"></i>
                              <h5>ข้อมูล Databox</h5>
-                        </div>
-						   <div class="box-content box-table">
-                      
+                 </div>
+		    <div class="box-content box-table">
                     <table id="tableId" class="table table-hover tablesorter">
                             <thead>
                                 <tr>

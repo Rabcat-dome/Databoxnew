@@ -53,16 +53,15 @@
 }
 
 
-			</style>
-			
-			<div id="show" name="show"   style="display:none;  position: absolute;  background-color: #ffffff; -webkit-box-shadow: 
-			-2px 1px 17px 2px rgba(0,0,0,0.75);
-            -moz-box-shadow: -2px 1px 17px 2px rgba(0,0,0,0.75);
-             box-shadow: -2px 1px 17px 2px rgba(0,0,0,0.75);
-             padding-right: 10px;
-             padding-bottom: 10px;
-             padding-left: 10px;
-			 " >
+                    </style>
+                    <div id="show" name="show"   style="display:none;  position: absolute;  background-color: #D8D8D8; -webkit-box-shadow: 
+                    -2px 1px 17px 2px rgba(0,0,0,0.75);
+                    -moz-box-shadow: -2px 1px 17px 2px rgba(0,0,0,0.75);
+                    box-shadow: -2px 1px 17px 2px rgba(0,0,0,0.75);
+                    padding-right: 10px;
+                    padding-bottom: 10px;
+                    padding-left: 10px;
+                    " >
 			
 			<table width="300px" id="tblData" class="target" bgcolor="#ACAAFC">
 			<div style="position: absolute;" class="container"> <a href="#games">
@@ -77,17 +76,26 @@
 
             <input type="hidden" name="id_box" id="id_box"></input>
 				<?php	
+                                /*
 		    foreach ($search as $r) {
 		$hidden=$r['databox_id'];
 			echo "<tr style='display: table-row; '><td class='even' click=\"chk_menu(".$hidden.")\" > <div style='color:#000000'>".$r['subject']."</div></td></tr>";
+				}*/
+				?>
+          
+            
+            		<?php	
+		    foreach ($search as $r) {
+		$hidden=$r['databox_id'];
+			echo "<tr style='display: table-row; '><td class='even' onclick=\"chk_menu(".$hidden.")\" ><button style='text-align: left; width: 400px'>".$r['subject']."</button></td></tr>";
 
 				}
 				?>
 			
 				<script>
-			function chk_menu(test1)
+			function chk_menu(id_search)
 			{
-		 document.getElementById("id_box").value=test1;
+		 document.getElementById("id_box").value=id_search;
 		 document.getElementById('main').submit();
 			}
 			</script>
@@ -214,27 +222,27 @@ $('.container').on({
                     <header class="page-header">
                         <h3>ระบบงาน ยก.ทหาร<br/>
                             <small><?php
-							           $var1 =  date("Y-m-d"); 
-										$dayArray = array("อาทิตย์","จันทร์","อังคาร", "พุธ", "พฤหัสบดี","ศุกร์","เสาร์");
-										$monthArray = array("มกราคม","มกราคม","กุมภาพันธ์","มีนาคม", "เมษายน", "พฤษภาคม","มิถุนายน","กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน","ธันวาคม");
-									    $days_yesr = $var1;
-										$day=substr($days_yesr,8,3);
-					                    $month=substr($days_yesr,5,2);
-										$yesr=substr($days_yesr,0,4);
-									    $month =$month+0;
-										$day =$day+0;
-										$month = $monthArray[$month];
-										$daydata =  $var1;
-                                        $daydata = explode("-",$daydata);
-                                        $jd=cal_to_jd(CAL_GREGORIAN,$daydata[1],$daydata[2],$daydata[0]); //2011-01-29
-                                        $day_text = (jddayofweek($jd,1));	    
-										echo "วันที่&nbsp;";	
-										echo $day;
-										echo "&nbsp;";
-										echo $month;
-										echo "&nbsp;";
-										echo $yesr+543;
-										?>
+                                                    $var1 =  date("Y-m-d"); 
+                                                    $dayArray = array("อาทิตย์","จันทร์","อังคาร", "พุธ", "พฤหัสบดี","ศุกร์","เสาร์");
+                                                    $monthArray = array("มกราคม","มกราคม","กุมภาพันธ์","มีนาคม", "เมษายน", "พฤษภาคม","มิถุนายน","กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน","ธันวาคม");
+                                                    $days_yesr = $var1;
+                                                    $day=substr($days_yesr,8,3);
+                                                    $month=substr($days_yesr,5,2);
+                                                    $yesr=substr($days_yesr,0,4);
+                                                    $month =$month+0;
+                                                    $day =$day+0;
+                                                    $month = $monthArray[$month];
+                                                    $daydata =  $var1;
+                                                    $daydata = explode("-",$daydata);
+                                                    $jd=cal_to_jd(CAL_GREGORIAN,$daydata[1],$daydata[2],$daydata[0]); //2011-01-29
+                                                    $day_text = (jddayofweek($jd,1));	    
+                                                    echo "วันที่&nbsp;";	
+                                                    echo $day;
+                                                    echo "&nbsp;";
+                                                    echo $month;
+                                                    echo "&nbsp;";
+                                                    echo $yesr+543;
+                                    ?>
 										</small>
                         </h3>
                     </header>
@@ -249,8 +257,7 @@ $('.container').on({
                         </ul>
                         <ul class="nav nav-tabs" >
                             <li class="active">
-                            <a href="index">หน้าแรก</a></li>
-                            <li><a href="executive">ภารกิจกรม</a></li>
+                            <li><a href="executive">หน้าแรก</a></li>
 							</ul>
                        
                     </div>
