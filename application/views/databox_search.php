@@ -3,7 +3,6 @@
 										<?php $this->load->view('java/javascript_head.php'); ?>
 
 				 <input type  = "hidden" id="group_Id"         name="group_Id"      <?php echo "value=".$group_Id_f; ?>></input>
-				  
                   <input type  = "hidden" id="data_group"       name="data_group"      ></input>
 				  <?php $this->load->view('java/javascript_box'); ?>
 <div class="span2">
@@ -36,9 +35,6 @@ echo form_open_multipart('http://127.0.0.1/j3databoxnew/index.php/mainFunction/d
   </script>
 
 
-      		  <div id="span8" class="span12">
-
-
   <div style="float:left; width:330px">
      <input name="from-date" type="text" id="from-datepicker"  />
   </div>
@@ -46,9 +42,16 @@ echo form_open_multipart('http://127.0.0.1/j3databoxnew/index.php/mainFunction/d
   <div style="float:left; width:330px">
      <input name="to-date" type="text" id="to-datepicker" />
   </div>
+    <div style="float:left; width:330px">
+     <input name="search" type="text" id="search" />
+  </div>
 <a onclick="document.getElementById('upload_pdf').submit()" href="#"  class="btn btn-small btn-danger">
                                                         <i class="btn-icon-only icon-save"  >ค้นหา</i>
                                                         </a>
+
+      		  <div id="span8" class="span12">
+
+
                 <div class="row">
                    	
           	 <div id="Person-1" class="box">

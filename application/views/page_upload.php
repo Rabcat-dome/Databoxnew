@@ -98,7 +98,7 @@ echo form_open_multipart('http://127.0.0.1/j3databoxnew/index.php/mainFunction/s
                                                     </select></td>
                                                     <tr>
                                                     <td>
-													<input type="text" id="code" name="code" cols="45" rows="5"></input>
+                                                        <input type="hidden" id="code" name="code" cols="45" rows="5"></input>
 													
 													<script>
 													function getComboA(sel) {
@@ -223,158 +223,93 @@ echo form_open_multipart('http://127.0.0.1/j3databoxnew/index.php/mainFunction/s
 									<input type="hidden" name="group_Id_save" id="group_Id_save" > </input>
 									<br>
 									<br>
-                                    <table id="sample-table" class="table table-hover table-bordered tablesorter" >
+                                                    <table id="sample-table" class="table table-hover table-bordered tablesorter" >
                                     <thead>
                                     <tr>
-                                    <th>วันที่</th>
+                                    <th>รหัส</th>
                                     <th>เรื่อง</th>
-                                    <th style="width: 10%" >ชั้นความลับ</th>
-                                    <th style="width: 10%" >ประเภทเอกสาร</th>
-									<th style="width: 10%" >คำค้นหา</th>
-									<th style="width: 10%" >คำสั่ง</th>
+                                    <th style="width: 30%" >คำค้นหา</th>
+                                    <th style="width: 70px" >คำสัง</th>
+                           
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <input type="hidden" name="databox_save" id="databox_save" > </input>
                                     <input type="hidden" name="subject_save" id="subject_save" > </input>
                                     <input type="hidden" name="databox_search_text_save" id="databox_search_text_save" > </input>
-
-									
 <?php
 
 foreach ($upload as $row) { 
-$group_Id             = $row['group_Id']; 
-$divisId              = $row['divisId']; 
-$type_id              = $row['type_id']; 
-$databox_id           = $row['databox_id']; 
-$group_title          = $row['group_title']; 
-$subject              = $row['subject']; 
-$date_upload          = $row['date_upload']; 
-$databox_search       = $row['databox_search']; 
-$secrets              = $row['sname']; 
-$secrets_id           = $row['id']; 
-$divisname            = $row['group_title']; 
-if($divisname ==""){$divisname  = $row['type_name']; }
-$groupname            = $row['groupname']; 
-$databox_id_text      = $databox_id."id"; 
-$subject_text         = $databox_id."subject"; 
-$databox_id_div       = $databox_id."id_div"; 
-$subject_div          = $databox_id."subject_div"; 
-$save_id              = $databox_id."save"; 
-$add_id               = $databox_id."add";  
-$databox_search_div   = $databox_id."search_div"; 
+
+$databox_id       = $row['databox_id']; 
+$subject          = $row['subject']; 
+$databox_search  = $row['databox_search']; 
+$databox_id_text  = $databox_id."id"; 
+$subject_text  = $databox_id."subject"; 
 $databox_search_text  = $databox_id."search"; 
-//-------------------------------ชั้นความลับ
-$databox_secrets       = $row['sname']; 
-$databox_secrets_div   = $databox_id."secrets_div"; 
-$databox_secrets_text  = $databox_id."secrets"; 
-//-------------------------------ชั้นความลับ
-//-------------------------------ประเภทเอกสาร
-$databox_type      = $divisname; 
-$databox_type_div   = $databox_id."type_div"; 
-$databox_type_text  = $databox_id."type"; 
-//-------------------------------ประเภทเอกสาร
-//-------------------------------หมวดเอกสาร
-$databox_group       = $row['group_Id']; 
-$databox_group_div   = $databox_id."group_div"; 
-$databox_group_text  = $databox_id."group"; 
-//-------------------------------หมวดเอกสาร
+$databox_id_div  = $databox_id."id_div"; 
+$subject_div = $databox_id."subject_div"; 
+$databox_search_div  = $databox_id."search_div"; 
+$save_id  = $databox_id."save"; 
+$add_id  = $databox_id."add";  
+
 ?>
-<?php $this->load->view('java/javascript_upload_insert'); ?>
                                     <script>
+                                    //alert(<?php echo $databox_id;?>);
                                     </script>
                                     <tr>
                                     <td>
-                                    <input type="text" name="databox_id"  class="span9" id="<?php echo  $databox_id_text;  ?>" value="<?php echo  $databox_id  ?>"   
+                                    <input type="text" name="databox_id" id="<?php echo  $databox_id_text;  ?>" value="<?php echo  $databox_id  ?>"   
                                     onkeypress="return runScript(event)" style="display: none" >
-                                    <div id="<?php echo  $databox_id_div;  ?>"><?php echo  $date_upload  ?></div>
+                                    <div id="<?php echo  $databox_id_div;  ?>"><?php echo  $databox_id  ?></div>
                                     </td>
                                     <td>
-                                    <input type="text" name="subject"  class="span9" id="<?php echo  $subject_text;  ?>" value="<?php echo  $subject  ?>" 
-                                    onkeypress="return runScript(event)" style="display: none; width: 350px;" >
+                                    <input type="text" name="subject" id="<?php echo  $subject_text;  ?>" value="<?php echo  $subject  ?>" 
+                                    onkeypress="return runScript(event)" style="display: none" >
                                     <div id="<?php echo  $subject_div;  ?>"><?php echo  $subject  ?></div>
                                     </td>
                                     <td>
-                                    <select type="text" name="databox_secrets"  class="span5"  id="<?php echo  $databox_secrets_text;  ?>" onkeypress="return runScript(event)" style="display: none;  width: 100px;" >
-									
-									<option  value='1'  <?php if($secrets_id=="1"){echo "selected";} ?> >ปกติ</option>
-									<option  value='2'  <?php if($secrets_id=="2"){echo "selected";} ?> >ลับ</option>
-									<option  value='3'  <?php if($secrets_id=="3"){echo "selected";} ?> >ลับมาก</option>
-									<option  value='4'  <?php if($secrets_id=="4"){echo "selected";} ?> >ลับที่สุด</option>
-   
-									</select>
-                                    <div id="<?php echo  $databox_secrets_div;  ?>" ><?php echo  $secrets  ?>
-                                    </div></td>
-									<td>
-                                
-									  <select class='span5' name="databox_type"  class="span5"  id="<?php echo  $databox_type_text;  ?>" 
-									  onkeypress="return runScript(event)" style="display: none; width: 150px;" onchange="change(this)" >
-													<?php
-													foreach ($data_type as $row){
-													?>
-                                                    <option  value='<?php echo $row['dataId']."-table" ?>'  <?php  if($type_id==$row['dataId']){   echo "selected";  }?>  >
-													<?php echo $row['type_name']; ?></option>";
-													<?php
-													}
-													?>
-												    <?php
-													foreach ($division_group_up as $row){
-												     ?>
-												    <option  value='<?php echo $row['group_Id']."-table" ?>' <?php  if($divisId==$row['group_Id']){   echo  "selected"; }?> >
-													<?php echo $row['group_title']; ?></option>";
-													<?php
-													}
-													?>
-									</select>
-                                    <div id="<?php echo  $databox_type_div;  ?>" ><?php echo  $divisname; ?>
-                                    </div></td>
-									<td>
-                                     <input type="text" name="databox_search"  class="span5"  id="<?php echo  $databox_search_text;  ?>" value="<?php echo  $databox_search  ?>" onkeypress="return runScript(event)" style="display: none" >
+                                    <input type="text" name="databox_search"   id="<?php echo  $databox_search_text;  ?>" value="<?php echo  $databox_search  ?>" onkeypress="return runScript(event)" style="display: none" >
                                     <div id="<?php echo  $databox_search_div;  ?>" ><?php echo  $databox_search  ?>
                                     </div></td>
                                     <td class="td-actions"  >
                                             <div id="<?php echo  $add_id;  ?>"  >
                                     <a href="javascript:;" class="btn btn-small btn-info">
                                     <i class="btn-icon-only icon-ok"  onClick="add(
-                                            '<?php echo  $databox_id_text  ?>','<?php echo  $subject_text ?>','<?php echo  $databox_secrets_text; ?>',
-                                            '<?php echo  $databox_id  ?>','<?php echo  $subject  ?>','<?php echo  $databox_secrets  ?>',
-                                            '<?php echo  $databox_id_div  ?>','<?php echo  $subject_div  ?>','<?php echo  $databox_secrets_div  ?>',
-                                            '<?php echo  $save_id;  ?>','<?php echo  $add_id;  ?>'
-											,'<?php echo  $databox_type;  ?>','<?php echo  $databox_type_div;  ?>','<?php echo  $databox_type_text;  ?>'
-											,'<?php echo  $databox_group;  ?>','<?php echo  $databox_group_div;  ?>','<?php echo  $databox_group_text;  ?>'
-											);"></i>
+                                            '<?php echo  $databox_id_text  ?>','<?php echo  $subject_text ?>','<?php echo  $databox_search_text; ?>',
+                                            '<?php echo  $databox_id  ?>','<?php echo  $subject  ?>','<?php echo  $databox_search  ?>',
+                                            '<?php echo  $databox_id_div  ?>','<?php echo  $subject_div  ?>','<?php echo  $databox_search_div  ?>',
+                                            '<?php echo  $save_id;  ?>','<?php echo  $add_id;  ?>');"></i>
                                     </a>
                                              <a href="javascript:;" class="btn btn-small btn-danger">
                                     <i class="btn-icon-only icon-remove" onClick="del_row(
-                                            '<?php echo  $databox_id_text  ?>','<?php echo  $subject_text ?>','<?php echo  $databox_secrets_text; ?>',
-                                            '<?php echo  $databox_id  ?>','<?php echo  $subject  ?>','<?php echo  $databox_secrets  ?>',
-                                            '<?php echo  $databox_id_div  ?>','<?php echo  $subject_div  ?>','<?php echo  $databox_secrets_div  ?>',
+                                            '<?php echo  $databox_id_text  ?>','<?php echo  $subject_text ?>','<?php echo  $databox_search_text; ?>',
+                                            '<?php echo  $databox_id  ?>','<?php echo  $subject  ?>','<?php echo  $databox_search  ?>',
+                                            '<?php echo  $databox_id_div  ?>','<?php echo  $subject_div  ?>','<?php echo  $databox_search_div  ?>',
                                             '<?php echo  $save_id;  ?>','<?php echo  $add_id;  ?>');"></i>
                                     </a>
                                     </div>
                                             <div id="<?php echo  $save_id;  ?>" style="display: none" >
                                     <a href="javascript:;" class="btn btn-small btn-info">
                                     <i class="btn-icon-only icon-save"  onClick="save(
-                                            '<?php echo  $databox_id_text  ?>','<?php echo  $subject_text ?>',
-											'<?php echo  $databox_type_text;  ?>','<?php echo  $databox_group_text;  ?>',
-											'<?php echo  $databox_secrets_text; ?>','<?php echo  $save_id  ?>');"  ></i>
-                                               </a>
+                                            '<?php echo  $databox_id_text  ?>','<?php echo  $subject_text ?>','<?php echo  $databox_search_text; ?>',
+                                            '<?php echo  $databox_id  ?>','<?php echo  $subject  ?>','<?php echo  $databox_search  ?>',
+                                            '<?php echo  $databox_id_div  ?>','<?php echo  $subject_div  ?>','<?php echo  $databox_search_div  ?>',
+                                            '<?php echo  $save_id  ?>');"  ></i>
+                                    </a>
                                                      <a href="javascript:;" class="btn btn-small btn-danger">
                                                 <i class="btn-icon-only icon-remove" onClick="close_row(
-                                            '<?php echo  $databox_id_text  ?>','<?php echo  $subject_text ?>','<?php echo  $databox_secrets_text; ?>',
-                                            '<?php echo  $databox_id  ?>','<?php echo  $subject  ?>','<?php echo  $databox_secrets  ?>',
-                                            '<?php echo  $databox_id_div  ?>','<?php echo  $subject_div  ?>','<?php echo  $databox_secrets_div  ?>',
-                                            '<?php echo  $save_id;  ?>','<?php echo  $add_id;  ?>'
-											,'<?php echo  $databox_type;  ?>','<?php echo  $databox_type_div;  ?>','<?php echo  $databox_type_text;  ?>'
-											,'<?php echo  $databox_group;  ?>','<?php echo  $databox_group_div;  ?>','<?php echo  $databox_group_text;  ?>'
-											);"></i>
+                                                        '<?php echo  $databox_id_text  ?>','<?php echo  $subject_text ?>','<?php echo  $databox_search_text; ?>',
+                                                        '<?php echo  $databox_id  ?>','<?php echo  $subject  ?>','<?php echo  $databox_search  ?>',
+                                                        '<?php echo  $databox_id_div  ?>','<?php echo  $subject_div  ?>','<?php echo  $databox_search_div  ?>',
+                                                        '<?php echo  $save_id;  ?>','<?php echo  $add_id;  ?>');"></i>
                                                 </a>
                                                 </div>
                                                 </td>
                                                 </div>	    
                                                 </tr>
                                              
-
+<?php $this->load->view('java/javascript_upload_insert'); ?>
 <?php   } ?>
                                                 </tbody>
                                                 </table>																									
@@ -382,10 +317,6 @@ $databox_group_text  = $databox_id."group";
                                                 </div>
                                                 </div>
                                                 </div>
-														<input id="nnn"></input>
-															<div id="ccc" name="ccc"></div>
-												<script type="text/javascript">
-
-
 <?php echo form_close(); ?>
 <?php $this->load->view('footer/footer'); ?>
+

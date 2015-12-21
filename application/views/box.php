@@ -2,7 +2,7 @@
 <?php $this->load->view('menu/menu');  ?>
 <?php $this->load->view('menu/menuright'); ?>
 <?php /// $this->load->view('java/javascript_upload'); ?>
-<?php echo $not45;?>
+                                  <?php echo $not45;?>
 				  <input type  = "hidden" id="group_Id"         name="group_Id"      <?php echo "value=".$group_Id_f; ?>></input>
 				  <input type  = "hidden" id="divis_id"         name="divis_id"      <?php echo "value=".$divis_id_f; ?>></input>
                   <input type  = "hidden" id="data_group"       name="data_group"      ></input>
@@ -13,10 +13,8 @@
 						  <div id="span8" class="span12">
 
                 <div class="row">
-				<?php  
-				//top.location.href=this.options[this.selectedIndex].value;
-				//foreach ($box as $row) { $divis_id = $row['divisId']; }?>
-            
+			
+			
             
 				 <div id="Person-1" class="box">
                  <div class="box-header">

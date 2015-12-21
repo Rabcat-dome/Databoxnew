@@ -185,8 +185,7 @@ $this->load->view('test', $data);
 				$databox_id = $this->input->post("databox_save");
 			    $databox_data=array(
 				"subject"=> $this->input->post("subject_save"),
-				"group_Id"=>$this->input->post("group_Id_save"),
-				"secrets_id"=>$this->input->post("secrets_save"),
+				"databox_search"=>$this->input->post("databox_search_text_save"),
 				);
 				
 				 
@@ -225,7 +224,7 @@ $this->load->view('test', $data);
 		$_FILES['userfile']['size']    = $value['size'][$s];   
 		$config['file_name'] = $tis620;
 		$config['upload_path'] = 'uploads/';
-	    $config['allowed_types'] = 'pdf|jpeg|jpg|png|doc|docx|avi|mp4';
+	        $config['allowed_types'] = 'pdf|jpeg|jpg|png|doc|docx|avi|mp4';
 		$config['max_size']	= '1000';
 		$config['max_width']  = '102400';
 		$config['max_height']  = '76800';

@@ -68,7 +68,7 @@
 			<div style="position: absolute;" class="container"> <a href="#games">
  
     </a>
-
+		
 </div>
 				<tbody>
 		    <?php	$attributes = array('id' => 'main'); 

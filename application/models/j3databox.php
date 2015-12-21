@@ -9,36 +9,35 @@ Class j3databox extends CI_Model
 	 //--------databox_search
       function get_Databox_search($test)
      {
-	     	   
-			
-
-
-			  $fromdate= $this->input->post("from-date");
-			   $begin_fromdate ="";
+			    $fromdate= $this->input->post("from-date");
+				$search= $this->input->post("search");
+			    $begin_fromdate ="";
 				$begin_ex = explode("/",$fromdate);
-
 				if($fromdate!=""){
                 $begin_fromdate  = $begin_ex[2]."-".$begin_ex[1]."-".$begin_ex[0];
                 }
 
-				  $todate= $this->input->post("to-date");
+				$todate= $this->input->post("to-date");
 			    $todate_end ="";
 				$todate_ex = explode("/",$todate);
 
 				if($todate!=""){
                 $todate_end  = $todate_ex[2]."-".$todate_ex[1]."-".$todate_ex[0];
                 }
+
 	            $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
                 ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
 				->join('division', 'division.divisId = data_group.divisId', 'LEFT')
  				->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT');
 				$this->db->where("databox_upload.date_upload BETWEEN  '$begin_fromdate' AND '$todate_end'", NULL, FALSE );
+				$this->db->or_where('databox_upload.subject like','%'.$search.'%');
+				$this->db->or_where('databox_upload.databox_search like','%'.$search.'%');
+				$this->db->or_where('databox_upload.databox_detail like','%'.$search.'%');
 				$this->db->order_by('databox_upload.databox_id','DESC');
 				$this->db->limit($test,$this->uri->segment(3));
 			   $query = $this->db->get();
 		       return $query->result_array();
      }
-
 	  function get_Databox_search_num()
      {
 	            $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
@@ -50,12 +49,7 @@ Class j3databox extends CI_Model
 			   $query = $this->db->get();
 		       return $query->result_array();
      }
-
 //------loading scrollbar
-
-     
-
-	
      function get_num_index(){
                 $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
                 ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
@@ -126,6 +120,7 @@ Class j3databox extends CI_Model
           ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
 		  ->join('division', 'division.divisid = data_group.divisid', 'LEFT')
 		  ->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT');
+		  $this->db->order_by('databox_upload.databox_id','DESC');
 	      $query = $this->db->get();
 		  return $query->result_array();	
      }
@@ -219,6 +214,7 @@ Class j3databox extends CI_Model
 			$this->db->like('division_group.group_Id',  $data_group, 'none'); 
 			$this->db->like('databox_upload.division_id',$divis_id);
 			$this->db->like('databox_upload.group_Id',$data_group);
+			$this->db->order_by('databox_upload.databox_id','DESC');
 			$query = $this->db->get();
 		    return $query->result_array();
 	 }

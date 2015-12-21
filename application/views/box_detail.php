@@ -22,23 +22,21 @@ $data1 =$_POST['data1'];
                                            <?php if($upload_urlpdf!=""){?>
 											 <embed src="<?php echo  $tes; ?>"  height="450" class="span9"  ></embed>  
 											<?php } ?>
+
 											  <?php if($upload_urlpdf==""){?>
-											 <img src="http://127.0.0.1/j3databoxnew/uploads/not_pic.png" style="height:450;">
+											 <img src="http://127.0.0.1/j3databoxnew/uploads/not_pic.png" style="height:450; margin-left: 30px">
 											<?php } ?>  
  
 													<div align="center">
                                                     <legend > </legend>
 													</div>
                                                     <div class="form-inner">
-                                                  
                                                     <div class="input-prepend">
                                                     <div style="position:relative;">
-
-                                                   
                                                     <table border="0" class="span9">
 													<tr>
-													 <td width="100px">
-													<div class="input-prepend">
+											      <td width="100px">
+												  <div class="input-prepend">
 										          <span class="add-on" style="width: 100px; text-align: left; font-size: 12px;" >เลขที่เอกสาร</span>
                                                   </div>
 														</td>
