@@ -6,15 +6,15 @@ class mainFunction extends CI_Controller {
      
     	public function __construct()
      {
-          parent::__construct();
-          $this->load->library('session');
-          $this->load->helper('form');
-          $this->load->helper('url');
-          $this->load->helper('date');
-          $this->load->helper('html');
-          $this->load->database();
-          $this->load->library('form_validation');
-          $this->load->model('j3databox');
+            parent::__construct();
+            $this->load->library('session');
+            $this->load->helper('form');
+            $this->load->helper('url');
+            $this->load->helper('date');
+            $this->load->helper('html');
+            $this->load->database();
+            $this->load->library('form_validation');
+            $this->load->model('j3databox');
      }
 
 
@@ -28,129 +28,127 @@ class mainFunction extends CI_Controller {
 	//---------------------------------------------------- หน้าแรก
 	 	public function index()
 	{
-			 	//-------pagination
- 				$this->load->library('pagination');
- 				$config['base_url']=base_url()."index.php/mainFunction/executive";
- 				$config['per_page']=20;
- 				$test=$config['per_page'];
- 				$config['total_rows']=count($this->j3databox->get_Databox_num($test));
-                 $data['search'] = $this->j3databox->get_search();
- 				$config["full_tag_open"]="<div class='pagination'>";
- 				$config["full_tag_close"]="</div>";
- 				$this->pagination->initialize($config);
+            //-------pagination
+            $this->load->library('pagination');
+            $config['base_url']=base_url()."index.php/mainFunction/executive";
+            $config['per_page']=20;
+            $test=$config['per_page'];
+            $config['total_rows']=count($this->j3databox->get_Databox_num($test));
+            $data['search'] = $this->j3databox->get_search();
+            $config["full_tag_open"]="<div class='pagination'>";
+            $config["full_tag_close"]="</div>";
+            $this->pagination->initialize($config);
 
-		 	//-------End  pagination
-                $data['unit'] =  $this->j3databox->get_unit();
-		        $data['not45'] = ""; 
-				$data['not2'] = ""; 
-				$data['divis_id_f'] = ""; 
-				$data['group_Id_f'] = ""; 
-				$data_group = $this->input->post("data_group");
-		        $select_id_type = $this->input->post("select_id_type");
-				$select_id = $this->input->post("select_id");
-				$select_disvisid = $this->input->post("select_disvisid");
-				$group_Id =$this->input->post("group_Id");
-				$select_to1 = $select_disvisid+$select_id_type;
-				$select_to2 = $select_to1 + $select_id;
-				$select_to3 = $select_to2 + $group_Id;
-                $data['data_group'] = $this->j3databox->get_data_group();
-				 $data['division_by'] = $this->j3databox->get_division_by();
-			    $data['data_type'] = $this->j3databox->get_data_type();
-				$data['data_type_ms'] = $this->j3databox->get_data_type_ms();
-			    $data['division_group'] = $this->j3databox->get_division_group_division();
-				if($select_to3==""){
-				$data['box'] = $this->j3databox->get_Databox($test);
-				$data['not2'] = $this->input->post("select_disvisid");
-				$data['not'] = $this->input->post("select_id_type");
-				}
-                if($select_to3!=""){ if($data_group==""){
-			    $data['data_group_select'] = $this->j3databox->get_data_group_box();
-				$data['box'] = $this->j3databox->get_Databox_if();
-                $data['not'] = $this->input->post("select_id_type");
-				$data['not2'] = $this->input->post("select_disvisid");
-				$data_ck= $this->input->post("select_id_type");
-				$coll = $this->input->post("select_disvisid");
-				$coll = explode("-", $coll); 
-                $data['group_Id_f'] =$coll[0];
-				$data['divis_id_f'] =$coll[1];
-				}
-	            }
-				if($data_group!=""){ 
-				$data['box'] = $this->j3databox->get_data_group_table();
-                $data['not'] = $this->input->post("select_id_type");
-			    $data1=$this->input->post("data_group");
-				$data2 =$this->input->post("divis_id");
-				$data3 =$this->input->post("divis_id");
-				$data['not2'] =  $data1."-".$data2;
-				$data['data_group'] = $this->input->post("data_group");
-				}
-				
-				
-				$this->load->view('box',$data); 
+            //-------End  pagination
+            $data['unit'] =  $this->j3databox->get_unit();
+            $data['not45'] = ""; 
+            $data['not2'] = ""; 
+            $data['divis_id_f'] = ""; 
+            $data['group_Id_f'] = ""; 
+            $data_group = $this->input->post("data_group");
+            $select_id_type = $this->input->post("select_id_type");
+            $select_id = $this->input->post("select_id");
+            $select_disvisid = $this->input->post("select_disvisid");
+            $group_Id =$this->input->post("group_Id");
+            $select_to1 = $select_disvisid+$select_id_type;
+            $select_to2 = $select_to1 + $select_id;
+            $select_to3 = $select_to2 + $group_Id;
+            $data['data_group'] = $this->j3databox->get_data_group();
+            $data['division_by'] = $this->j3databox->get_division_by();
+            $data['data_type'] = $this->j3databox->get_data_type();
+            $data['data_type_ms'] = $this->j3databox->get_data_type_ms();
+            $data['division_group'] = $this->j3databox->get_division_group_division();
+            if($select_to3==""){
+            $data['box'] = $this->j3databox->get_Databox($test);
+            $data['not2'] = $this->input->post("select_disvisid");
+            $data['not'] = $this->input->post("select_id_type");
+            }
+            if($select_to3!=""){ if($data_group==""){
+            $data['data_group_select'] = $this->j3databox->get_data_group_box();
+            $data['box'] = $this->j3databox->get_Databox_if();
+            $data['not'] = $this->input->post("select_id_type");
+            $data['not2'] = $this->input->post("select_disvisid");
+            $data_ck= $this->input->post("select_id_type");
+            $coll = $this->input->post("select_disvisid");
+            $coll = explode("-", $coll); 
+            $data['group_Id_f'] =$coll[0];
+            $data['divis_id_f'] =$coll[1];
+            }
+            }
+            if($data_group!=""){ 
+            $data['box'] = $this->j3databox->get_data_group_table();
+            $data['not'] = $this->input->post("select_id_type");
+            $data1=$this->input->post("data_group");
+            $data2 =$this->input->post("divis_id");
+            $data3 =$this->input->post("divis_id");
+            $data['not2'] =  $data1."-".$data2;
+            $data['data_group'] = $this->input->post("data_group");
+            }
+            $this->load->view('box',$data); 
 	}
     //---------------------------------------------------- ภารกิจ
    
 		public function executive()
 	{    
 			 	//-------pagination
- 				$this->load->library('pagination');
- 				$config['base_url']=base_url()."index.php/mainFunction/executive";
- 				$config['per_page']=20;
- 				$test=$config['per_page'];
- 				$config['total_rows']=count($this->j3databox->get_Databox_num($test));
-                 $data['search'] = $this->j3databox->get_search();
- 				$config["full_tag_open"]="<div class='pagination'>";
- 				$config["full_tag_close"]="</div>";
- 				$this->pagination->initialize($config);
+            $this->load->library('pagination');
+            $config['base_url']=base_url()."index.php/mainFunction/executive";
+            $config['per_page']=20;
+            $test=$config['per_page'];
+            $config['total_rows']=count($this->j3databox->get_Databox_num($test));
+            $data['search'] = $this->j3databox->get_search();
+            $config["full_tag_open"]="<div class='pagination'>";
+            $config["full_tag_close"]="</div>";
+            $this->pagination->initialize($config);
 
-		 	//-------End  pagination
-                $data['unit'] =  $this->j3databox->get_unit();
-		        $data['not45'] = ""; 
-				$data['not2'] = ""; 
-				$data['divis_id_f'] = ""; 
-				$data['group_Id_f'] = ""; 
-				$data_group = $this->input->post("data_group");
-		        $select_id_type = $this->input->post("select_id_type");
-				$select_id = $this->input->post("select_id");
-				$select_disvisid = $this->input->post("select_disvisid");
-				$group_Id =$this->input->post("group_Id");
-				$select_to1 = $select_disvisid+$select_id_type;
-				$select_to2 = $select_to1 + $select_id;
-				$select_to3 = $select_to2 + $group_Id;
-                $data['data_group'] = $this->j3databox->get_data_group();
-				 $data['division_by'] = $this->j3databox->get_division_by();
-			    $data['data_type'] = $this->j3databox->get_data_type();
-				$data['data_type_ms'] = $this->j3databox->get_data_type_ms();
-			    $data['division_group'] = $this->j3databox->get_division_group_division();
-				if($select_to3==""){
-				$data['box'] = $this->j3databox->get_Databox($test);
-				$data['not2'] = $this->input->post("select_disvisid");
-				$data['not'] = $this->input->post("select_id_type");
-				}
-                if($select_to3!=""){ if($data_group==""){
-			    $data['data_group_select'] = $this->j3databox->get_data_group_box();
-				$data['box'] = $this->j3databox->get_Databox_if();
-                $data['not'] = $this->input->post("select_id_type");
-				$data['not2'] = $this->input->post("select_disvisid");
-				$data_ck= $this->input->post("select_id_type");
-				$coll = $this->input->post("select_disvisid");
-				$coll = explode("-", $coll); 
-                $data['group_Id_f'] =$coll[0];
-				$data['divis_id_f'] =$coll[1];
-				}
-	            }
-				if($data_group!=""){ 
-				$data['box'] = $this->j3databox->get_data_group_table();
-                $data['not'] = $this->input->post("select_id_type");
-			    $data1=$this->input->post("data_group");
-				$data2 =$this->input->post("divis_id");
-				$data3 =$this->input->post("divis_id");
-				$data['not2'] =  $data1."-".$data2;
-				$data['data_group'] = $this->input->post("data_group");
-				}
-				
-				
-				$this->load->view('box',$data); 
+            //-------End  pagination
+            $data['unit'] =  $this->j3databox->get_unit();
+            $data['not45'] = ""; 
+            $data['not2'] = ""; 
+            $data['divis_id_f'] = ""; 
+            $data['group_Id_f'] = ""; 
+            $data_group = $this->input->post("data_group");
+            $select_id_type = $this->input->post("select_id_type");
+            $select_id = $this->input->post("select_id");
+            $select_disvisid = $this->input->post("select_disvisid");
+            $group_Id =$this->input->post("group_Id");
+            $select_to1 = $select_disvisid+$select_id_type;
+            $select_to2 = $select_to1 + $select_id;
+            $select_to3 = $select_to2 + $group_Id;
+            $data['data_group'] = $this->j3databox->get_data_group();
+            $data['division_by'] = $this->j3databox->get_division_by();
+            $data['data_type'] = $this->j3databox->get_data_type();
+            $data['data_type_ms'] = $this->j3databox->get_data_type_ms();
+            $data['division_group'] = $this->j3databox->get_division_group_division();
+            if($select_to3==""){
+            $data['box'] = $this->j3databox->get_Databox($test);
+            $data['not2'] = $this->input->post("select_disvisid");
+            $data['not'] = $this->input->post("select_id_type");
+            }
+            if($select_to3!=""){ if($data_group==""){
+            $data['data_group_select'] = $this->j3databox->get_data_group_box();
+            $data['box'] = $this->j3databox->get_Databox_if();
+            $data['not'] = $this->input->post("select_id_type");
+            $data['not2'] = $this->input->post("select_disvisid");
+            $data_ck= $this->input->post("select_id_type");
+            $coll = $this->input->post("select_disvisid");
+            $coll = explode("-", $coll); 
+            $data['group_Id_f'] =$coll[0];
+            $data['divis_id_f'] =$coll[1];
+            }
+            }
+            if($data_group!=""){ 
+            $data['box'] = $this->j3databox->get_data_group_table();
+            $data['not'] = $this->input->post("select_id_type");
+            $data1=$this->input->post("data_group");
+            $data2 =$this->input->post("divis_id");
+            $data3 =$this->input->post("divis_id");
+            $data['not2'] =  $data1."-".$data2;
+            $data['data_group'] = $this->input->post("data_group");
+            }
+
+
+            $this->load->view('box',$data); 
 	}
 
   
@@ -170,95 +168,83 @@ class mainFunction extends CI_Controller {
 	 	public function databox_search()
 	{
 			 	//-------pagination
- 				$this->load->library('pagination');
+            $this->load->library('pagination');
+            $config['base_url']=base_url()."index.php/mainFunction/databox_search";
+            $config['per_page']=20;
+            $test=$config['per_page'];
+            $config['total_rows']=count($this->j3databox->get_Databox_search_num($test));
+            $config["full_tag_open"]="<div class='pagination'>";
+            $config["full_tag_close"]="</div>";
+            $this->pagination->initialize($config);
 
- 				$config['base_url']=base_url()."index.php/mainFunction/databox_search";
- 				$config['per_page']=20;
- 				$test=$config['per_page'];
- 				$config['total_rows']=count($this->j3databox->get_Databox_search_num($test));
- 				$config["full_tag_open"]="<div class='pagination'>";
- 				$config["full_tag_close"]="</div>";
- 				$this->pagination->initialize($config);
+            //-------End  pagination
 
-		 	 	//-------End  pagination
-
-			    $data_group = $this->input->post("data_group");
-		        $select_id_type = $this->input->post("select_id_type");
-				$select_id = $this->input->post("select_id");
-				$select_disvisid = $this->input->post("select_disvisid");
-				$group_Id =$this->input->post("group_Id");
-			    $data['search'] = $this->j3databox->get_search();
-		        $data['not'] = ""; 
-				$data['not2'] = ""; 
-				$data['divis_id_f'] = ""; 
-				$data['group_Id_f'] = ""; 
-				$data['id_box'] = $this->input->post("id_box");
-			    $data['data_type'] = $this->j3databox->get_data_type();
-			    $data['division_group'] = $this->j3databox->get_division_group();
-				$data['last_update'] = $this->j3databox->get_Databox_search($test);
-		        $this->load->view('databox_search',$data);
+            $data_group = $this->input->post("data_group");
+            $select_id_type = $this->input->post("select_id_type");
+            $select_id = $this->input->post("select_id");
+            $select_disvisid = $this->input->post("select_disvisid");
+            $group_Id =$this->input->post("group_Id");
+            $data['search'] = $this->j3databox->get_search();
+            $data['not'] = ""; 
+            $data['not2'] = ""; 
+            $data['divis_id_f'] = ""; 
+            $data['group_Id_f'] = ""; 
+            $data['id_box'] = $this->input->post("id_box");
+            $data['data_type'] = $this->j3databox->get_data_type();
+            $data['division_group'] = $this->j3databox->get_division_group();
+            $data['last_update'] = $this->j3databox->get_Databox_search($test);
+            $this->load->view('databox_search',$data);
 	}
 		//---------------------------------------------------หน้า อัพโหล
 
 	   public function page_upload()
      {          
-		        $data['division_group_up'] = $this->j3databox->get_division_group_up();
-			    $data['search'] = $this->j3databox->get_search();
-		        $data['division'] = $this->j3databox->get_division();
-				$data['data_type'] = $this->j3databox->get_data_type_up();
-                $data['data_group_up'] = $this->j3databox->get_data_group_up();
-                $data['data_type_up'] = $this->j3databox->get_data_type_up();
-				$data['upload'] = $this->j3databox->get_upload();
-                $this->load->view('page_upload',$data);  // เปิดหน้า upload เพื่อที่ สร้างหน้าวิว ชัวคราว
+            $data['division_group_up'] = $this->j3databox->get_division_group_up();
+            $data['search'] = $this->j3databox->get_search();
+            $data['division'] = $this->j3databox->get_division();
+            $data['data_type'] = $this->j3databox->get_data_type_up();
+            $data['data_group_up'] = $this->j3databox->get_data_group_up();
+            $data['data_type_up'] = $this->j3databox->get_data_type_up();
+            $data['upload'] = $this->j3databox->get_upload();
+            $this->load->view('page_upload',$data);  // เปิดหน้า upload เพื่อที่ สร้างหน้าวิว ชัวคราว
               
      }
     	public function select()
 	{           
-			    $data['data_division'] = $this->j3databox->get_data_division();
-			    $data['data_type_up'] = $this->j3databox->get_data_type_up();
-				$data['division'] = $this->j3databox->get_division();
-				$data['data_type'] = $this->j3databox->get_data_type_up();
-                $data['data_group_up'] = $this->j3databox->get_data_group_up();
-		        $this->load->view('select',$data);
+            $data['data_division'] = $this->j3databox->get_data_division();
+            $data['data_type_up'] = $this->j3databox->get_data_type_up();
+            $data['division'] = $this->j3databox->get_division();
+            $data['data_type'] = $this->j3databox->get_data_type_up();
+            $data['data_group_up'] = $this->j3databox->get_data_group_up();
+            $this->load->view('select',$data);
 	}
-		public function welcom()
-	{           
-			   
-		        $this->load->view('welcom');
-	}
-	 	public function test()
-	{       
+	
 
-$data['pdfx'] = 'application/pdf/Resume.pdf';
-$this->load->view('test', $data);
-	}
 
 	 public function save()
      {          
-			    $check = $this->input->post("check");
-				$databox_id = $this->input->post("databox_save");
-			    $databox_data=array(
-				"subject"=> $this->input->post("subject_save"),
-				"databox_search"=>$this->input->post("databox_search_text_save"),
-				);
-				
-				 
-				if($check!="save"){
-				$this->db->where('databox_id', $databox_id);
-				$this->db->delete('databox_upload'); 
-			
-				}
-				if($check=="save"){
-			    $this->db->where('databox_id', $databox_id);
-			    $this->db->update('databox_upload', $databox_data); 
-				 }
-			    $data['division'] = $this->j3databox->get_division();
-				$data['data_type'] = $this->j3databox->get_data_type_up();
-                $data['data_group_up'] = $this->j3databox->get_data_group_up();
-                $data['data_type_up'] = $this->j3databox->get_data_type_up();
-				$data['upload'] = $this->j3databox->get_upload();
-                $this->load->view('page_upload',$data);  // เปิดหน้า upload เพื่อที่ สร้างหน้าวิว ชัวคราว
-
+            $check = $this->input->post("check");
+            $databox_id = $this->input->post("databox_save");
+            $databox_data=array(
+            "subject"=> $this->input->post("subject_save"),
+            "databox_search"=>$this->input->post("databox_search_text_save"),
+            "group_Id"=>$this->input->post("group_Id_save"),
+	    "secrets_id"=>$this->input->post("secrets_save"),
+            );
+            if($check!="save"){
+            $this->db->where('databox_id', $databox_id);
+            $this->db->delete('databox_upload'); 
+            }
+            if($check=="save"){
+            $this->db->where('databox_id', $databox_id);
+            $this->db->update('databox_upload1', $databox_data); 
+            }
+            $data['division'] = $this->j3databox->get_division();
+            $data['data_type'] = $this->j3databox->get_data_type_up();
+            $data['data_group_up'] = $this->j3databox->get_data_group_up();
+            $data['data_type_up'] = $this->j3databox->get_data_type_up();
+            $data['upload'] = $this->j3databox->get_upload();
+            $this->load->view('page_upload',$data); 
      }
     
 	function save_upload() {

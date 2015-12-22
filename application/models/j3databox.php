@@ -318,7 +318,7 @@ function get_data_division()
 		  ->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT')
 		  ->join('division_group', 'division_group.group_Id = data_group.divisId', 'LEFT')
 		  ->join('secrets', 'secrets.id = databox_upload.secrets_id', 'LEFT');
-		 	$this->db->limit('10',$this->uri->segment(3));
+		 	$this->db->limit('20',$this->uri->segment(3));
 	      $query = $this->db->get();
 		  return $query->result_array();	
 
