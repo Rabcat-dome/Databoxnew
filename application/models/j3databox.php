@@ -309,7 +309,7 @@ function get_data_division()
 		$query = $this->db->query($sql);
         return $query->result_array();	
      }
-	    function get_upload()
+	    function get_upload($test)
      {
 
 		 $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
@@ -318,7 +318,28 @@ function get_data_division()
 		  ->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT')
 		  ->join('division_group', 'division_group.group_Id = data_group.divisId', 'LEFT')
 		  ->join('secrets', 'secrets.id = databox_upload.secrets_id', 'LEFT');
-		 	$this->db->limit('20',$this->uri->segment(3));
+		  $this->db->limit($test,$this->uri->segment(3));
+		 	
+	      $query = $this->db->get();
+		  return $query->result_array();	
+
+     /*	$sql = "SELECT  * FROM  databox_upload";
+        $query = $this->db->query($sql);
+        return $query->result_array();	
+		*/
+     }
+
+
+     	    function get_upload_num($test)
+     {
+
+		 $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
+          ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
+		  ->join('division', 'division.divisid = data_group.divisid', 'LEFT')
+		  ->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT')
+		  ->join('division_group', 'division_group.group_Id = data_group.divisId', 'LEFT')
+		  ->join('secrets', 'secrets.id = databox_upload.secrets_id', 'LEFT');
+		 	
 	      $query = $this->db->get();
 		  return $query->result_array();	
 
