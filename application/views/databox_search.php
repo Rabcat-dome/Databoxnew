@@ -1,177 +1,178 @@
-	       <?php $this->load->view('header/header_title'); ?>
-	       <?php $this->load->view('menu/menu'); ?>
-	       <?php $this->load->view('java/javascript_head.php'); ?>
+<?php $this->load->view('header/header_title'); ?>
+<?php $this->load->view('menu/menu'); ?>
+<?php $this->load->view('java/javascript_head.php'); ?>
 
 <section class="page container">
     <div class="row">
+        <div id="span1_div" class="span2" >
+        </div>
+        <input type  = "hidden" id="group_Id"         name="group_Id"      <?php echo "value=" . $group_Id_f; ?>></input>
+        <input type  = "hidden" id="data_group"       name="data_group"      ></input>
+        <?php $this->load->view('java/javascript_box'); ?>
+        <?php
+        $attributes = array('id' => 'upload_pdf');
+        echo form_open_multipart('http://127.0.0.1/j3databoxnew/index.php/mainFunction/databox_search', $attributes);
+        ?>
+        <script>
 
-        <div class="span2" >
+            $(function () {
+                $("#from-datepicker").datepicker({
+                    dateFormat: "yy-mm-dd"
+                });
+
+
+
+            });
+        </script>
+        <script>
+            $(function () {
+                $("#to-datepicker").datepicker({
+                    dateFormat: "yy-mm-dd"
+                });
+
+
+
+            });
+        </script>
+        <div class="span2"  id="div_hidden1">
+            ค้นหาวันที่ :
+            <input name="from-date" type="text"  id="from-datepicker"  class="span2" />
+        </div>
+
+        <div class="span2" id="div_hidden2" >
+            ถึง :
+            <input name="to-date" type="text" id="to-datepicker"  class="span2" />
+        </div>
+
+
+        <div class="span2" id="div_hidden3" >
+            ชั้นความลับ : 
+            <select type="text" name="secrets_id"  id="secrets_id" class="span2"  >
+
+                <option  value='1'  >ปกติ</option>
+                <option  value='2'  >ลับ</option>
+                <option  value='3'  >ลับมาก</option>
+                <option  value='4'  >ลับที่สุด</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="span3" id="div_hidden4" >
+            ค้นหา ชื่อ/คำค้นหา/เนื้อหา : 
+            <input name="databox_search" type="text" id="databox_search" />
+
+        </div>
+         <div class="span3" id="div_hidden4" >
+            หมวดเอกสาร : 
+        
           
-                <ul id="person-list" class="nav nav-list">
-                    <li class="nav-header">&nbsp;</li>
-                    <li class="active">
-                
-                  
-                    <li class="nav-header">&nbsp;</li>
-                    <li>
-                   
-           
-                      <li class="nav-header">&nbsp;</li>
-                  
-  
-            </div>
+            
+            <select id='select1'  class='' name='select1' >
+                                                        <option  value='0'> กรุณาเลือกรายการ </option>
+                                                        <?php
+                                                        foreach ($data_type_up as $row) {
+                                                            $type_id_ck = $row['group_Id'] . "'";
+                                                            echo "<option  value='" . $type_id_ck . ">" . $row['type_name'] . "</option>";
+                                                        }
+                                                        ?>
 
-				 <input type  = "hidden" id="group_Id"         name="group_Id"      <?php echo "value=".$group_Id_f; ?>></input>
-                  <input type  = "hidden" id="data_group"       name="data_group"      ></input>
-				  <?php $this->load->view('java/javascript_box'); ?>
-<div class="span2">
+                                                        <?php
+                                                        foreach ($division as $row) {
+                                                            $division_id_ck = $row['divisid'] ."'";
+                                                            echo "<option   value='" . $division_id_ck . ">" . $row['divisname'] . "</option>";
+                                                        }
+                                                        ?>
 
+                                                    </select>
+            
+            
+        </div>
+        <br>
+        <p>
+            
+       
+        <div class="span2" id="div_hidden5" >
+            <a onclick="document.getElementById('upload_pdf').submit()" href="#"  class="btn btn-small btn-danger">
+                <i class="btn-icon-only icon-save"  >ค้นหา</i>
+            </a>
+        </div>
+        
 
-</div>
- <?php	$attributes = array('id' => 'upload_pdf'); 
-echo form_open_multipart('http://127.0.0.1/j3databoxnew/index.php/mainFunction/databox_search', $attributes); ?>
- <script>
-   
-	  $(function() {
-		  $( "#from-datepicker" ).datepicker({
-        dateFormat: "yy-mm-dd"
-    });
+        <div id="span8" class="span16">
+            <div class="row">
 
-   
-
-    });
-  </script>
-
-  <script>
-    $(function() {
-		  $( "#to-datepicker" ).datepicker({
-        dateFormat: "yy-mm-dd"
-    });
-
-   
-
-    });
-  </script>
-
-
- 
-  
-  <div style="float:left;" >
-      ค้นหาวันที่ :
-     <input name="from-date" type="text" id="from-datepicker"  />
-  </div>
-
-  <div style="float:left; " >
-      ถึง :
-     <input name="to-date" type="text" id="to-datepicker" />
-  </div>
-   </p>
-<br>
-<br>
-    <div >
-          ค้นหา ชื่อ/คำค้นหา/เนื้อหา : 
-     <input name="search" type="text" id="search" />
-<a onclick="document.getElementById('upload_pdf').submit()" href="#"  class="btn btn-small btn-danger">
-                         <i class="btn-icon-only icon-save"  >ค้นหา</i>
-                                                        </a>
-    </div>
-
-
-      		  <div id="span8" class="span12">
-
-
-                <div class="row">
-                   	
-          	 <div id="Person-1" class="box">
-                 <div class="box-header">
-                            <i class="icon-user iconิ-large"></i>
-                             <h5>ข้อมูล Databox</h5>
-                 </div>
-		    <div class="box-content box-table">
-                    <table id="tableId" class="table table-hover tablesorter">
+                <div id="Person-1" class="box">
+                    <div class="box-header">
+                        <i class="icon-user iconิ-large"></i>
+                        <h5>ข้อมูล Databox</h5>
+                    </div>
+                    <div class="box-content box-table">
+                        <table id="tableId" class="table table-hover tablesorter">
                             <thead>
                                 <tr>
                                     <th>วันที่</th>
-									
                                     <th>เรื่อง</th>
-							
                                 </tr>
                             </thead>
                             <tbody> 
-							  <input type="hidden" id="code" cols="45" rows="5"></textarea>
-							 
-                            <?php  
-				
-						if($id_box==""){
-						foreach ($last_update as $row) {  
-						$hidden=$row['databox_id'];
-						echo "<tr>";
-						echo "<td onclick=\"chk(".$hidden.")\"  width='20%'>".$row['date_upload']."</a></td>";	
-						echo "<td onclick=\"chk(".$hidden.")\"  width='100%'>".$row['subject']."</a></td>";
-						echo "</tr>";
-						} 
-						};
-						if($id_box!=""){
-						foreach ($last_update as $row) {  
-							$hidden=$row['databox_id'];
-							if($id_box==$hidden){
-						
-						echo "<tr>";
-						echo "<td onclick=\"chk(".$hidden.")\"  width='20%'>".$row['date_upload']."</a></td>";	
-						echo "<td onclick=\"chk(".$hidden.")\"  width='100%'>".$row['subject']."</a></td>";
-						echo "</tr>";
-							}
-						} 
-						};
-						?>
+                            <input type="hidden" id="code" cols="45" rows="5"></textarea>
 
-					
+                            <?php
+                            foreach ($last_update as $row) {
+                                $databox_id = $row['databox_id'];
+                                echo "<tr>";
+                                echo "<td onclick=\"chk(" . $databox_id . ")\"  width='20%'>" . $row['date_upload'] . "</a></td>";
+                                echo "<td onclick=\"chk(" . $databox_id . ")\"  width='100%'>" . $row['subject'] . "</a></td>";
+                                echo "</tr>";
+                            }
+                            ?>
+
+
                             </tbody>
                         </table>  <div align="center"><?php echo $this->pagination->create_links(); ?></div>
-                </div>
-                </div>
-            </div>
-			 </div>
-
-
-
-			 <div class="span4">
-               
-                
-					  
-                  
-<script type="text/javascript">
-$(document).ready(function(){
-     $("#tableId tr").click(function(){
- $.post("http://127.0.0.1/j3databoxNEW/index.php/mainFunction/box_detail", { 
-      data1: $("#code").val()}, 
-      function(data){
-  $("#showajax").html(data);
-      }
-  );
-
-     });
-});
-</script>
-
-<div id="showajax" ></div>
-                
-             
-            </div>
-
-                        </div>
-
                     </div>
-                
-                 
-                        </div>
-
-                    </div>
-                
                 </div>
             </div>
-                         <?php echo form_close(); ?>
-                    <?php $this->load->view('footer/footer'); ?>
+        </div>
+
+
+
+        <div class="span10">
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#tableId tr").click(function () {
+                        $.post("http://127.0.0.1/j3databoxNEW/index.php/mainFunction/box_detail", {
+                            data1: $("#code").val()},
+                                function (data) {
+                                    $("#showajax").html(data);
+                                }
+                        );
+
+                    });
+                });
+            </script>
+
+            <div id="showajax" ></div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+</div>
+<?php echo form_close(); ?>
+<?php $this->load->view('footer/footer'); ?>
                     
 
 

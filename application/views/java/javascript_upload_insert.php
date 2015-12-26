@@ -32,12 +32,6 @@ function add(databox_id_text,subject_text,databox_secrets_text,databox_id,subjec
      
 }
 </script>
-
-
-
-
-
-
 <script>
  $(":file").filestyle({buttonName: "btn-primary"});
 
@@ -87,7 +81,6 @@ function save(databox_id_text,subject_text,databox_type_text,databox_search_text
         document.getElementById("databox_search_text_save").value = document.getElementById(databox_search_text).value;
         document.getElementById("subject_save").value  = document.getElementById(subject_text).value;
         document.getElementById("databox_save").value  = document.getElementById(databox_id_text).value;  
-        document.getElementById("subject_save").value =  document.getElementById(subject_text).value;
         document.getElementById('myform').submit();
 }
 

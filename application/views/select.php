@@ -68,7 +68,7 @@ if ($pieces[1] !="box"){
                                                      }
 													</script>
 												     <div class="flip_add" id="flip_add" onclick="myFunction_add()"  >
-                                                     <span class="add-on"  >&nbsp;+&nbsp; </span>
+                                                                                                         <span class="add-on"   >&nbsp;+&nbsp; </span>
                                                      </div>
 
 													 <div id="flip_close" onclick="myFunction_close()" style="display: none;">
