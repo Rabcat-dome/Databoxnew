@@ -2,7 +2,7 @@
 
 <?php
 $attributes = array('id' => 'menu_select');
-echo form_open('http://127.0.0.1/j3databoxNew/index.php/mainFunction/executive', $attributes);
+echo form_open(base_url().'index.php/mainFunction/executive', $attributes);
 ?>							
 <?php $this->load->view('java/javascript_box'); ?> 
 
@@ -19,14 +19,7 @@ echo form_open('http://127.0.0.1/j3databoxNew/index.php/mainFunction/executive',
             <div class="blockoff-right">
                 <ul id="person-list" class="nav nav-list">
                     <li class="nav-header">เอกสารหลัก</li>
-                    <style>
-                        a:hover {
-                            background-color: #E6E6E6;
-                            display:block;
-                            text-decoration: none;
-                        } 
 
-                    </style>
 
                     <li class="active">
                     <li>

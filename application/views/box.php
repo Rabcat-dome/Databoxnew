@@ -45,7 +45,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#tableId tr").click(function () {
-                $.post("<?php echo base_url(); ?>/index.php/mainFunction/box_detail", {
+                $.post("<?php echo base_url(); ?>index.php/mainFunction/box_detail", {
                     data1: $("#code").val()},
                         function (data) {
                             $("#showajax").html(data);

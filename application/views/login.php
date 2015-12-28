@@ -1,22 +1,57 @@
-<html>
-<head>
-	<?php $this->load->view('java/javascript_head.php'); ?>
-	<title></title>
-</head>
-	<?php echo form_open('mainFunction/index');?>
+<?php $this->load->view('menu/nav_menu'); ?>
+                        
+                        
+            <div class='container'>
 
-<div class='main'>
-	<div class="signblog">
-    <div class="signblog-bg"></div>
-    <div class="signblog-content">
-<div class="hbox"></div>
-<div class="tbox"><input type="text" name="txt_username" id="txt_username" placeholder="username" value="<?php echo set_value('txt_username'); ?>"></div>
-<div class="tbox"  style='text-align:center;color:red;'><input type="password" name="txt_password" id="txt_password" placeholder="password" value="<?php echo set_value('txt_password'); ?>"><?php echo form_error('txt_username'); ?><?php echo form_error('txt_password'); ?><?php echo $this->session->flashdata('msg'); ?></div>
-<div class="tip"></div>
-<div ><input type="submit" id="btn_login" name="btn_login" value="Login" class="btn"></div>
-    </div>
-	</div>
-</div>
-	<?php echo form_close(); ?>
-</body>
-</html>
+
+
+
+
+                <?php echo form_open('mainFunction/index');?>
+                <div class="signin-row row">
+                    <div class="span4"></div>
+                    <div class="span8">
+                        <div class="container-signin">
+                            <legend>Please Login</legend>(ใช้รหัสเดียวกับที่ลงทะเบียนไวไฟไว้)
+                            
+                                <div class="form-inner">
+                                    <div class="input-prepend">
+                                        
+                                        <span class="add-on" rel="tooltip" title="Username or E-Mail Address" data-placement="top"><i class="icon-envelope"></i></span>
+                                        <input type='text' class='span4' name="txt_username" id="txt_username" placeholder="username" />
+                                    </div>
+
+                                    <div class="input-prepend">
+                                        
+                                        <span class="add-on"><i class="icon-key"></i></span>
+                                        <input type='password' class='span4' name="txt_password" id="txt_password" placeholder="password"/>
+                                    </div>
+                                    <label class="checkbox" for='remember_me'>Remember me
+                                        <input type='checkbox' id='remember_me' />
+                                    </label>
+                                </div>
+                                <footer class="signin-actions">
+                                    <input class="btn btn-primary" type='submit' id="submit" value='Login'/> <br />
+                                <br /></footer>
+                            
+                        </div>
+                    </div>
+                    <div class="span3"></div>
+                </div>
+                <?php echo form_close(); ?>
+                <div class="signin-row row">
+                    <div class="span4"></div>
+                    <div class="span8">
+                        <div class="well well-small well-shadow">
+                            <legend class="lead"></legend>
+                            <a ้href="registration.j3.mil"><div style="text-align:center"> >>>ลงทะเบียนการใช้งานใหม่<<< </div></a>
+                        </div>
+                    </div>
+                    <div class="span8"></div>
+                </div>
+            <!--<div class="span4">
+
+                </div>-->
+            </div>
+    
+<?php $this->load->view('footer/footer'); ?>

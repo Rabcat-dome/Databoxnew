@@ -15,6 +15,7 @@ class mainFunction extends CI_Controller {
         $this->load->database();
         $this->load->library('form_validation');
         $this->load->model('j3databox');
+        $this->load->library('Auth_AD');
     }
 
     public function post_receiver() {
@@ -22,8 +23,66 @@ class mainFunction extends CI_Controller {
         $this->load->view('post_receiver');
     }
 
+  public function index() {
+
+        $username = strtolower($this->input->post('txt_username'));
+        $password = $this->input->post('txt_password');
+        
+        // check the login
+        if($this->auth_ad->login($username, $password))
+        { 
+
+
+            if ($this->auth_ad->in_group($username, "j3databox-secret"))
+            {
+            $sessiondata = array('secret' => 2);
+            $this->session->set_userdata($sessiondata);
+            redirect('mainFunction/executive');
+
+            }
+            else if ($this->auth_ad->in_group($username, "j3databox-upload"))
+            {
+            $sessiondata = array('secret' => 1);
+            $this->session->set_userdata($sessiondata);
+            redirect('mainFunction/executive');
+            }
+            else 
+            {
+            $sessiondata = array('secret' => 0);
+            $this->session->set_userdata($sessiondata);
+            redirect('mainFunction/executive');
+
+            }
+
+
+        /*$sessiondata = array(
+                              'id' => $usr_row->id,
+                              'username' => $usr_row->username,
+                              'password' => $usr_row->password,
+                              'access' => $usr_row->access,
+                              'name' => $usr_row->name,
+                              'acroname' => $usr_row->acroname,
+                              'nameID' => $usr_row->nameID,
+                              'section' => $usr_row->section
+                         );*/          
+            // the login was succesful, do your thing here
+            // upon a succesful login the session will automagically contain some handy user data:
+            // $this->session->userdata('cn') contains the common name from the AD
+            // $this->session->userdata('username') contains the username as processed
+            // $this->session->userdata('dn') contains the distinguished name from the AD
+            // $this->session->userdata('logged_in') contains a boolean (true)
+        }
+        else
+        {
+            $this->load->view('login');
+        }
+            
+
+        //$this->load->view('login', $data);
+    }
+
     //---------------------------------------------------- หน้าแรก
-    public function index() {
+    /*public function index() {
         //-------pagination
         $this->load->library('pagination');
         $config['base_url'] = base_url() . "index.php/mainFunction/executive";
@@ -82,11 +141,14 @@ class mainFunction extends CI_Controller {
             $data['data_group'] = $this->input->post("data_group");
         }
         $this->load->view('box', $data);
-    }
+    }*/
 
     //---------------------------------------------------- ภารกิจ
 
     public function executive() {
+if($this->auth_ad->is_authenticated())
+        {
+
         //-------pagination
         $this->load->library('pagination');
         $config['base_url'] = base_url() . "index.php/mainFunction/executive";
@@ -145,6 +207,11 @@ class mainFunction extends CI_Controller {
             $data['data_group'] = $this->input->post("data_group");
         }
         $this->load->view('box', $data);
+            }
+        else 
+        {
+            redirect('mainFunction/index');
+        }
     }
 
     //-------------------------------------------------------- แสดงข้อมูลจากค้นหา แบบข้อมูลเดียว
@@ -156,6 +223,9 @@ class mainFunction extends CI_Controller {
     //--------------------------------------------------------- แสดงข้อมูลจากค้นหา แบบหลายข้อมูล
 
     public function databox_search() {
+if($this->auth_ad->is_authenticated())
+        {
+
         //-------pagination
         $this->load->library('pagination');
         $config['base_url'] = base_url() . "index.php/mainFunction/databox_search";
@@ -185,6 +255,12 @@ class mainFunction extends CI_Controller {
         $data['data_type'] = $this->j3databox->get_data_type_up();
          $data['division'] = $this->j3databox->get_division();
         $this->load->view('databox_search', $data);
+
+                    }
+        else 
+        {
+            redirect('mainFunction/index');
+        }
     }
 
     public function box_detail() {
@@ -196,6 +272,9 @@ class mainFunction extends CI_Controller {
     //---------------------------------------------------หน้า อัพโหล
 
     public function page_upload() {
+if($this->auth_ad->is_authenticated())
+        {
+
         //-------pagination
         $this->load->library('pagination');
         $config['base_url'] = base_url() . "index.php/mainFunction/page_upload";
@@ -218,6 +297,12 @@ class mainFunction extends CI_Controller {
         $data['data_type_up'] = $this->j3databox->get_data_type_up();
         $data['upload'] = $this->j3databox->get_upload($test);
         $this->load->view('page_upload', $data);  // เปิดหน้า upload เพื่อที่ สร้างหน้าวิว ชัวคราว
+
+                    }
+        else 
+        {
+            redirect('mainFunction/index');
+        }
     }
 
     public function select() {
