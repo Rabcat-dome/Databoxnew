@@ -14,6 +14,9 @@ Class j3databox extends CI_Model {
         $search = $this->input->post("search");
         $secrets_id = $this->input->post("secrets_id");
         $id_box = $this->input->post("id_box");
+    
+        $type_dataId_n = $this->input->post("type_dataId_n");
+        $type_divisid_n = $this->input->post("type_divisid_n");
    
         $begin_fromdate = "";
         $begin_ex = explode("/", $fromdate);
@@ -36,13 +39,17 @@ Class j3databox extends CI_Model {
                 $this->db->or_where('databox_upload.subject like', '%' . $databox_search . '%');
                 $this->db->or_where('databox_upload.databox_search like', '%' . $databox_search . '%');
                 $this->db->or_where('databox_upload.databox_detail like', '%' . $databox_search . '%');
-                $this->db->where('databox_upload.secrets_id like', '%' . $secrets_id . '%');
+               $this->db->where('databox_upload.secrets_id like', '%' . $secrets_id . '%');
             }
         }
         if ($begin_fromdate == "") {
             if ($search == "") {
-                $this->db->where('databox_upload.subject like', '%' . $databox_search . '%');
-                $this->db->where('databox_upload.secrets_id like', '%' . $secrets_id . '%');
+                if ($type_dataId_n == "") {
+                    if ($type_divisid_n == "") {
+                  $this->db->where('databox_upload.subject like', '%' . $databox_search . '%');
+                  $this->db->where('databox_upload.secrets_id like', '%' . $secrets_id . '%');
+                    }
+                }
             }
         }
 
@@ -62,10 +69,12 @@ Class j3databox extends CI_Model {
             $this->db->where('databox_upload.databox_id like', '%%');
         }
              
-         $type_search = $this->input->post("select1");
-         if ($type_search != "0") {
-        $this->db->or_where('data_group.dataId like', '%' . $type_search . '%');
-        $this->db->or_where('data_group.divisId like', '%' . $type_search . '%');
+          
+         if ($type_dataId_n != "") {
+        $this->db->or_where('data_group.dataId like', '%' . $type_dataId_n .'%');
+         }
+          if ($type_divisid_n != "") {
+        $this->db->or_where('data_group.divisId like', '%'.$type_divisid_n. '%');
           }
         $this->db->limit($test, $this->uri->segment(3));
         $query = $this->db->get();
@@ -209,6 +218,16 @@ Class j3databox extends CI_Model {
     function get_division_group() {
         $sql = "SELECT  * FROM  `division_group`";
         $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+       function get_division_group_search() {
+      
+        
+        
+               $this->db->select('*')->select('division.divisid')->from('division')
+                        ->join('data_group', 'data_group.divisId = division.divisid', 'LEFT');
+               $this->db->group_by('division.divisid');
+          $query = $this->db->get();
         return $query->result_array();
     }
 
@@ -402,6 +421,22 @@ Class j3databox extends CI_Model {
                 ->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT');
         $this->db->where('data_group.dataId = data_type.type_id');
         $this->db->group_by('data_group.dataId');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+    function get_data_group_main() {
+
+       
+       $sql = "SELECT * FROM data_group_main";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+    function get_data_type_search() {
+
+        $this->db->select('*')->select('data_type.type_id')->from('data_type')
+                ->join('data_group', 'data_group.dataId = data_type.type_id', 'LEFT');
+        $this->db->group_by('data_type.type_id');
         $query = $this->db->get();
         return $query->result_array();
     }

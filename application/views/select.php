@@ -113,3 +113,22 @@ if ($pieces[1] !="box"){
 													?>
 									  </select>
 									  <?php }?>
+
+
+ <div id="showajax" ></div>
+ <input type="text" id="code" name="code" cols="45" rows="5"></input>
+                                                    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+                                                    <script type="text/javascript">
+                                                                                        $(document).ready(function () {
+                                                                                            $("#btn1").change(function () {
+
+                                                                                                $.post("select", {
+                                                                                                    data1: $("#code").val()},
+                                                                                                        function (data) {
+                                                                                                            $("#showajax").html(data);
+                                                                                                        }
+                                                                                                );
+
+                                                                                            });
+                                                                                        });
+                                                    </script>

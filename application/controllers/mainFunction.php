@@ -253,7 +253,8 @@ if($this->auth_ad->is_authenticated())
         $data['division_group'] = $this->j3databox->get_division_group();
         $data['last_update'] = $this->j3databox->get_Databox_search($test);
         $data['data_type'] = $this->j3databox->get_data_type_up();
-         $data['division'] = $this->j3databox->get_division();
+        $data['data_type_search'] = $this->j3databox->get_data_type_search();
+        $data['division'] = $this->j3databox->get_division_group_search();
         $this->load->view('databox_search', $data);
 
                     }
@@ -294,6 +295,7 @@ if($this->auth_ad->is_authenticated())
         $data['division'] = $this->j3databox->get_division();
         $data['data_type'] = $this->j3databox->get_data_type_up();
         $data['data_group_up'] = $this->j3databox->get_data_group_up();
+
         $data['data_type_up'] = $this->j3databox->get_data_type_up();
         $data['upload'] = $this->j3databox->get_upload($test);
         $this->load->view('page_upload', $data);  // เปิดหน้า upload เพื่อที่ สร้างหน้าวิว ชัวคราว
@@ -305,14 +307,23 @@ if($this->auth_ad->is_authenticated())
         }
     }
 
-    public function select() {
-
+    public function select_main() {
+        $data['data_group_main'] = $this->j3databox->get_data_group_main();
         $data['data_division'] = $this->j3databox->get_data_division();
         $data['data_type_up'] = $this->j3databox->get_data_type_up();
         $data['division'] = $this->j3databox->get_division();
         $data['data_type'] = $this->j3databox->get_data_type_up();
         $data['data_group_up'] = $this->j3databox->get_data_group_up();
-        $this->load->view('select', $data);
+        $this->load->view('select_main', $data);
+    }
+    public function select() {
+                
+        $data['data_division'] = $this->j3databox->get_data_division();
+        $data['data_type_up'] = $this->j3databox->get_data_type_up();
+        $data['division'] = $this->j3databox->get_division();
+        $data['data_type'] = $this->j3databox->get_data_type_up();
+        $data['data_group_up'] = $this->j3databox->get_data_group_up();
+        $this->load->view('select_main', $data);
     }
 
     public function test() {

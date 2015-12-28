@@ -8,6 +8,7 @@
         </div>
         <input type  = "hidden" id="group_Id"         name="group_Id"      <?php echo "value=" . $group_Id_f; ?>></input>
         <input type  = "hidden" id="data_group"       name="data_group"      ></input>
+       
         <?php $this->load->view('java/javascript_box'); ?>
         <?php
         $attributes = array('id' => 'upload_pdf');
@@ -48,7 +49,7 @@
         <div class="span2" id="div_hidden3" >
             ชั้นความลับ : 
             <select type="text" name="secrets_id"  id="secrets_id" class="span2"  >
-
+                <option  value='0'  >ท้งหมด</option>    
                 <option  value='1'  >ปกติ</option>
                 <option  value='2'  >ลับ</option>
                 <option  value='3'  >ลับมาก</option>
@@ -64,24 +65,41 @@
             <input name="databox_search" type="text" id="databox_search" />
 
         </div>
+         <input type  = "hidden" id="type_dataId_n"       name="type_dataId_n"      ></input>
+         <input type  = "hidden" id="type_divisid_n"       name="type_divisid_n"      ></input>
          <div class="span3" id="div_hidden4" >
             หมวดเอกสาร : 
         
-          
+         <script>
+                  function getComboA(sel) {
+                                                            var value = sel.value;
+                                                            
+                                                              var id_type = value.split("-");
+                                                           
+                                                       if(id_type[1]=="dataId"){
+                                     document.getElementById("type_dataId_n").value = id_type[0];
+                                 }
+                                  if(id_type[1]=="divisid"){
+                                     document.getElementById("type_divisid_n").value = id_type[0];
+                                 }
+                                       }
+            </script>
             
-            <select id='select1'  class='' name='select1' >
-                                                        <option  value='0'> กรุณาเลือกรายการ </option>
+            <select id='select1'  class='' name='select1'  onchange="getComboA(this)"  >
+          
+                 
                                                         <?php
-                                                        foreach ($data_type_up as $row) {
-                                                            $type_id_ck = $row['group_Id'] . "'";
-                                                            echo "<option  value='" . $type_id_ck . ">" . $row['type_name'] . "</option>";
+                                                        echo "<option  value=''>ทั้งหมด</option>";
+                                                        foreach ($data_type_search as $row) {
+                                                           $type_id_ck = $row['dataId'] . "-dataId";
+                                                           echo "<option  value='" . $type_id_ck ."' >" . $row['type_name'] . "</option>";
                                                         }
                                                         ?>
 
                                                         <?php
                                                         foreach ($division as $row) {
-                                                            $division_id_ck = $row['divisid'] ."'";
-                                                            echo "<option   value='" . $division_id_ck . ">" . $row['divisname'] . "</option>";
+                                                            $division_id_ck = $row['divisid'] ."-divisid";
+                                                            echo "<option   value='" . $division_id_ck . "' >" . $row['divisname'] . "</option>";
                                                         }
                                                         ?>
 

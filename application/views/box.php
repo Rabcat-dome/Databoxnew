@@ -23,18 +23,24 @@
                     </thead>
                     <tbody>
                         <?php
+                        $i='0';
                         foreach ($box as $row) {
                             $hidden = $row['databox_id'];
                             echo "<tr >";
                             echo "<td  onclick=\"chk(" . $hidden . ")\"  width='20%' >" . $row['date_upload'] . "</td>";
                             echo "<td  onclick=\"chk(" . $hidden . ")\" width='70%'>" . $row['subject'] . "</td>";
                             echo "</tr>";
+                            $i++;
                         }
                         ?>
                     </tbody>
 
                 </table>
-                <div align="center"><?php echo $this->pagination->create_links(); ?></div>
+                <div align="center"><?php 
+            if($i>="19"){  
+                echo $this->pagination->create_links(); 
+            }
+                ?></div>
             </div>
         </div>
     </div>

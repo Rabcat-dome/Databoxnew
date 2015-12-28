@@ -78,6 +78,7 @@
                
                 ?>
 
+                <input type="text" id="code_code" name="code_code" ></input>
                 <div align="center">
                     <legend >เพิ่มหมวดเรื่อง <div onclick="userfile();">
 
@@ -151,7 +152,7 @@
                                                     <select id='btn1'  class='' name='btn1' onchange="getComboA(this)">
                                                         <option  value='0'> กรุณาเลือกรายการ </option>
                                                         <?php
-                                                        foreach ($data_type_up as $row) {
+                                                        foreach ($data_type as $row) {
                                                             $type_id_ck = $row['group_Id'] . "-data_type-" . $row['type_id'] . "'";
                                                             echo "<option  value='" . $type_id_ck . ">" . $row['type_name'] . "</option>";
                                                         }
@@ -160,7 +161,7 @@
                                                         <?php
                                                         foreach ($division as $row) {
                                                             $division_id_ck = $row['divisid'] . "-division'";
-                                                            echo "<option   value='" . $division_id_ck . "-divisid'>" . $row['divisname'] . "</option>";
+                                                           echo "<option   value='" . $division_id_ck . "-divisid'>" . $row['divisname'] . "</option>";
                                                         }
                                                         ?>
 
@@ -216,13 +217,23 @@
                                                         function getComboA(sel) {
                                                             var value = sel.value;
                                                             document.getElementById("code").value = value;
-                                                            document.getElementById("data_group_id").value = value;
+                                                            document.getElementById("data_group_id_2").value = value; 
+                                                            document.getElementById("data_group_id").value = value; 
+                                                            document.getElementById("test").value = value;
+                                                        }
+                                                        function getComboB(sel) {
+                                                              var value = sel.value;
+                                                            document.getElementById("code").value = value;
+                                                              document.getElementById("data_group_main").value = value; 
+                                                            document.getElementById("data_group_id_2").value = value; 
+                                                            document.getElementById("data_group_id").value = value; 
                                                             document.getElementById("test").value = value;
                                                         }
                                                         function change(id) {
                                                             var id = id.value;
                                                             document.getElementById("code").value = id;
                                                         }
+                                                        
                                                     </script>
 
                                                     <div id="showajax" ></div>
@@ -231,7 +242,7 @@
                                                                                         $(document).ready(function () {
                                                                                             $("#btn1").change(function () {
 
-                                                                                                $.post("select", {
+                                                                                                $.post("select_main", {
                                                                                                     data1: $("#code").val()},
                                                                                                         function (data) {
                                                                                                             $("#showajax").html(data);
@@ -254,32 +265,44 @@
                                             </div>
                                             <tr>
                                                 <td>
-                                                    <div  id="panel_hidden" name="panel_hidden" class="" style="border-style: groove; border-color: red; display: none;">
+                                                   
+                                                                    <div  id="panel_hidden_2" name="panel_hidden_2" class="" style="border-style: groove; border-color: red; display: none;">
                                                         <table border="0">
                                                             <tr>
                                                                 <td>
+                                                                    
                                                                     <div class="input-prepend"><span class="add-on"  style="width : 30%;  text-align: left;">ประเภทเอกสาร</span>
                                                                         <select class='span5'  name="data_group_id" id="data_group_id"   >
 
                                                                             <?php
                                                                             foreach ($data_type as $row) {
-                                                                                echo "<option  value='" . $row['group_Id'] . "-data_type-" . $row['type_id'] . "'>" . $row['type_name'] . "</option>";
+                                                                               echo "<option  value='" . $row['group_Id'] . "-data_type-" . $row['type_id'] . "'>" . $row['type_name'] . "</option>";
                                                                             }
                                                                             ?>
-
-
-
                                                                             <?php
                                                                             foreach ($division as $row) {
-                                                                                echo "<option   value='" . $row['divisid'] . "-division'>" . $row['divisname'] . "</option>";
+                                                                               echo  "<option   value='" . $row['divisid'] . "-division'>" . $row['divisname'] . "</option>";
                                                                             }
                                                                             ?>
                                                                         </select>
+                                                                    </div>
+                                                                     <div class="input-prepend"><span class="add-on"  style="width : 30%;  text-align: left;">เอกสารหลัก</span>
+                                                                         <select class='span5'  name="data_group_main" id="data_group_main"   >
+
+                                                                            <?php
+                                                                            foreach ($data_group_main as $row) {
+                                                                                 echo "<option  value=''>" . $row['name'] . "</option>";
+                                                                            }
+                                                                            ?>
+
+                                                                             
+                                                                        </select>
+                                                                    </div>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    <div class="input-prepend"><span class="add-on" style="width : 30%;  text-align: left;">เพิ่มหมวดเรื่องย่อย</span>
+                                                                    <div class="input-prepend"><span class="add-on" style="width : 30%;  text-align: left;">เพิ่มหมวดเอกสารหลัก</span>
                                                                         <input type='text'  id='menu_second' name='menu_second' class='span5' /></input>
                                                                 </td>
                                                             </tr>
@@ -295,6 +318,53 @@
                                                                 </td>
                                                             </tr>	
                                                         </table>
+                                                        </div>
+                                                                    <div  id="panel_hidden" name="panel_hidden" class="" style="border-style: groove; border-color: red; display: none;">
+                                                        <table border="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="input-prepend"><span class="add-on"  style="width : 30%;  text-align: left;">ประเภทเอกสาร</span>
+                                                                        <select class='span5'  name="data_group_id_2" id="data_group_id_2"   >
+
+                                                                            <?php
+                                                                            foreach ($data_type as $row) {
+                                                                                echo "<option  value='" . $row['group_Id'] . "-data_type-" . $row['type_id'] . "'>" . $row['type_name'] . "</option>";
+                                                                            }
+                                                                            ?>
+
+
+
+                                                                            <?php
+                                                                            foreach ($division as $row) {
+                                                                               echo  "<option   value='" . $row['divisid'] . "-division'>" . $row['divisname'] . "</option>";
+                                                                            }
+                                                                            ?>
+                                                                        </select>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                            
+                                                                <td>
+                                                                    <div class="input-prepend"><span class="add-on" style="width : 30%;  text-align: left;">เพิ่มหมวดเอกสารหลัก</span>
+                                                                        <input type='text'  id='menu_second' name='menu_second' class='span5' /></input>
+                                                                        
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="left" >
+                                                                  
+                                                                    <a onclick="document.getElementById('upload_pdf').submit()" href="#"  class="btn btn-small btn-danger">
+                                                                     <i class="btn-icon-only icon-save"  >บันทึก</i> 
+                                                                    </a>
+                                                                </td>
+                                                            </tr>	
+                                                        </table>
+                                                        </div>
                                                 </td>
                                             </tr>
                                             </div>
@@ -480,7 +550,7 @@
                                                                         }
                                                                         ?> >		                                                                                                    
 
-                                                                            <?php echo $row['groupname']; ?></option>";
+                                                                            <?php  echo $row['groupname']; ?></option>";
                                                                         <?php
                                                                     }
                                                                 }
