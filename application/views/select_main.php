@@ -1,5 +1,5 @@
 
-
+                
 <script>
     function myFunction_add() {
         document.getElementById("panel_hidden").style.display = 'block';
@@ -13,12 +13,32 @@
     }
     function myFunction_add_2() {
   
+var selObj = document.getElementById('mySelect');
+	var txtIndexObj = document.getElementById('txtIndex');
+	var txtValueObj = document.getElementById('txtValue');
+	var txtTextObj = document.getElementById('txtText');
+	
+	var selIndex = selObj.selectedIndex;
+	txtIndexObj.value = selIndex;
+	txtValueObj.value = selObj.options[selIndex].value;
+	txtTextObj.value = selObj.options[selIndex].text;
+        
         document.getElementById("panel_hidden_2").style.display = 'block';
         document.getElementById("flip_add_2").style.display = 'none';
         document.getElementById("flip_close_2").style.display = 'block';
     }
     function myFunction_close_2() {
-           
+   
+   
+var selObj = document.getElementById('mySelect');
+	var txtIndexObj = document.getElementById('txtIndex');
+	var txtValueObj = document.getElementById('txtValue');
+	var txtTextObj = document.getElementById('txtText');
+	
+	var selIndex = selObj.selectedIndex;
+	txtIndexObj.value = selIndex;
+	txtValueObj.value = selObj.options[selIndex].value;
+	txtTextObj.value = selObj.options[selIndex].text;
 
         document.getElementById("panel_hidden_2").style.display = 'none';
         document.getElementById("flip_add_2").style.display = 'block';
@@ -41,7 +61,7 @@ if ($pieces[1] != "box") {
             </td>
             <td>
 
-                <select class='span6'  onchange="getSelect(this)" >
+                <select class='span6'  id="selSeaShells"  onchange="getSelect(this)" >
                     <?php
                     foreach ($data_group_main as $row) {
                         echo "<option value='" . $row["fk_id"] . "'>" . $row["name"] . "</option>";
@@ -74,7 +94,7 @@ if ($pieces[1] != "box") {
                 <div class="input-prepend" id="mySelect_text" name="mySelect_text" style="display: none;" onchange="getDataB(this)"  ><span class="add-on"   >หมวดเอกสารรอง</span>
             </td>
             <td>
-                <select class='span6'  id="mySelect" style="display: none;" >
+                <select class='span6'  id="mySelect" name="mySelect" style="display: none;" >
                     <?php
                     if ($pieces[1] == "division") {
 
@@ -106,6 +126,18 @@ if ($pieces[1] != "box") {
                     ?>
 
                 </select>
+                
+            
+
+<input type="text" id="txtIndex" />
+		selectedIndex
+		<br />
+		<input type="text" id="txtValue" />
+		options[].value
+		<br />
+		<input type="text" id="txtText" />
+		options[].text
+		<br />
 
             </td>
             <td>

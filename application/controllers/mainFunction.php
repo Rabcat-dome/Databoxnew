@@ -273,7 +273,7 @@ if($this->auth_ad->is_authenticated())
     //---------------------------------------------------หน้า อัพโหล
 
     public function page_upload() {
-if($this->auth_ad->is_authenticated())
+//if($this->auth_ad->is_authenticated())
         {
 
         //-------pagination
@@ -301,10 +301,10 @@ if($this->auth_ad->is_authenticated())
         $this->load->view('page_upload', $data);  // เปิดหน้า upload เพื่อที่ สร้างหน้าวิว ชัวคราว
 
                     }
-        else 
-        {
-            redirect('mainFunction/index');
-        }
+        //else 
+        //{
+          //  redirect('mainFunction/index');
+        //}
     }
 
     public function select_main() {
