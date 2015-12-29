@@ -243,7 +243,8 @@ Class j3databox extends CI_Model {
         
         
                $this->db->select('*')->select('division.divisid')->from('division')
-                        ->join('data_group', 'data_group.divisId = division.divisid', 'LEFT');
+               ->join('data_group_main','division.divisid = data_group_main.fk_id','LEFT')
+                ->join('data_group', 'data_group.divisId = data_group_main.id', 'LEFT');
                $this->db->group_by('division.divisid');
           $query = $this->db->get();
         return $query->result_array();
