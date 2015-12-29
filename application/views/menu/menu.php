@@ -47,7 +47,7 @@
                                     <table  border="0">
 
                                         <?php $attributes = array('id' => 'main');
-                                        echo form_open_multipart('<?echo base_url()?>index.php/mainFunction/databox_search', $attributes);
+                                        echo form_open_multipart(base_url().'index.php/mainFunction/databox_search', $attributes);
                                         ?>
                                         
                                         <div  style="margin-top: 4px;">

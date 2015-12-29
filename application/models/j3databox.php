@@ -31,7 +31,8 @@ Class j3databox extends CI_Model {
         }
         $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
                 ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
-                ->join('division', 'division.divisId = data_group.divisId', 'LEFT')
+                ->join('data_group_main','data_group.divisId = data_group_main.id','LEFT')
+                ->join('division', 'division.divisid = data_group_main.fk_id', 'LEFT')
                 ->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT');
         if ($begin_fromdate != "") {
             $this->db->where("databox_upload.date_upload BETWEEN  '$begin_fromdate' AND '$todate_end'", NULL, FALSE);
@@ -83,8 +84,9 @@ Class j3databox extends CI_Model {
 
     function get_Databox_search_num() {
         $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
-                ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
-                ->join('division', 'division.divisId = data_group.divisId', 'LEFT')
+               ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
+                ->join('data_group_main','data_group.divisId = data_group_main.id','LEFT')
+                ->join('division', 'division.divisid = data_group_main.fk_id', 'LEFT')
                 ->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT');
         $this->db->order_by('databox_upload.databox_id', 'DESC');
         //$this->db->limit($test,$this->uri->segment(3));
@@ -232,7 +234,7 @@ Class j3databox extends CI_Model {
     }
 
     function get_division_group() {
-        $sql = "SELECT  * FROM  'division_group'";
+        $sql = "SELECT  * FROM  division_group";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
@@ -255,12 +257,13 @@ Class j3databox extends CI_Model {
         return $query->result_array();
     }
 
-   /* function get_division_by() {
+    function get_division_by() {
         //$sql = "SELECT * FROM 'division_group' LEFT JOIN 'division' ON 'division'.'group_Id' = 'division_group'.'group_Id' GROUP BY 'division_group'.'group_Id'";
-        $sql = $this->db->select('*')->from('division_group')->join('division','division.group_Id = division_group.group_Id','LEFT')->group_by("division_group.group_Id");
+        //$sql = $this->db->select('*')->from('division_group')->join('division','division.group_Id = division_group.group_Id','LEFT')->group_by("division_group.group_Id");
+        $sql = "SELECT * FROM division_group LEFT JOIN division ON division.group_Id = division_group.group_Id GROUP BY division_group.group_Id";
         $query = $this->db->query($sql);
         return $query->result_array();
-    }*/
+    }
 
     function get_data_group_box() {
         $select_disvisid = $this->input->post("select_disvisid");

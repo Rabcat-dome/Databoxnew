@@ -18,7 +18,7 @@
             <div id="body-content">
 
                 <div class="body-nav body-nav-horizontal body-nav-fixed" >
-                    <div class="container"  >
+                    <div class="container" >
                         <ul>
                             <li>
                                 <a href="<?php echo base_url();?>index.php/mainFunction/executive">
