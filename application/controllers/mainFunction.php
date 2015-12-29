@@ -295,7 +295,7 @@ if($this->auth_ad->is_authenticated())
         $data['division'] = $this->j3databox->get_division();
         $data['data_type'] = $this->j3databox->get_data_type_up();
         $data['data_group_up'] = $this->j3databox->get_data_group_up();
-
+        $data['data_group_main'] = $this->j3databox->get_data_group_main();
         $data['data_type_up'] = $this->j3databox->get_data_type_up();
         $data['upload'] = $this->j3databox->get_upload($test);
         $this->load->view('page_upload', $data);  // เปิดหน้า upload เพื่อที่ สร้างหน้าวิว ชัวคราว
@@ -317,19 +317,28 @@ if($this->auth_ad->is_authenticated())
         $this->load->view('select_main', $data);
     }
     public function select() {
-                
         $data['data_division'] = $this->j3databox->get_data_division();
         $data['data_type_up'] = $this->j3databox->get_data_type_up();
         $data['division'] = $this->j3databox->get_division();
         $data['data_type'] = $this->j3databox->get_data_type_up();
         $data['data_group_up'] = $this->j3databox->get_data_group_up();
-        $this->load->view('select_main', $data);
+        $this->load->view('select', $data);
     }
+    
 
     public function test() {
-
-
-        $this->load->view('test');
+        $data['division'] = $this->j3databox->get_division();
+        $this->load->view('test',$data);
+    }
+	public function get_state() {
+      
+        $data['data_group_main'] = $this->j3databox->get_data_group_main();
+        $this->load->view('get_state',$data);
+    }
+	public function get_city() {
+        $data['get_division_group'] = $this->j3databox->get_division_group_up();
+        $data['data_group_main'] = $this->j3databox->get_data_group_main();
+        $this->load->view('get_city',$data);
     }
 
     public function save() {

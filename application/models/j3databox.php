@@ -426,11 +426,13 @@ Class j3databox extends CI_Model {
     }
     
     function get_data_group_main() {
-
-       
-       $sql = "SELECT * FROM data_group_main";
-        $query = $this->db->query($sql);
+     
+          $this->db->select('*')->select('data_group_main.id')->from('data_group_main')
+                ->join('data_group', 'data_group_main.id = data_group.divisId', 'LEFT');
+            $this->db->group_by('data_group_main.id');
+        $query = $this->db->get();
         return $query->result_array();
+
     }
     function get_data_type_search() {
 

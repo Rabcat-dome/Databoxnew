@@ -78,8 +78,7 @@
                
                 ?>
 
-                <input type="text" id="code_code" name="code_code" ></input>
-                <div align="center">
+               <div align="center">
                     <legend >เพิ่มหมวดเรื่อง <div onclick="userfile();">
 
                         </div></legend>
@@ -134,6 +133,7 @@
                                             </div>				
                                         </div>
                                         <table>
+                                            <tr>
                                             <td>   
                                                 <script>
                                                     $('input[type="radio"]').on('click change', function (e) {
@@ -164,17 +164,48 @@
                                                            echo "<option   value='" . $division_id_ck . "-divisid'>" . $row['divisname'] . "</option>";
                                                         }
                                                         ?>
+                                                    </select>
+                                                    <tr>
+                                                        <td>
+                                                    <div class="input-prepend"><span class="add-on" >หมวดเอกสารหลัก</span>
+                                                     
+                                                       
+                                                            <select name="showajax" id="showajax" class="state">
+                                                                <option selected="selected">--Select State--</option>
+                                                                </select>
+                                                      
+                                                         
+                                                        </td>
+                                                        </tr>
+                                                        <tr>
+                                                        <td>
+                                                    <div class="input-prepend"><span class="add-on" >หมวดเอกรรอง</span>
+                                                     
+                                                       
+                                                            <select name="showajax2" id="showajax2" class="state">
+                                                                <option selected="selected">--Select State--</option>
+                                                            </select>
+                                                      
+                                                         
+                                                        </td>
+                                                        <td>
+                                                            
+                                                                <a  id="br" class="btn btn-small btn-danger">
+                                                                       เพิ่ม
+                                                                </a>
+                                                        </td>
+                                                        
+                                                        </tr>
+                                                         
 
-                                                    </select></td>
-                                            <tr>
+                                                </td>
+                                            </tr>
                                                 <td>
                                                     <input type="hidden" id="pdf_no" name="pdf_no" cols="45" rows="5"></input>
                                                     <input type="hidden" id="code" name="code" cols="45" rows="5"></input>
+                                                     <input type="hidden" id="code2" name="code2" cols="45" rows="5"></input>
                                                     <input type="hidden" id="doc" name="doc" cols="45" rows="5"></input>
                                                     <script>
-
-
-
                                                         function userfile() {
                                                             var userfile = document.getElementById("userfile").value;
                                                             var userfile2 = document.getElementById("userfile2").value;
@@ -223,7 +254,7 @@
                                                         }
                                                         function getComboB(sel) {
                                                               var value = sel.value;
-                                                            document.getElementById("code").value = value;
+                                                            document.getElementById("code2").value = value;
                                                               document.getElementById("data_group_main").value = value; 
                                                             document.getElementById("data_group_id_2").value = value; 
                                                             document.getElementById("data_group_id").value = value; 
@@ -235,8 +266,11 @@
                                                         }
                                                         
                                                     </script>
+                                                    
 
-                                                    <div id="showajax" ></div>
+                                                   
+                                                    <div id="showajax3" ></div>
+                                                
                                                     <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
                                                     <script type="text/javascript">
                                                                                         $(document).ready(function () {
@@ -251,7 +285,37 @@
 
                                                                                             });
                                                                                         });
+                                                                                         $(document).ready(function () {
+                                                                                            $("#showajax").change(function () {
+
+                                                                                                $.post("select", {
+                                                                                                    data1: $("#code2").val()},
+                                                                                                        function (data) {
+                                                                                                            $("#showajax2").html(data);
+                                                                                                        }
+                                                                                                );
+
+                                                                                            });
+                                                                                        });
+                                                                                        $(document).ready(function () {
+                                                                                            $("#btn2").change(function () {
+
+                                                                                                $.post("select", {
+                                                                                                    data1: $("#code2").val()},
+                                                                                                        function (data) {
+                                                                                                            $("#showajax2").html(data);
+                                                                                                        }
+                                                                                                );
+
+                                                                                            });
+                                                                                        });
+                                                             
+                                                                                     
+                                                                                        
+                                                                                       
+                                                   
                                                     </script>
+                                                    
 
                                                     <input type="hidden" id="group_Id" name="group_Id" ></input>
                                                 </td>
@@ -270,9 +334,8 @@
                                                         <table border="0">
                                                             <tr>
                                                                 <td>
-                                                                    
                                                                     <div class="input-prepend"><span class="add-on"  style="width : 30%;  text-align: left;">ประเภทเอกสาร</span>
-                                                                        <select class='span5'  name="data_group_id" id="data_group_id"   >
+                                                                        <select class='span5'  name="data_group_id" id="data_group_id" onchange="getComboC(this)"  >
 
                                                                             <?php
                                                                             foreach ($data_type as $row) {
@@ -291,18 +354,20 @@
 
                                                                             <?php
                                                                             foreach ($data_group_main as $row) {
-                                                                                 echo "<option  value=''>" . $row['name'] . "</option>";
+                                                                                 echo "<option  value='". $row['fk_id'] . "'>" . $row['name'] . "</option>";
                                                                             }
                                                                             ?>
 
                                                                              
                                                                         </select>
+  
                                                                     </div>
                                                                 </td>
                                                             </tr>
+                                                            
                                                             <tr>
                                                                 <td>
-                                                                    <div class="input-prepend"><span class="add-on" style="width : 30%;  text-align: left;">เพิ่มหมวดเอกสารหลัก</span>
+                                                                    <div class="input-prepend"><span class="add-on" style="width : 30%;  text-align: left;">เพิ่มหมวดเอกสารรอง</span>
                                                                         <input type='text'  id='menu_second' name='menu_second' class='span5' /></input>
                                                                 </td>
                                                             </tr>
@@ -342,10 +407,31 @@
                                                                         </select>
                                                                 </td>
                                                             </tr>
+                                                             <tr>
+                                                                <td>
+                                                                    <div class="input-prepend"><span class="add-on"  style="width : 30%;  text-align: left;">ประเภทเอกสาร</span>
+                                                                        <select class='span5'  name="data_group_id_2" id="data_group_id_2"   >
+
+                                                                            <?php
+                                                                            foreach ($data_type as $row) {
+                                                                                echo "<option  value='" . $row['group_Id'] . "-data_type-" . $row['type_id'] . "'>" . $row['type_name'] . "</option>";
+                                                                            }
+                                                                            ?>
+
+
+
+                                                                            <?php
+                                                                            foreach ($division as $row) {
+                                                                               echo  "<option   value='" . $row['divisid'] . "-division'>" . $row['divisname'] . "</option>";
+                                                                            }
+                                                                            ?>
+                                                                        </select>
+                                                                </td>
+                                                            </tr>
                                                             <tr>
                                                             
                                                                 <td>
-                                                                    <div class="input-prepend"><span class="add-on" style="width : 30%;  text-align: left;">เพิ่มหมวดเอกสารหลัก</span>
+                                                                    <div class="input-prepend"><span class="add-on" style="width : 30%;  text-align: left;">เพิ่มหมวดเอกสารรอง</span>
                                                                         <input type='text'  id='menu_second' name='menu_second' class='span5' /></input>
                                                                         
                                                                 </td>

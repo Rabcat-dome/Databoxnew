@@ -1,4 +1,21 @@
-<img src="<?php echo base_url('images/1.jpg'); ?>" />
-   <script type="text/javascript" src="<?php echo base_url();?>/js/jquery/jquery-1.8.2.min.js" ></script>
-    <link rel="stylesheet" href="<?php echo base_url();?>/asset/css/customize-template.css" type="text/css" />
- <a href="http://www.w3schools.com">Visit W3Schools</a> 
+<div class="frmDronpDown">
+	<div class="row">
+		<label>Country:</label><br/>
+		<select name="country" id="country-list" class="demoInputBox" onChange="getState(this.value);">
+		<option value="">Select Country</option>
+		<?php
+		foreach($results as $country) {
+		?>
+		<option value="<?php echo $country["id"]; ?>"><?php echo $country["name"]; ?></option>
+		<?php
+		}
+		?>
+		</select>
+	</div>
+	<div class="row">
+		<label>State:</label><br/>
+		<select name="state" id="state-list" class="demoInputBox">
+		<option value="">Select State</option>
+		</select>
+	</div>
+</div>
