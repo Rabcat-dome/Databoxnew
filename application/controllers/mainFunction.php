@@ -307,7 +307,7 @@ if($this->auth_ad->is_authenticated())
         //}
     }
 
-    public function select_main() {
+ public function select_main() {
         $data['data_group_main'] = $this->j3databox->get_data_group_main();
         $data['data_division'] = $this->j3databox->get_data_division();
         $data['data_type_up'] = $this->j3databox->get_data_type_up();
@@ -324,6 +324,34 @@ if($this->auth_ad->is_authenticated())
         $data['data_group_up'] = $this->j3databox->get_data_group_up();
         $this->load->view('select', $data);
     }
+    public function input_menu() {
+        $data['data_division'] = $this->j3databox->get_data_division();
+        $data['data_type_up'] = $this->j3databox->get_data_type_up();
+        $data['division'] = $this->j3databox->get_division();
+        $data['data_type'] = $this->j3databox->get_data_type_up();
+        $data['data_group_up'] = $this->j3databox->get_data_group_up();
+        $this->load->view('input_menu', $data);
+    }
+    public function input_menu_2() {
+       $data['data_group_main'] = $this->j3databox->get_data_group_main();
+        $data['data_division'] = $this->j3databox->get_data_division();
+        $data['data_type_up'] = $this->j3databox->get_data_type_up();
+        $data['division'] = $this->j3databox->get_division();
+        $data['data_type'] = $this->j3databox->get_data_type_up();
+        $data['data_group_up'] = $this->j3databox->get_data_group_up();
+      
+        $this->load->view('input_menu_2', $data);
+    }
+     public function input_menu_main() {
+         $data['data_group_main'] = $this->j3databox->get_data_group_main();
+        $data['data_division'] = $this->j3databox->get_data_division();
+        $data['data_type_up'] = $this->j3databox->get_data_type_up();
+        $data['division'] = $this->j3databox->get_division();
+        $data['data_type'] = $this->j3databox->get_data_type_up();
+        $data['data_group_up'] = $this->j3databox->get_data_group_up();
+        $this->load->view('input_menu_main', $data);
+    }
+    
     
 
     public function test() {
