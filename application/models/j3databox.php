@@ -120,7 +120,8 @@ Class j3databox extends CI_Model {
     function get_search() {
         $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
                 ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
-                ->join('division', 'division.divisid = data_group.group_Id', 'LEFT');
+                ->join('data_group_main','data_group.divisId = data_group_main.id','LEFT')
+                ->join('division', 'division.divisid = data_group_main.fk_id', 'LEFT');
         $this->db->order_by("databox_upload.databox_id", "desc");
         $query = $this->db->get();
         return $query->result_array();
@@ -137,11 +138,18 @@ Class j3databox extends CI_Model {
         } else {
             $temp2 = "";
         }
+        if (isset($_POST['data_group_main_id'])) {
+            $temp_group_main = $_POST['data_group_main_id'];
+        } else {
+            $temp_group_main = "";
+        }
 
         $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
                 ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
-                ->join('division', 'division.divisId = data_group.group_Id', 'LEFT');
+                ->join('data_group_main','data_group.divisId = data_group_main.id','LEFT')
+                ->join('division', 'division.divisid = data_group_main.fk_id', 'LEFT');
         $this->db->where('data_group.group_Id like', '%' . $temp . '%');
+        $this->db->where('data_group_main.id like', '%' . $temp_group_main . '%');
         $this->db->where('division.divisId like', '%' . $temp2 . '%');
         $this->db->order_by('databox_upload.databox_id', 'DESC');
         $this->db->limit($test, $this->uri->segment(3));
@@ -161,11 +169,18 @@ Class j3databox extends CI_Model {
         } else {
             $temp2 = "";
         }
+        if (isset($_POST['data_group_main_id'])) {
+            $temp_group_main = $_POST['data_group_main_id'];
+        } else {
+            $temp_group_main = "";
+        }
 
         $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
                 ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
-                ->join('division', 'division.divisId = data_group.group_Id', 'LEFT');
+                ->join('data_group_main','data_group.divisId = data_group_main.id','LEFT')
+                ->join('division', 'division.divisid = data_group_main.fk_id', 'LEFT');
         $this->db->where('data_group.group_Id like', '%' . $temp . '%');
+        $this->db->where('data_group_main.id like', '%' . $temp_group_main . '%');
         $this->db->where('division.divisId like', '%' . $temp2 . '%');
         $this->db->order_by('databox_upload.databox_id', 'DESC');
         //$this->db->limit($test,$this->uri->segment(3));
@@ -177,7 +192,8 @@ Class j3databox extends CI_Model {
     function get_Last_Update() {
         $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
                 ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
-                ->join('division', 'division.divisid = data_group.divisid', 'LEFT')
+                ->join('data_group_main','data_group.divisId = data_group_main.id','LEFT')
+                ->join('division', 'division.divisid = data_group_main.fk_id', 'LEFT')
                 ->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT');
         $this->db->order_by('databox_upload.databox_id', 'DESC');
         $query = $this->db->get();
@@ -208,7 +224,7 @@ Class j3databox extends CI_Model {
     function get_data_type_ms() {
 
         $this->db->select('*')->select('data_group.dataId')->from('data_group')
-                ->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT');
+        ->join('data_type','data_type.type_id = data_group.dataId', 'LEFT');
         $this->db->where('data_group.dataId = data_type.type_id');
         $this->db->group_by('data_group.dataId');
         $query = $this->db->get();
@@ -216,7 +232,7 @@ Class j3databox extends CI_Model {
     }
 
     function get_division_group() {
-        $sql = "SELECT  * FROM  `division_group`";
+        $sql = "SELECT  * FROM  'division_group'";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
@@ -232,18 +248,19 @@ Class j3databox extends CI_Model {
     }
 
     function get_division_group_division() {
-        $this->db->select('*')->select('')->from('division_group')
+        $this->db->select('*')->from('division_group')
                 ->join('division', 'division.group_Id = division_group.group_Id', 'LEFT');
         //->group_by('division_group.group_Id');
         $query = $this->db->get();
         return $query->result_array();
     }
 
-    function get_division_by() {
-        $sql = "SELECT * FROM `division_group` LEFT JOIN `division` ON `division`.`group_Id` = `division_group`.`group_Id` GROUP BY `division_group`.`group_Id`";
+   /* function get_division_by() {
+        //$sql = "SELECT * FROM 'division_group' LEFT JOIN 'division' ON 'division'.'group_Id' = 'division_group'.'group_Id' GROUP BY 'division_group'.'group_Id'";
+        $sql = $this->db->select('*')->from('division_group')->join('division','division.group_Id = division_group.group_Id','LEFT')->group_by("division_group.group_Id");
         $query = $this->db->query($sql);
         return $query->result_array();
-    }
+    }*/
 
     function get_data_group_box() {
         $select_disvisid = $this->input->post("select_disvisid");
@@ -254,7 +271,8 @@ Class j3databox extends CI_Model {
 
         $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
                 ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
-                ->join('division', 'division.divisId = data_group.group_Id', 'LEFT');
+                ->join('data_group_main','data_group.divisId = data_group_main.id','LEFT')
+                ->join('division', 'division.divisid = data_group_main.fk_id', 'LEFT');
         $this->db->where('data_group.group_Id like', '%' . $select_disvisid_ex[0] . '%');
         $this->db->where('division.divisId like', '%' . $select_disvisid_ex[1] . '%');
         $this->db->order_by('databox_upload.databox_id', 'DESC');
@@ -272,7 +290,8 @@ Class j3databox extends CI_Model {
 
         $this->db->select('*')->from('databox_upload')
                 ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
-                ->join('division', 'data_group.divisId = division.divisId', 'LEFT')
+                ->join('data_group_main','data_group.divisId = data_group_main.id','LEFT')
+                ->join('division', 'division.divisid = data_group_main.fk_id', 'LEFT')
                 ->join('division_group', 'division_group.group_Id = division.group_Id', 'LEFT');
         $this->db->like('division_group.group_Id', $data_group, 'none');
         $this->db->like('databox_upload.division_id', $divis_id);
@@ -299,8 +318,9 @@ Class j3databox extends CI_Model {
 
 
                 $this->db->select('*')->select('databox_upload.group_Id')->from('databox_upload')
-                        ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
-                        ->join('division', 'division.divisId = data_group.divisId', 'LEFT')
+                ->join('data_group', 'data_group.group_Id = databox_upload.group_Id', 'LEFT')
+                ->join('data_group_main','data_group.divisId = data_group_main.id','LEFT')
+                ->join('division', 'division.divisid = data_group_main.fk_id', 'LEFT')
                         ->join('division_group', 'division.group_id = `division_group.group_Id', 'LEFT');
                 $this->db->where('division_group.group_id like', '%' . $select_disvisid_ex[0] . '%');
                 $this->db->where('division.divisId like', '%' . $select_disvisid_ex[1] . '%');

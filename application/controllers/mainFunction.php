@@ -175,7 +175,7 @@ if($this->auth_ad->is_authenticated())
         $select_to2 = $select_to1 + $select_id;
         $select_to3 = $select_to2 + $group_Id;
         $data['data_group'] = $this->j3databox->get_data_group();
-        $data['division_by'] = $this->j3databox->get_division_by();
+        //$data['division_by'] = $this->j3databox->get_division_by();
         $data['data_type'] = $this->j3databox->get_data_type();
         $data['data_type_ms'] = $this->j3databox->get_data_type_ms();
         $data['division_group'] = $this->j3databox->get_division_group_division();
