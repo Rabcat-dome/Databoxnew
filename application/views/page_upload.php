@@ -142,7 +142,8 @@
                                                 </script>
                                                 <div class="input-prepend"><span class="add-on" >ชั้นความลับ</span></div>
                                                 <div class="input-prepend">
-                                                    <span class="add-on" ><input type="radio" name="s-radio" value="1" checked="checked">ปกติ</span></input>
+                                                    <span class="add-on" ><input type="radio" name="s-radio
+                                                                                 " value="1" checked="checked">ปกติ</span></input>
                                                     <span class="add-on" ><input type="radio" name="s-radio" value="2"> ลับ</span>  </input>
                                                     <span class="add-on" ><input type="radio" name="s-radio" value="3">  ลับมาก</span>  </input>
                                                     <span class="add-on" ><input type="radio" name="s-radio" value="4">  ลับที่สุด</span>   </input>
@@ -166,51 +167,178 @@
                                                         ?>
                                                     </select>
                                                     <tr>
-                                                        <td>
+                                                <td>
+                                                      
+                                                           
+                                                                     
                                                     <div class="input-prepend"><span class="add-on" >หมวดเอกสารหลัก</span>
                                                      
                                                        
-                                                            <select name="showajax" id="showajax" class="state">
-                                                                <option selected="selected">--Select State--</option>
+                                                            <select name="showajax" id="showajax" class="state" onchange="getComboB(this)">
+                                                                <option selected="selected">--ไม่มีข้อมูล--</option>
                                                                 </select>
+                                                        
+                                                </td>
+                                                 <td>
+                                                            
+                                                            <a  id="btn2_main" name="btn2_main" class="btn btn-small btn-danger" onclick="open_input_main()">
+                                                                       เพิ่มหมวดหัวข้อเอกสาร
+                                                                </a>
+                                                                <a  id="btn3_main" name="btn3_main" class="btn btn-small btn-danger" onclick="close_input_main()"  style ="display :none"   >
+                                                                       ซ่อน 
+                                                                </a>
+                                                        </td>
+                                                        
+                                                       </tr>
+                                                    <tr>
+                                                        <td>
+                                                  
+                                                             <div class="input-prepend"><span class="add-on" >หมวดเอกสารรอง</span>
+                                                     
+                                                       
+                                                            <select name="showajax2" id="showajax2" class="state">
+                                                                <option selected="selected">--ไม่มีข้อมูล--</option>
+                                                            </select>
+                                                            
+                                                            
                                                       
                                                          
+                                                        </td>
+                                                         <td>
+                                                            
+                                                            <a  id="btn2" name="btn2" class="btn btn-small btn-danger" onclick="open_input()">
+                                                                       เพิ่มหมวดหัวข้อเอกสาร
+                                                                </a>
+                                                                <a  id="btn3" name="btn3" class="btn btn-small btn-danger" onclick="close_input()"  style ="display :none"   >
+                                                                       ซ่อน 
+                                                                </a>
+                                                        </td>
+                                                        
+                                                       
+                                                        </tr>
+                                              
+                                                           
+                                                        <td>
+                                                            
+                                               <table id="input_menu_main" name="input_menu_main" style="display: none" >
+                                                                <td>
+                                                                  <div class="input-prepend"><span class="add-on" >ประเทภเอกสาร</span>
+                                                            <select name="showajax5" id="showajax5" class="state">
+                                                                <option  selected="selected">--ไม่มีข้อมูล--</option>
+                                                            </select>
                                                         </td>
                                                         </tr>
                                                         <tr>
                                                         <td>
-                                                    <div class="input-prepend"><span class="add-on" >หมวดเอกรรอง</span>
-                                                     
-                                                       
-                                                            <select name="showajax2" id="showajax2" class="state">
-                                                                <option selected="selected">--Select State--</option>
-                                                            </select>
+                                                           <div class="input-prepend"><span class="add-on" >หมวดเอกสารหลัก</span>
+                                                               <input id="menu_main" name="menu_main"></input>
+                                                        </td>
+                                                        <td>
+                                                          <a onclick="document.getElementById('upload_pdf').submit()" href="#" class="btn btn-small btn-danger">
+                                                            <i   class="btn-icon-only icon-save" onclick="userfile();" >บันทึก</i>
+                                                            </a>
+                                                        </td>
+                                                        </tr>
+                                                    
+                                                          </table>
+                                                         
+                                                        </td>
+                                                        </tr>
+                                                    
+                                                        <tr>
+                                                               
+                                                        <td>
+                                                 
                                                       
                                                          
                                                         </td>
+                                                       
+                                                        <script>
+                                                        function open_input(){
+                                                           
+                                                           
+                                                            document.getElementById("input_menu").style.display ="block";
+                                                            document.getElementById("btn2").style.display ="none";
+                                                            document.getElementById("btn3").style.display ="block";
+                                                        }
+                                                       
+                                                        function close_input(){
+                                                        
+                                                            document.getElementById("input_menu").style.display ="none";
+                                                             document.getElementById("btn2").style.display ="block";
+                                                            document.getElementById("btn3").style.display ="none";
+                                                           
+                                                        }
+                                                        
+                                                        function close_input_main(){
+                                                            
+                                                        
+                                                            document.getElementById("input_menu_main").style.display ="none";
+                                                             document.getElementById("btn2_main").style.display ="block";
+                                                            document.getElementById("btn3_main").style.display ="none";
+                                              
+                                                        }
+                                                        function open_input_main(){
+                                                         
+                                                            document.getElementById("input_menu_main").style.display ="block";
+                                                            document.getElementById("btn2_main").style.display ="none";
+                                                            document.getElementById("btn3_main").style.display ="block";
+                                       
+                                                        }
+                                                        </script>
+                                                    
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                           <tr>
+                                                        <td>
+                                                            <table id="input_menu" name="input_menu" style="display: none">
+                                                                <td>
+                                                                  <div class="input-prepend"><span class="add-on" >ประเทภเอกสาร</span>
+                                                            <select name="showajax3" id="showajax3" class="state">
+                                                                <option selected="selected">--ไม่มีข้อมูล--</option>
+                                                            </select>
+                                                        </td>
+                                                        </tr>
+                                                        <tr>
+                                                        <td>
+                                                           <div class="input-prepend"><span class="add-on" >หมวดเอกสารหลัก</span>
+                                                            <select name="showajax4" id="showajax4" class="state">
+                                                                <option selected="selected">--ไม่มีข้อมูล--</option>
+                                                            </select>
+                                                        </td>
+                                                        </tr>
+                                                        <tr>
+                                                        <td>
+                                                           <div class="input-prepend"><span class="add-on" >หมวดเอกสารรอง</span>
+                                                               <input id="menu_second" name="menu_second" ></input>
+                                                        </td>
                                                         <td>
                                                             
-                                                                <a  id="br" class="btn btn-small btn-danger">
-                                                                       เพิ่ม
-                                                                </a>
+                                                              <a onclick="document.getElementById('upload_pdf').submit()" href="#" class="btn btn-small btn-danger">
+                                                <i   class="btn-icon-only icon-save" onclick="userfile();" >บันทึก</i>
+                                            </a>
                                                         </td>
-                                                        
                                                         </tr>
-                                                         
+                                                                </table>
+                                                         </td>
+                                                             <tr>
 
+                                                        </tr>
                                                 </td>
                                             </tr>
                                                 <td>
                                                     <input type="hidden" id="pdf_no" name="pdf_no" cols="45" rows="5"></input>
                                                     <input type="hidden" id="code" name="code" cols="45" rows="5"></input>
                                                      <input type="hidden" id="code2" name="code2" cols="45" rows="5"></input>
+                                                      <input type="hidden" id="code3" name="code2" cols="45" rows="5"></input>
                                                     <input type="hidden" id="doc" name="doc" cols="45" rows="5"></input>
                                                     <script>
-                                                        function userfile() {
+                                                        function userfile() { 
                                                             var userfile = document.getElementById("userfile").value;
                                                             var userfile2 = document.getElementById("userfile2").value;
                                                             var res = userfile.split(".");
-                                                            if (res[1] != "pdf")
+                                                            if (res[1] == "pdf")
                                                             {
                                                                 alert("แนบไฟล์ pdf ด้วยครับ");
 
@@ -248,18 +376,25 @@
                                                         function getComboA(sel) {
                                                             var value = sel.value;
                                                             document.getElementById("code").value = value;
+                                                           document.getElementById("code3").value = value;
+                                                           
                                                             document.getElementById("data_group_id_2").value = value; 
                                                             document.getElementById("data_group_id").value = value; 
                                                             document.getElementById("test").value = value;
                                                         }
                                                         function getComboB(sel) {
-                                                              var value = sel.value;
-                                                            document.getElementById("code2").value = value;
-                                                              document.getElementById("data_group_main").value = value; 
-                                                            document.getElementById("data_group_id_2").value = value; 
-                                                            document.getElementById("data_group_id").value = value; 
-                                                            document.getElementById("test").value = value;
+                                                              var value1 = sel.value;
+                                                          
+                                                               document.getElementById("code2").value = value1;
+                                                    
+                                                            //   showajax5
+                                                            //  document.getElementById("data_group_main").value = value; 
+                                                           // document.getElementById("data_group_id_2").value = value; 
+                                                           // document.getElementById("data_group_id").value = value; 
+                                                           // document.getElementById("test").value = value;
                                                         }
+                                                       
+                                                            
                                                         function change(id) {
                                                             var id = id.value;
                                                             document.getElementById("code").value = id;
@@ -269,8 +404,6 @@
                                                     
 
                                                    
-                                                    <div id="showajax3" ></div>
-                                                
                                                     <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
                                                     <script type="text/javascript">
                                                                                         $(document).ready(function () {
@@ -289,7 +422,7 @@
                                                                                             $("#showajax").change(function () {
 
                                                                                                 $.post("select", {
-                                                                                                    data1: $("#code2").val()},
+                                                                                                    data2: $("#code2").val()},
                                                                                                         function (data) {
                                                                                                             $("#showajax2").html(data);
                                                                                                         }
@@ -298,12 +431,48 @@
                                                                                             });
                                                                                         });
                                                                                         $(document).ready(function () {
-                                                                                            $("#btn2").change(function () {
+                                                                                            $("#btn2").click(function () {
 
-                                                                                                $.post("select", {
+                                                                                                $.post("input_menu", {
                                                                                                     data1: $("#code2").val()},
                                                                                                         function (data) {
-                                                                                                            $("#showajax2").html(data);
+                                                                                                            $("#showajax3").html(data);
+                                                                                                        }
+                                                                                                );
+
+                                                                                            });
+                                                                                        });
+                                                                                         $(document).ready(function () {
+                                                                                            $("#showajax3").click(function () {
+
+                                                                                                $.post("input_menu_2", {
+                                                                                                    data3: $("#code3").val()},
+                                                                                                        function (data) {
+                                                                                                            $("#showajax4").html(data);
+                                                                                                        }
+                                                                                                );
+
+                                                                                            });
+                                                                                        });
+                                                                                        $(document).ready(function () {
+                                                                                            $("#btn2").click(function () {
+
+                                                                                                $.post("input_menu_2", {
+                                                                                                    data3: $("#code3").val()},
+                                                                                                        function (data) {
+                                                                                                            $("#showajax4").html(data);
+                                                                                                        }
+                                                                                                );
+
+                                                                                            });
+                                                                                        });
+                                                                                        $(document).ready(function () {
+                                                                                            $("#btn2_main").click(function () {
+
+                                                                                                $.post("input_menu_main", {
+                                                                                                    data1: $("#code2").val()},
+                                                                                                        function (data) {
+                                                                                                            $("#showajax5").html(data);
                                                                                                         }
                                                                                                 );
 
@@ -331,125 +500,10 @@
                                                 <td>
                                                    
                                                                     <div  id="panel_hidden_2" name="panel_hidden_2" class="" style="border-style: groove; border-color: red; display: none;">
-                                                        <table border="0">
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="input-prepend"><span class="add-on"  style="width : 30%;  text-align: left;">ประเภทเอกสาร</span>
-                                                                        <select class='span5'  name="data_group_id" id="data_group_id" onchange="getComboC(this)"  >
-
-                                                                            <?php
-                                                                            foreach ($data_type as $row) {
-                                                                               echo "<option  value='" . $row['group_Id'] . "-data_type-" . $row['type_id'] . "'>" . $row['type_name'] . "</option>";
-                                                                            }
-                                                                            ?>
-                                                                            <?php
-                                                                            foreach ($division as $row) {
-                                                                               echo  "<option   value='" . $row['divisid'] . "-division'>" . $row['divisname'] . "</option>";
-                                                                            }
-                                                                            ?>
-                                                                        </select>
-                                                                    </div>
-                                                                     <div class="input-prepend"><span class="add-on"  style="width : 30%;  text-align: left;">เอกสารหลัก</span>
-                                                                         <select class='span5'  name="data_group_main" id="data_group_main"   >
-
-                                                                            <?php
-                                                                            foreach ($data_group_main as $row) {
-                                                                                 echo "<option  value='". $row['fk_id'] . "'>" . $row['name'] . "</option>";
-                                                                            }
-                                                                            ?>
-
-                                                                             
-                                                                        </select>
-  
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="input-prepend"><span class="add-on" style="width : 30%;  text-align: left;">เพิ่มหมวดเอกสารรอง</span>
-                                                                        <input type='text'  id='menu_second' name='menu_second' class='span5' /></input>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <a onclick="document.getElementById('upload_pdf').submit()" href="#"  class="btn btn-small btn-danger">
-                                                                        <i class="btn-icon-only icon-save"  >บันทึก</i>
-                                                                    </a>
-                                                                </td>
-                                                            </tr>	
-                                                        </table>
+                                                        
                                                         </div>
                                                                     <div  id="panel_hidden" name="panel_hidden" class="" style="border-style: groove; border-color: red; display: none;">
-                                                        <table border="0">
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="input-prepend"><span class="add-on"  style="width : 30%;  text-align: left;">ประเภทเอกสาร</span>
-                                                                        <select class='span5'  name="data_group_id_2" id="data_group_id_2"   >
-
-                                                                            <?php
-                                                                            foreach ($data_type as $row) {
-                                                                                echo "<option  value='" . $row['group_Id'] . "-data_type-" . $row['type_id'] . "'>" . $row['type_name'] . "</option>";
-                                                                            }
-                                                                            ?>
-
-
-
-                                                                            <?php
-                                                                            foreach ($division as $row) {
-                                                                               echo  "<option   value='" . $row['divisid'] . "-division'>" . $row['divisname'] . "</option>";
-                                                                            }
-                                                                            ?>
-                                                                        </select>
-                                                                </td>
-                                                            </tr>
-                                                             <tr>
-                                                                <td>
-                                                                    <div class="input-prepend"><span class="add-on"  style="width : 30%;  text-align: left;">ประเภทเอกสาร</span>
-                                                                        <select class='span5'  name="data_group_id_2" id="data_group_id_2"   >
-
-                                                                            <?php
-                                                                            foreach ($data_type as $row) {
-                                                                                echo "<option  value='" . $row['group_Id'] . "-data_type-" . $row['type_id'] . "'>" . $row['type_name'] . "</option>";
-                                                                            }
-                                                                            ?>
-
-
-
-                                                                            <?php
-                                                                            foreach ($division as $row) {
-                                                                               echo  "<option   value='" . $row['divisid'] . "-division'>" . $row['divisname'] . "</option>";
-                                                                            }
-                                                                            ?>
-                                                                        </select>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                            
-                                                                <td>
-                                                                    <div class="input-prepend"><span class="add-on" style="width : 30%;  text-align: left;">เพิ่มหมวดเอกสารรอง</span>
-                                                                        <input type='text'  id='menu_second' name='menu_second' class='span5' /></input>
-                                                                        
-                                                                </td>
-                                                                
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td align="left" >
-                                                                  
-                                                                    <a onclick="document.getElementById('upload_pdf').submit()" href="#"  class="btn btn-small btn-danger">
-                                                                     <i class="btn-icon-only icon-save"  >บันทึก</i> 
-                                                                    </a>
-                                                                </td>
-                                                            </tr>	
-                                                        </table>
+                                                        
                                                         </div>
                                                 </td>
                                             </tr>
