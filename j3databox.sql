@@ -1,20 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2
+-- version 4.4.12
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 30, 2015 at 02:06 AM
--- Server version: 5.5.25a
--- PHP Version: 5.4.4
+-- Generation Time: Dec 30, 2015 at 04:25 AM
+-- Server version: 5.6.25
+-- PHP Version: 5.5.27
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `j3databox`
@@ -27,13 +27,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `authorization` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
+  `id` int(3) NOT NULL,
   `user_upload` varchar(50) NOT NULL,
   `user_name` varchar(200) NOT NULL,
   `divisId` int(10) NOT NULL,
-  `authority` int(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `authority` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -42,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `authorization` (
 --
 
 CREATE TABLE IF NOT EXISTS `databox_upload` (
-  `databox_id` int(11) NOT NULL AUTO_INCREMENT,
+  `databox_id` int(11) NOT NULL,
   `subject` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `databox_search` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `databox_detail` text COLLATE utf8_unicode_ci NOT NULL,
@@ -51,9 +50,8 @@ CREATE TABLE IF NOT EXISTS `databox_upload` (
   `group_Id` int(11) NOT NULL,
   `date_upload` date NOT NULL,
   `user_id` int(3) NOT NULL,
-  `secrets_id` int(1) NOT NULL,
-  PRIMARY KEY (`databox_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=896 ;
+  `secrets_id` int(1) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=896 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `databox_upload`
@@ -123,12 +121,11 @@ INSERT INTO `databox_upload` (`databox_id`, `subject`, `databox_search`, `databo
 --
 
 CREATE TABLE IF NOT EXISTS `data_group` (
-  `group_Id` int(11) NOT NULL AUTO_INCREMENT,
+  `group_Id` int(11) NOT NULL,
   `groupname` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `divisId` int(11) NOT NULL DEFAULT '0',
-  `dataId` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`group_Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=49 ;
+  `dataId` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `data_group`
@@ -183,11 +180,10 @@ INSERT INTO `data_group` (`group_Id`, `groupname`, `divisId`, `dataId`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `data_group_main` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `id` int(10) NOT NULL,
   `fk_id` int(10) NOT NULL,
-  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `data_group_main`
@@ -205,10 +201,9 @@ INSERT INTO `data_group_main` (`id`, `fk_id`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `data_type` (
-  `type_id` int(11) NOT NULL AUTO_INCREMENT,
-  `type_name` varchar(100) NOT NULL,
-  PRIMARY KEY (`type_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+  `type_id` int(11) NOT NULL,
+  `type_name` varchar(100) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `data_type`
@@ -231,8 +226,7 @@ CREATE TABLE IF NOT EXISTS `division` (
   `divisid` int(11) NOT NULL,
   `group_Id` int(3) NOT NULL,
   `divisname` varchar(250) NOT NULL,
-  `short_division` varchar(200) NOT NULL,
-  PRIMARY KEY (`divisid`)
+  `short_division` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -240,33 +234,33 @@ CREATE TABLE IF NOT EXISTS `division` (
 --
 
 INSERT INTO `division` (`divisid`, `group_Id`, `divisname`, `short_division`) VALUES
-(1, 1, 'กองความร่วมมือระหว่างประเทศ', 'กรป.สนผ.'),
-(2, 1, 'กองการจัด', 'กกจ.สนผ.'),
-(3, 1, 'กองแผนร่วม', 'กผร.สนผ.'),
-(4, 1, 'กองแผนและโครงการ', 'กผค.สนผ.'),
-(5, 1, 'กองนโยบายและยุทธศาสตร์', 'กนย.สนผ.'),
-(6, 1, 'แผนกธุรการ', 'ผธก.สนผ.'),
-(7, 2, 'กอง Cyber Warfare Division', 'กสค.สปก.'),
-(8, 2, 'กองยุทธการ', 'กยก.สปก.'),
-(9, 2, 'กองปฏิบัติการพิเศษ', 'กปษ.สปก.'),
-(10, 2, 'กองปฏิบัติการทางทหารที่มิใช้สงคราม', 'กมส.สปก.'),
-(11, 2, 'แผนกธุรการ', 'ผธก.สปก.'),
+(1, 1, 'สนผ.​ กองความร่วมมือระหว่างประเทศ', 'กรป.สนผ.'),
+(2, 1, 'สนผ. กองการจัด', 'กกจ.สนผ.'),
+(3, 1, 'สนผ. กองแผนร่วม', 'กผร.สนผ.'),
+(4, 1, 'สนผ. กองแผนและโครงการ', 'กผค.สนผ.'),
+(5, 1, 'สนผ. กองนโยบายและยุทธศาสตร์', 'กนย.สนผ.'),
+(6, 1, 'สนผ. แผนกธุรการ', 'ผธก.สนผ.'),
+(7, 2, 'สปก. กอง Cyber Warfare Division', 'กสค.สปก.'),
+(8, 2, 'สปก. กองยุทธการ', 'กยก.สปก.'),
+(9, 2, 'สปก. กองปฏิบัติการพิเศษ', 'กปษ.สปก.'),
+(10, 2, 'สปก. กองปฏิบัติการทางทหารที่มิใช้สงคราม', 'กมส.สปก.'),
+(11, 2, 'สปก. แผนกธุรการ', 'ผธก.สปก.'),
 (12, 2, 'ฝ่ายยุทธการ ศูนย์บัญชาการทางทหาร', 'ฝยก ศบท.'),
-(13, 3, 'กองสนับสนุน', 'กสน.สวฝ.'),
-(14, 3, 'กองพัฒนาหลักนิยมและประเมินผล', 'กพป.สวฝ.'),
-(15, 3, 'กองนโยบายและแผนการฝึก', 'กนผ.สวฝ.'),
-(16, 3, 'กองควบคุมการฝึก', 'กคฝ.สวฝ.'),
-(17, 3, 'แผนกกรรมวิธีข้อมูล', 'ผกม.สวฝ.'),
-(18, 3, 'กองฝึกร่วมและผสม', 'กฝร.สวฝ'),
-(19, 3, 'แผนกธุรการ', 'ผธก.สวฝ.'),
-(20, 4, 'กองการฝึกและศึกษา ศูนย์ปฏิบัติการเพื่อสันติภาพ', 'กฝศ.ศสภ.'),
-(21, 4, 'กองปฏิบัติการ ศูนย์ปฏิบัติการเพื่อสันติภาพ', 'กผค.ศสภ.'),
-(22, 4, 'กองแผนและโครงการ ศูนย์ปฏิบัติการเพื่อสันติภาพ', 'กผค.ศสภ.'),
-(23, 4, 'แผนกธุรการ', 'ผธก.ศสภ.'),
-(24, 5, 'กองกรรมวิธีข้อมูล', 'กกม.'),
-(25, 5, 'กองแผนและงบประมาณ', 'กผง.'),
-(26, 5, 'กองกลาง', 'กกล.'),
-(27, 5, 'กองการเงิน', 'กกง.');
+(13, 3, 'สวฝ. กองสนับสนุน', 'กสน.สวฝ.'),
+(14, 3, 'สวฝ. กองพัฒนาหลักนิยมและประเมินผล', 'กพป.สวฝ.'),
+(15, 3, 'สวฝ. กองนโยบายและแผนการฝึก', 'กนผ.สวฝ.'),
+(16, 3, 'สวฝ. กองควบคุมการฝึก', 'กคฝ.สวฝ.'),
+(17, 3, 'สวฝ. แผนกกรรมวิธีข้อมูล', 'ผกม.สวฝ.'),
+(18, 3, 'สวฝ. กองฝึกร่วมและผสม', 'กฝร.สวฝ'),
+(19, 3, 'สวฝ. แผนกธุรการ', 'ผธก.สวฝ.'),
+(20, 4, 'ศสภ. กองการฝึกและศึกษา ศูนย์ปฏิบัติการเพื่อสันติภาพ', 'กฝศ.ศสภ.'),
+(21, 4, 'ศสภ. กองปฏิบัติการ ศูนย์ปฏิบัติการเพื่อสันติภาพ', 'กผค.ศสภ.'),
+(22, 4, 'ศสภ. กองแผนและโครงการ ศูนย์ปฏิบัติการเพื่อสันติภาพ', 'กผค.ศสภ.'),
+(23, 4, 'ศสภ. แผนกธุรการ', 'ผธก.ศสภ.'),
+(24, 5, 'กกม. กองกรรมวิธีข้อมูล', 'กกม.'),
+(25, 5, 'กกม. กองแผนและงบประมาณ', 'กผง.'),
+(26, 5, 'กกม. กองกลาง', 'กกล.'),
+(27, 5, 'กกม. กองการเงิน', 'กกง.');
 
 -- --------------------------------------------------------
 
@@ -275,10 +269,9 @@ INSERT INTO `division` (`divisid`, `group_Id`, `divisname`, `short_division`) VA
 --
 
 CREATE TABLE IF NOT EXISTS `division_group` (
-  `group_Id` int(3) NOT NULL AUTO_INCREMENT,
-  `group_title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`group_Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+  `group_Id` int(3) NOT NULL,
+  `group_title` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `division_group`
@@ -299,8 +292,7 @@ INSERT INTO `division_group` (`group_Id`, `group_title`) VALUES
 
 CREATE TABLE IF NOT EXISTS `secrets` (
   `id` int(1) NOT NULL,
-  `sname` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
+  `sname` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -313,6 +305,92 @@ INSERT INTO `secrets` (`id`, `sname`) VALUES
 (3, 'ลับมาก'),
 (4, 'ลับที่สุด');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `authorization`
+--
+ALTER TABLE `authorization`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `databox_upload`
+--
+ALTER TABLE `databox_upload`
+  ADD PRIMARY KEY (`databox_id`);
+
+--
+-- Indexes for table `data_group`
+--
+ALTER TABLE `data_group`
+  ADD PRIMARY KEY (`group_Id`);
+
+--
+-- Indexes for table `data_group_main`
+--
+ALTER TABLE `data_group_main`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `data_type`
+--
+ALTER TABLE `data_type`
+  ADD PRIMARY KEY (`type_id`);
+
+--
+-- Indexes for table `division`
+--
+ALTER TABLE `division`
+  ADD PRIMARY KEY (`divisid`);
+
+--
+-- Indexes for table `division_group`
+--
+ALTER TABLE `division_group`
+  ADD PRIMARY KEY (`group_Id`);
+
+--
+-- Indexes for table `secrets`
+--
+ALTER TABLE `secrets`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `authorization`
+--
+ALTER TABLE `authorization`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `databox_upload`
+--
+ALTER TABLE `databox_upload`
+  MODIFY `databox_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=896;
+--
+-- AUTO_INCREMENT for table `data_group`
+--
+ALTER TABLE `data_group`
+  MODIFY `group_Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=49;
+--
+-- AUTO_INCREMENT for table `data_group_main`
+--
+ALTER TABLE `data_group_main`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `data_type`
+--
+ALTER TABLE `data_type`
+  MODIFY `type_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `division_group`
+--
+ALTER TABLE `division_group`
+  MODIFY `group_Id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
