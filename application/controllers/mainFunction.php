@@ -35,20 +35,20 @@ class mainFunction extends CI_Controller {
 
             if ($this->auth_ad->in_group($username, "j3databox-secret"))
             {
-            $sessiondata = array('secret' => 2);
+            $sessiondata = array('secret' => 2);    //ผู้บังคับบัญชา  เข้าถึงชั้นความลับได้
             $this->session->set_userdata($sessiondata);
             redirect('mainFunction/executive');
 
             }
             else if ($this->auth_ad->in_group($username, "j3databox-upload"))
             {
-            $sessiondata = array('secret' => 1);
+            $sessiondata = array('secret' => 1);   //เสมียนอัพโหดล
             $this->session->set_userdata($sessiondata);
             redirect('mainFunction/executive');
             }
             else 
             {
-            $sessiondata = array('secret' => 0);
+            $sessiondata = array('secret' => 0);  //คนทั่วไป
             $this->session->set_userdata($sessiondata);
             redirect('mainFunction/executive');
 
@@ -223,7 +223,7 @@ if($this->auth_ad->is_authenticated())
     //--------------------------------------------------------- แสดงข้อมูลจากค้นหา แบบหลายข้อมูล
 
     public function databox_search() {
-if($this->auth_ad->is_authenticated())
+if($this->auth_ad->is_authenticated()&&$this->session->userdata('cn')>0)
         {
 
         //-------pagination
@@ -281,7 +281,7 @@ if($this->auth_ad->is_authenticated())
         $config['base_url'] = base_url() . "index.php/mainFunction/page_upload";
         $config['per_page'] = 15;
         $test = $config['per_page'];
-        $config['total_rows'] = count($this->j3databox->get_Databox_num($test));
+        $config['total_rows'] = count($this->j3databox->get_upload_num($test));
 
         $config["full_tag_open"] = "<div class='pagination'>";
         $config["full_tag_close"] = "</div>";
