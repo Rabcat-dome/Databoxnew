@@ -146,7 +146,7 @@ class mainFunction extends CI_Controller {
     //---------------------------------------------------- ภารกิจ
 
      public function executive() {
-      //  if ($this->auth_ad->is_authenticated()) {
+        if ($this->auth_ad->is_authenticated()) {
 
             //-------pagination
             $this->load->library('pagination');
@@ -208,9 +208,9 @@ class mainFunction extends CI_Controller {
              $data['databox_upload'] = $this->j3databox->get_databox_upload();
             $data['data_group_main'] = $this->j3databox->get_data_group_main();
             $this->load->view('executive', $data);
-      //  } else {
-        //    redirect('mainFunction/index');
-       // }
+       } else {
+            redirect('mainFunction/index');
+        }
     }
     
 
@@ -339,7 +339,7 @@ if($this->auth_ad->is_authenticated()&&$this->session->userdata('cn')>0)
     //---------------------------------------------------หน้า อัพโหล
 
     public function page_upload() {
-//if($this->auth_ad->is_authenticated())
+if($this->auth_ad->is_authenticated())
         {
 
         //-------pagination
@@ -367,10 +367,10 @@ if($this->auth_ad->is_authenticated()&&$this->session->userdata('cn')>0)
         $this->load->view('page_upload', $data);  // เปิดหน้า upload เพื่อที่ สร้างหน้าวิว ชัวคราว
 
                     }
-        //else 
-        //{
-          //  redirect('mainFunction/index');
-        //}
+        else 
+        {
+            redirect('mainFunction/index');
+        }
     }
 
  public function select_main() {
