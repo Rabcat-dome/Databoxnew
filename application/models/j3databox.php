@@ -42,7 +42,7 @@ Class j3databox extends CI_Model {
                 $this->db->or_where('databox_upload.subject like', '%' . $databox_search . '%');
                 $this->db->or_where('databox_upload.databox_search like', '%' . $databox_search . '%');
                 $this->db->or_where('databox_upload.databox_detail like', '%' . $databox_search . '%');
-               $this->db->where('databox_upload.secrets_id like', '%' . $secrets_id . '%');
+               $this->db->where('databox_upload.secret_id like', '%' . $secrets_id . '%');
             }
         }
         if ($begin_fromdate == "") {
@@ -50,7 +50,7 @@ Class j3databox extends CI_Model {
                 if ($type_dataId_n == "") {
                     if ($type_divisid_n == "") {
                   $this->db->where('databox_upload.subject like', '%' . $databox_search . '%');
-                  $this->db->where('databox_upload.secrets_id like', '%' . $secrets_id . '%');
+                  $this->db->where('databox_upload.secret_id like', '%' . $secrets_id . '%');
                     }
                 }
             }
@@ -60,7 +60,7 @@ Class j3databox extends CI_Model {
             $this->db->or_where('databox_upload.subject like', '%' . $databox_search . '%');
             $this->db->or_where('databox_upload.databox_search like', '%' . $databox_search . '%');
             $this->db->or_where('databox_upload.databox_detail like', '%' . $databox_search . '%');
-            $this->db->where('databox_upload.secrets_id like', '%' . $secrets_id . '%');
+            $this->db->where('databox_upload.secret_id like', '%' . $secrets_id . '%');
         }
         if ($search != "") {
             $this->db->where('databox_upload.subject like', '%' . $search . '%');
@@ -398,7 +398,7 @@ Class j3databox extends CI_Model {
                 ->join('division', 'division.divisid = data_group.divisid', 'LEFT')
                 ->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT')
                 ->join('division_group', 'division_group.group_Id = data_group.divisId', 'LEFT')
-                ->join('secrets', 'secrets.id = databox_upload.secrets_id', 'LEFT');
+                ->join('secrets', 'secrets.id = databox_upload.secret_id', 'LEFT');
         $this->db->where('databox_upload.user_id', $this->session->userdata('username'));
         $this->db->limit($test, $this->uri->segment(3));
 
@@ -418,7 +418,7 @@ Class j3databox extends CI_Model {
                 ->join('division', 'division.divisid = data_group.divisid', 'LEFT')
                 ->join('data_type', 'data_type.type_id = data_group.dataId', 'LEFT')
                 ->join('division_group', 'division_group.group_Id = data_group.divisId', 'LEFT')
-                ->join('secrets', 'secrets.id = databox_upload.secrets_id', 'LEFT');
+                ->join('secrets', 'secrets.id = databox_upload.secret_id', 'LEFT');
         $this->db->where('databox_upload.user_id', $this->session->userdata('username'));
         $query = $this->db->get();
         return $query->result_array();
