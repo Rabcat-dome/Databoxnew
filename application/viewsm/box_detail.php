@@ -59,11 +59,11 @@ $origin = "http://127.0.0.1/j3databoxnew/uploads/" . $uploaded_url . ""
     <tr>
         <td>
             <div class="input-prepend">
-                <span class="add-on" style="width: 100px;  rows="5" text-align: left; font-size: 12px;">ชื่อเรื่อง</span>
+                <span class="add-on" style="width: 100px; text-align: left; font-size: 12px;">ชื่อเรื่อง</span>
             </div>
         </td>
         <td>
-            <label class="span3" >&nbsp; <?php echo $subject ?></label>
+            <label style="background-color :#ffffff; height: 25px;   border-style: solid; border-width: 1px;  font-size: 12px;">&nbsp; <?php echo $subject ?></label>
         </td>
     </tr>
 

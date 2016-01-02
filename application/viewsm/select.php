@@ -1,6 +1,4 @@
-      
-
-<option  value='0'> กรุณาเลือกรายการ </option>
+        <option  value='0'> กรุณาเลือกรายการ </option>
         
         <?php
               $data2 = $_POST['data2'];
