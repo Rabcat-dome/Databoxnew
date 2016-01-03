@@ -46,7 +46,7 @@ $origin = "http://127.0.0.1/j3databoxnew/uploads/" . $uploaded_url . ""
                         </div>
                     </td>
                     <td>
-                        <label  style="background-color :#ffffff; height: 25px;  border-style: solid; border-width: 1px; font-size: 12px;">&nbsp; <?php echo $databox_id ?></label>
+                        <textarea  style="overflow:auto;resize:none; background: #FFF; width: 400px;" rows="1"  disabled>&nbsp; <?php echo $databox_id ?></textarea>
                     </td>
 
                 </tr>
@@ -104,7 +104,7 @@ $origin = "http://127.0.0.1/j3databoxnew/uploads/" . $uploaded_url . ""
             <div class="input-prepend"><span class="add-on" style="width: 100px; text-align: left; font-size: 12px;">ผู้จัดทำ</span></div>
         </td>
         <td>
-            <label style="background-color :#ffffff; height: 25px;  border-style: solid; border-width: 1px; font-size: 12px;" ></label>
+            <textarea  style="overflow:auto;resize:none; background: #FFF; width: 400px;" rows="1"  disabled></textarea>
         </td>
     </tr>
 
@@ -112,7 +112,7 @@ $origin = "http://127.0.0.1/j3databoxnew/uploads/" . $uploaded_url . ""
         <div class="input-prepend"><span class="add-on" style="width: 100px; text-align: left; font-size: 12px;">หน่วยงาน</span></div>
     </td>
     <td>
-        <label style="background-color :#ffffff; height: 25px;  border-style: solid; border-width: 1px; font-size: 12px;" ></label>
+        <textarea  style="overflow:auto;resize:none; background: #FFF; width: 400px;" rows="1"  disabled></textarea>
     </td>
     <tr>
         <td>
