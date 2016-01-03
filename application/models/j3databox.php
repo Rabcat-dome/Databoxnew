@@ -190,7 +190,7 @@ Class j3databox extends CI_Model {
         $this->db->where('division.divisId like', '%' . $temp2 . '%');
         if($this->session->userdata('secret')!=2){$this->db->where('secret_id <', 4);}
         $this->db->order_by('databox_upload.databox_id', 'DESC');
-        $this->db->limit($test,$this->uri->segment(3));
+        
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -316,9 +316,17 @@ Class j3databox extends CI_Model {
         return $query->result_array();
     }
     
-     function get_databox_upload() {
-        $sql = "SELECT  * FROM  databox_upload";
-        $query = $this->db->query($sql);
+     function get_databox_upload($test) {
+        
+        $this->db->select('*')->from('databox_upload');
+        $this->db->limit($test, $this->uri->segment(3));
+        $query = $this->db->get();;
+        return $query->result_array();
+    }
+         function get_databox_upload_num() {
+        $this->db->select('*')->from('databox_upload');
+
+        $query = $this->db->get();
         return $query->result_array();
     }
 

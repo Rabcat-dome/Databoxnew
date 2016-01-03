@@ -147,13 +147,15 @@ class mainFunction extends CI_Controller {
 
      public function executive() {
         if ($this->auth_ad->is_authenticated()) {
+        //$sessiondata = array('secret' => 2);    
+        //$this->session->set_userdata($sessiondata);
 
             //-------pagination
             $this->load->library('pagination');
             $config['base_url'] = base_url() . "index.php/mainFunction/executive";
             $config['per_page'] = 20;
             $test = $config['per_page'];
-            $config['total_rows'] = count($this->j3databox->get_Databox_num($test));
+            $config['total_rows'] = count($this->j3databox->get_databox_upload_num());
             $config["full_tag_open"] = "<div class='pagination'>";
             $config["full_tag_close"] = "</div>";
             $this->pagination->initialize($config);
@@ -205,11 +207,11 @@ class mainFunction extends CI_Controller {
                 $data['not2'] = $data1 . "-" . $data2;
                 $data['data_group'] = $this->input->post("data_group");
             }
-             $data['databox_upload'] = $this->j3databox->get_databox_upload();
+             $data['databox_upload'] = $this->j3databox->get_databox_upload($test);
             $data['data_group_main'] = $this->j3databox->get_data_group_main();
             $this->load->view('executive', $data);
-       } else {
-            redirect('mainFunction/index');
+        } else {
+          redirect('mainFunction/index');
         }
     }
     
